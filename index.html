@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+  <title>오늘 뭐입지?</title>
+  <link
+    rel="stylesheet"
+    href="./styles/styles.css">
+  <script src="./scripts/weatherPrototype.js"></script>
+</head>
+<body data-color="">
+
+<header>
+  <button
+    type="button"
+    class="info"
+    onclick="this.classList.add('on');">
+    <span>메뉴 보기</span>
+  </button>
+  <span class="locationInformation">
+    <strong class="location">서울</strong>
+    <span class="time">
+      <span class="type">오후</span>
+      <span class="hour">10</span>
+      <span class="minute">00</span>
+    </span>
+  </span>
+  <button
+    type="button"
+    class="addLocation">
+    <span>지역 추가</span>
+  </button>
+</header>
+
+<section
+  class="contentWrap">
+  <h2>오늘 날씨</h2>
+  <article class="temperature">
+    <strong class="nowTempWrap">
+      <span>-1</span>
+      <em>℃</em>
+    </strong>
+    <div class="weatherInfo">
+      <span class="weather">
+        <span class="timeType">밤,</span>
+        <span class="weatherType">맑음</span>
+      </span>
+      <span class="todayTemperature">
+        <span class="highWrap">
+          <span class="number">7</span>
+          <em>℃</em>
+        </span>
+        <span class="lowWrap">
+          <span class="number">-1</span>
+          <em>℃</em>
+        </span>
+      </span>
+    </div>
+  </article>
+  <h2>오늘 뭐입지?</h2>
+  <article class="clothes">
+    <div class="recommendClothes">
+      <strong>겨울옷</strong>
+      <ul>
+        <li>야상</li>
+        <li>패딩</li>
+        <li>목도리</li>
+        <li>대충 겨울옷</li>
+      </ul>
+    </div>
+  </article>
+</section>
+<footer>
+  <span class="year"></span>Made by MJ Kang
+</footer>
+<script>
+  setTimeout(_ => {
+    document.querySelector('body').dataset.color = 'init';
+    document.querySelector('.temperature').dataset.temp = 'freezing';
+  }, 100);
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+html,
+body {
+  height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 0; }
+  body[data-color="init"] {
+    background-color: white; }
+  body * {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    list-style: none; }
+  body input,
+  body button {
+    appearance: none; }
+  body a,
+  body button {
+    appearance: none; }
+    body a:active,
+    body button:active {
+      opacity: .5; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  header button {
+    appearance: none;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none; }
+  header .info.on:before, header .info.on:after {
+    left: 50%;
+    top: 50%;
+    transform-origin: left;
+    transition: all .3s; }
+  header .info.on:before {
+    transform: rotate(45deg) translate3d(-50%, -50%, 0); }
+  header .info.on:after {
+    transform: rotate(-45deg) translate3d(-50%, -50%, 0); }
+  header .info:before, header .info:after {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 1px;
+    background-color: #333;
+    border-radius: 5px; }
+  header .info:before {
+    left: 8px;
+    top: 14px; }
+  header .info:after {
+    left: 8px;
+    bottom: 14px; }
+  header .locationInformation {
+    text-align: center; }
+    header .locationInformation .location {
+      font-size: 14px;
+      color: #333;
+      font-weight: normal; }
+    header .locationInformation .time {
+      display: block;
+      padding-top: 2px; }
+      header .locationInformation .time span {
+        font-size: 11px;
+        color: #333; }
+      header .locationInformation .time .type {
+        margin-right: 4px; }
+      header .locationInformation .time .minute:before {
+        content: ":";
+        font-size: 11px;
+        color: #333; }
+  header .addLocation:before, header .addLocation:after {
+    content: "";
+    position: absolute;
+    transform: translate3d(-50%, -50%, 0);
+    background-color: #333;
+    border-radius: 5px; }
+  header .addLocation:before {
+    width: 20px;
+    height: 1px; }
+  header .addLocation:after {
+    width: 1px;
+    height: 20px; }
+
+.contentWrap {
+  height: calc(100% - 90px);
+  padding: 0 20px;
+  box-sizing: border-box; }
+  .contentWrap h2 {
+    padding: 20px 0;
+    font-size: 17px;
+    color: #333; }
+  .contentWrap .temperature {
+    position: relative;
+    padding: 20px 40px;
+    border-radius: 0 40px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2) inset; }
+    .contentWrap .temperature + h2 {
+      margin-top: 20px; }
+    .contentWrap .temperature[data-temp="freezing"] {
+      background-color: #0879c4;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="cold"] {
+      background-color: #288697;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="chilly"] {
+      background-color: #1f2c97;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="cool"] {
+      background-color: #5125c1;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="mild"] {
+      background-color: #870b8b;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="cozy"] {
+      background-color: #900000;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="warm"] {
+      background-color: #e36804;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="hot"] {
+      background-color: #e7cd00;
+      transition: background 1s; }
+  .contentWrap .nowTempWrap {
+    display: inline-block;
+    flex-shrink: 0;
+    align-items: baseline;
+    animation: fade-in 1s ease-in-out;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.08); }
+    .contentWrap .nowTempWrap span {
+      font-size: 40px; }
+    .contentWrap .nowTempWrap em {
+      font-style: normal;
+      font-size: 20px; }
+  .contentWrap .weatherInfo {
+    display: flex;
+    opacity: 0;
+    margin-top: 10px;
+    justify-content: flex-end;
+    animation: fade-in 1s ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: .8s; }
+    .contentWrap .weatherInfo span {
+      font-size: 0;
+      color: #fff; }
+    .contentWrap .weatherInfo .weatherType,
+    .contentWrap .weatherInfo .timeType {
+      font-size: 14px; }
+    .contentWrap .weatherInfo .weatherType {
+      margin-left: 4px; }
+    .contentWrap .weatherInfo .todayTemperature:before {
+      content: "/";
+      margin: 0 4px;
+      font-size: 14px; }
+    .contentWrap .weatherInfo .highWrap:before {
+      content: "\2191";
+      font-size: 14px; }
+    .contentWrap .weatherInfo .lowWrap {
+      margin-left: 10px; }
+      .contentWrap .weatherInfo .lowWrap:before {
+        content: "\2193";
+        font-size: 14px; }
+    .contentWrap .weatherInfo .number {
+      font-size: 14px; }
+    .contentWrap .weatherInfo em {
+      font-size: 1.2px;
+      font-style: normal; }
+  .contentWrap .clothes {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px; }
+  .contentWrap .recommendClothes strong {
+    font-size: 14px;
+    color: #333; }
+  .contentWrap .recommendClothes ul {
+    margin-top: 10px;
+    padding: 0 5px; }
+  .contentWrap .recommendClothes li {
+    margin-top: 5px;
+    font-size: 14px; }
+    .contentWrap .recommendClothes li:before {
+      content: "-";
+      margin-right: 4px; }
+    .contentWrap .recommendClothes li:first-child {
+      margin-left: 0; }
+
+footer {
+  display: flex;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.3); }
+  footer span {
+    padding-right: 10px;
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.2); }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); }
+  30% {
+    opacity: 0; }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
