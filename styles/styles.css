@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 0;
-  font-family: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;'; }
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu; }
   body[data-color="init"] {
     background-color: white; }
   body * {
@@ -14,7 +14,7 @@ body {
     padding: 0;
     font-size: 0;
     list-style: none;
-    font-family: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;'; }
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu; }
   body input,
   body button {
     appearance: none; }
