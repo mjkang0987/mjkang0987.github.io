@@ -3,7 +3,7 @@
   let utils = {};
 
   const API = {
-    URL: 'http://api.openweathermap.org/data/2.5/weather',
+    URL: 'https://api.openweathermap.org/data/2.5/weather',
     KEY: '&appid=8d0fba684264cc55f9b735566611ac78'
   };
 
