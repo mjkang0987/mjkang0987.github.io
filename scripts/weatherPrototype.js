@@ -98,10 +98,39 @@
 
     return UI_Prototype;
   })();
+  utils.SetWeather = (function() {
+    const SetWeather = function({
+      city: city
+    }) {
+
+      this.city = `?q=${city}`;
+      this.init();
+    }
+
+    SetWeather.prototype = {
+      init: async function() {
+        // console.log('init');
+        // console.log(await this.getFetch());
+      },
+      getFetch: async function() {
+        this.response = await fetch(`${URL}${this.city}${KEY}`);
+        if (this.response.ok) {
+          this.data = await this.response.json();
+        } else {
+          this.data = null;
+        }
+        return this.data;
+      },
+
+    }
+
+    return SetWeather;
+  })();
   const domReady = () => {
     setYear();
-    const seoul = new utils.Prototype({
     const UI = new UI_Prototype();
+
+    const seoul = new SetWeather({
       city: 'seoul'
     });
   };
