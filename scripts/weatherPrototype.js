@@ -20,44 +20,21 @@
 
   const {URL, KEY} = API;
 
-  const docSelector = ({
-    el: el,
-    all: isAll
-  }) => {
-    if (isAll) {
-      return document.querySelectorAll(el);
-    } else {
-      return document.querySelector(el);
-    }
-  };
-
-  const setYear = _ => {
-    const yearWrap = docSelector({el: 'footer .year'});
-    const now = new Date();
-    yearWrap.innerText = now.getFullYear();
-  }
-
   utils.Prototype = (function() {
-    const Prototype = function({
-      city: city
-    }) {
-
-      this.city = `?q=${city}`;
+    const Prototype = function() {
       this.init();
     }
 
     Prototype.prototype = {
-      init: function() {
-        console.log('init');
-        this.getFetch();
+      init: function(){
       },
-      getFetch: async function() {
-        this.response = await fetch(`${URL}${this.city}${KEY}`);
-        this.data = await this.response.json();
-        console.log(this.data);
-        return this.data;
-      },
-
+      docSelector: function({
+        el: el,
+        all: isAll
+      }) {
+        if (isAll) return document.querySelectorAll(el);
+        else return document.querySelector(el);
+      }
     }
 
     return Prototype;
