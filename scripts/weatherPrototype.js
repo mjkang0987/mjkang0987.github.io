@@ -127,6 +127,7 @@
     return SetWeather;
   })();
   const domReady = () => {
+    const {Prototype, UI_Prototype, SetWeather} = utils;
     const prototype = new Prototype();
 
     const UI = new UI_Prototype();
