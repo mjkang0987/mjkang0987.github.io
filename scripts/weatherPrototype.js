@@ -127,7 +127,8 @@
     return SetWeather;
   })();
   const domReady = () => {
-    setYear();
+    const prototype = new Prototype();
+
     const UI = new UI_Prototype();
 
     const seoul = new SetWeather({
