@@ -39,9 +39,69 @@
 
     return Prototype;
   })();
+
+  utils.UI_Prototype = (function() {
+    const UI_Prototype = function() {
+      this.init();
+    }
+
+    UI_Prototype.prototype = {
+      init: function(){
+        this.getNow();
+        this.getDate();
+        this.getTime();
+        this.UITime();
+
+        this.now = setInterval(_ => {
+          this.getNow();
+          this.getTime();
+        }, 3000);
+      },
+      getNow: function() {
+        this.now = new Date();
+      },
+      getDate: function() {
+        this.date = {
+          year: this.now.getFullYear(),
+          month: this.now.getMonth() + 1,
+          day: this.now.getDate()
+        }
+      },
+      getTime: function() {
+        this.gemTime = {
+          hour: this.now.getHours(),
+          minutes: this.now.getMinutes(),
+          seconds: this.now.getSeconds()
+        }
+      },
+      UITime: function() {
+        this.time = this.gemTime;
+        if (this.gemTime.hour > 12) {
+          this.hour = this.gemTime.hour - 12;
+          this.timeText = AFTERNOON;
+        } else {
+          this.hour = this.gemTime.hour;
+          this.timeText = MORNING;
+        }
+        this.minutes = this.gemTime.minutes;
+        this.seconds = this.gemTime.seconds;
+
+        this.time = {
+          hour: this.hour,
+          minutes: this.minutes,
+          seconds: this.seconds
+        }
+
+        console.log(`${this.time}${this.timeText}`);
+      }
+    }
+
+    return UI_Prototype;
+  })();
   const domReady = () => {
     setYear();
     const seoul = new utils.Prototype({
+    const UI = new UI_Prototype();
       city: 'seoul'
     });
   };
