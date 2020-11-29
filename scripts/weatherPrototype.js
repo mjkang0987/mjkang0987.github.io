@@ -21,13 +21,9 @@
   const {URL, KEY} = API;
 
   utils.Prototype = (function() {
-    const Prototype = function() {
-      this.init();
-    }
+    const Prototype = function() {}
 
     Prototype.prototype = {
-      init: function(){
-      },
       docSelector: function({
         el: el,
         all: isAll
