@@ -148,8 +148,10 @@
     const {Prototype, UI_Prototype, SetWeather} = utils;
     const prototype = new Prototype();
 
+    UI_Prototype.prototype = Object.assign(UI_Prototype.prototype, Prototype.prototype);
     const UI = new UI_Prototype();
 
+    SetWeather.prototype = Object.assign(SetWeather.prototype, Prototype.prototype);
     const seoul = new SetWeather({
       city: 'seoul'
     });
