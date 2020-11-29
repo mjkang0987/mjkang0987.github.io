@@ -211,6 +211,37 @@ footer {
     font-size: 11px;
     color: rgba(0, 0, 0, 0.2); }
 
+.loading {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  text-align: center; }
+  .loading.hidden {
+    display: none; }
+  .loading:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle; }
+  .loading i {
+    display: inline-block;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
 @keyframes fade-in {
   0% {
     opacity: 0;
