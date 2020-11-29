@@ -73,7 +73,7 @@ header {
       header .locationInformation .time .type {
         margin-right: 4px; }
       header .locationInformation .time .minute:before {
-        content: ":";
+        content: "\003a";
         font-size: 11px;
         color: #333; }
   header .addLocation:before, header .addLocation:after {
