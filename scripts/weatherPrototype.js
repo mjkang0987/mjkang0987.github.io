@@ -63,16 +63,16 @@
       init: function(){
         this.getNow();
         this.getDate();
-        this.getTime();
-        this.UITime();
+        this.setTime();
 
         this.now = setInterval(_ => {
           this.getNow();
-          this.getTime();
+          this.setTime();
         }, 3000);
       },
       getNow: function() {
         this.now = new Date();
+        this.setTime();
       },
       getDate: function() {
         this.date = {
@@ -82,14 +82,15 @@
         }
       },
       getTime: function() {
-        this.gemTime = {
+        return this.gemTime = {
           hour: this.now.getHours(),
           minutes: this.now.getMinutes(),
           seconds: this.now.getSeconds()
         }
       },
-      UITime: function() {
-        this.time = this.gemTime;
+      setTime: function() {
+        this.time = this.getTime();
+
         if (this.gemTime.hour > 12) {
           this.hour = this.gemTime.hour - 12;
           this.timeText = AFTERNOON;
@@ -97,17 +98,20 @@
           this.hour = this.gemTime.hour;
           this.timeText = MORNING;
         }
+
         this.minutes = this.gemTime.minutes;
         this.seconds = this.gemTime.seconds;
 
         this.time = {
-          hour: this.hour,
-          minutes: this.minutes,
+          hour: this.hour < 10 ? `0${this.hour}` : this.hour,
+          minutes: this.minutes < 10 ? `0${this.minutes}` : this.minutes,
           seconds: this.seconds
         }
 
-        console.log(`${this.time}${this.timeText}`);
-      }
+        this.timeTypeEl.textContent = this.timeText;
+        this.timeHourEl.textContent = this.time.hour;
+        this.timeMinuteEl.textContent = this.time.minutes;
+      },
     }
 
     return UI_Prototype;
