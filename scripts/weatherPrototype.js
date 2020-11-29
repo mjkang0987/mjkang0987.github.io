@@ -30,6 +30,18 @@
       }) {
         if (isAll) return document.querySelectorAll(el);
         else return document.querySelector(el);
+      },
+      createEl: function({
+        tag: tag
+      }) {
+        return document.createElement(tag);
+      },
+      addEl: function({
+        wrap: wrap,
+        direction: dir,
+        el: el
+      }) {
+        wrap.insertAdjacentElement(dir, el);
       }
     }
 
