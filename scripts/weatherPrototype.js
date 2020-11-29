@@ -44,12 +44,18 @@
         wrap.insertAdjacentElement(dir, el);
       }
     }
-
     return Prototype;
   })();
 
+
   utils.UI_Prototype = (function() {
     const UI_Prototype = function() {
+      this.timeTypeEl = this.docSelector({el: 'header .type'});
+      this.timeHourEl = this.docSelector({el: 'header .hour'});
+      this.timeMinuteEl = this.docSelector({el: 'header .minute'});
+      this.timeMinuteEl = this.docSelector({el: 'header .minute'});
+      this.cityEl = this.docSelector({el: 'header .location'});
+
       this.init();
     }
 
