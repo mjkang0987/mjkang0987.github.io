@@ -153,13 +153,11 @@
         console.log(this.weather);
         await this.setUI();
       },
-      getFetch: async function() {
+      getFetch: async function () {
         this.response = await fetch(`${URL}${this.city}${KEY}`);
-        if (this.response.ok) {
-          this.data = await this.response.json();
-        } else {
-          this.data = null;
-        }
+        if (this.response.ok) this.data = await this.response.json();
+        else this.data = null;
+        this.loaderEl.classList.add('hidden');
         return this.data;
       },
 
