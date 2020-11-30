@@ -137,7 +137,12 @@
     }) {
 
       this.cityEl = this.docSelector({el: 'header .location'});
+      this.tempEl = this.docSelector({el: '.nowTempWrap span'});
+      this.tempMaxEl = this.docSelector({el: '.maxWrap span'});
+      this.tempMinEl = this.docSelector({el: '.minWrap span'});
+      this.weatherEl = this.docSelector({el: '.weather .weatherType'});
       this.loaderEl = this.docSelector({el: '.loading'});
+
       this.city = `?q=${city}`;
       this.init().then(this.loaderEl.classList.add('hidden'));
     }
