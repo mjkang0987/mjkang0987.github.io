@@ -94,9 +94,22 @@ header {
   padding: 0 20px;
   box-sizing: border-box; }
   .contentWrap h2 {
+    position: relative;
     padding: 20px 0;
     font-size: 17px;
     color: #333; }
+    .contentWrap h2 span {
+      font-size: 17px;
+      color: #333; }
+    .contentWrap h2 .buttonRefresh {
+      position: absolute;
+      right: 0;
+      top: 20px;
+      font-size: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 2px 5px;
+      background-color: #fff; }
   .contentWrap .temperature {
     position: relative;
     padding: 20px 40px;
