@@ -200,12 +200,16 @@ header {
     color: #333; }
   .contentWrap .recommendClothes ul {
     margin-top: 10px;
-    padding: 0 5px; }
+    padding: 0 5px;
+    vertical-align: top; }
   .contentWrap .recommendClothes li {
+    display: inline-block;
+    width: 50%;
     margin-top: 5px;
-    font-size: 14px; }
+    font-size: 14px;
+    vertical-align: middle; }
     .contentWrap .recommendClothes li:before {
-      content: "-";
+      content: "\002d";
       margin-right: 4px; }
     .contentWrap .recommendClothes li:first-child {
       margin-left: 0; }
