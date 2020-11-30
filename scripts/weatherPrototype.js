@@ -73,7 +73,6 @@
       this.timeHourEl = this.docSelector({el: 'header .hour'});
       this.timeMinuteEl = this.docSelector({el: 'header .minute'});
       this.timeMinuteEl = this.docSelector({el: 'header .minute'});
-      this.cityEl = this.docSelector({el: 'header .location'});
 
       this.init();
     };
@@ -140,6 +139,7 @@
       city: city
     }) {
 
+      this.cityEl = this.docSelector({el: 'header .location'});
       this.loaderEl = this.docSelector({el: '.loading'});
       this.city = `?q=${city}`;
       this.init().then(this.loaderEl.classList.add('hidden'));
