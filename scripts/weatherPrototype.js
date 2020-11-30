@@ -144,12 +144,14 @@
       this.loaderEl = this.docSelector({el: '.loading'});
 
       this.city = `?q=${city}`;
-      this.init().then(this.loaderEl.classList.add('hidden'));
-    }
+      this.init();
+    };
 
     SetWeather.prototype = {
-      init: async function() {
+      init: async function () {
         this.weather = await this.getFetch();
+        console.log(this.weather);
+        await this.setUI();
       },
       getFetch: async function() {
         this.response = await fetch(`${URL}${this.city}${KEY}`);
