@@ -3,7 +3,7 @@
   let utils = {};
 
   const CITIES = {
-    '서울': 'seoul'
+    'seoul': '서울'
   };
 
   const TIME_TEXT = {
