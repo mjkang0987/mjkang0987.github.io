@@ -30,6 +30,7 @@
   };
 
   const {MORNING, AFTERNOON} = TIME_TEXT;
+  const {ABSOLUTE} = TEMP;
 
   const API = {
     URL: 'https://api.openweathermap.org/data/2.5/weather',
