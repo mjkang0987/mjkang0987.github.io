@@ -7,9 +7,12 @@
   };
 
   const TIME_TEXT = {
-    MORNING: '오전',
-    AFTERNOON: '오후'
-  }
+    MORNING: ['오전', '아침'],
+    AFTERNOON: '오후',
+    DINNER: '저녁',
+    NIGHT: '밤',
+    DAWN: '새벽'
+  };
 
   const {MORNING, AFTERNOON} = TIME_TEXT;
 
