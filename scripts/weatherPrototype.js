@@ -117,14 +117,11 @@
           this.timeText = MORNING;
         }
 
-        this.minutes = this.gemTime.minutes;
-        this.seconds = this.gemTime.seconds;
-
         this.time = {
           hour: this.hour < 10 ? `0${this.hour}` : this.hour,
-          minutes: this.minutes < 10 ? `0${this.minutes}` : this.minutes,
-          seconds: this.seconds
-        }
+          minutes: this.gemTime.minutes < 10 ? `0${this.gemTime.minutes}` : this.gemTime.minutes,
+          seconds: this.gemTime.seconds
+        };
 
         this.timeTypeEl.textContent = this.timeText;
         this.timeHourEl.textContent = this.time.hour;
