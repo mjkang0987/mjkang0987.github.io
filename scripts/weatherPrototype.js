@@ -62,7 +62,7 @@
       }) {
         wrap.insertAdjacentElement(dir, el);
       }
-    }
+    };
     return Prototype;
   })();
 
@@ -76,7 +76,7 @@
       this.cityEl = this.docSelector({el: 'header .location'});
 
       this.init();
-    }
+    };
 
     UI_Prototype.prototype = {
       init: function(){
@@ -98,14 +98,14 @@
           year: this.now.getFullYear(),
           month: this.now.getMonth() + 1,
           day: this.now.getDate()
-        }
+        };
       },
       getTime: function() {
         return this.gemTime = {
           hour: this.now.getHours(),
           minutes: this.now.getMinutes(),
           seconds: this.now.getSeconds()
-        }
+        };
       },
       setTime: function() {
         this.time = this.getTime();
@@ -130,8 +130,8 @@
         this.timeTypeEl.textContent = this.timeText;
         this.timeHourEl.textContent = this.time.hour;
         this.timeMinuteEl.textContent = this.time.minutes;
-      },
-    }
+      }
+    };
 
     return UI_Prototype;
   })();
