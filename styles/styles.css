@@ -119,29 +119,29 @@ header {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2) inset; }
     .contentWrap .temperature + h2 {
       margin-top: 20px; }
-    .contentWrap .temperature[data-temp="freezing"] {
-      background-color: #0879c4;
-      transition: background 1s; }
-    .contentWrap .temperature[data-temp="cold"] {
-      background-color: #288697;
-      transition: background 1s; }
-    .contentWrap .temperature[data-temp="chilly"] {
-      background-color: #1f2c97;
-      transition: background 1s; }
-    .contentWrap .temperature[data-temp="cool"] {
-      background-color: #5125c1;
-      transition: background 1s; }
-    .contentWrap .temperature[data-temp="mild"] {
-      background-color: #870b8b;
-      transition: background 1s; }
-    .contentWrap .temperature[data-temp="cozy"] {
-      background-color: #900000;
+    .contentWrap .temperature[data-temp="hot"] {
+      background-color: #e7cd00;
       transition: background 1s; }
     .contentWrap .temperature[data-temp="warm"] {
       background-color: #e36804;
       transition: background 1s; }
-    .contentWrap .temperature[data-temp="hot"] {
-      background-color: #e7cd00;
+    .contentWrap .temperature[data-temp="cozy"] {
+      background-color: #900000;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="mild"] {
+      background-color: #870b8b;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="cool"] {
+      background-color: #5125c1;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="chilly"] {
+      background-color: #1f2c97;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="cold"] {
+      background-color: #288697;
+      transition: background 1s; }
+    .contentWrap .temperature[data-temp="freezing"] {
+      background-color: #0879c4;
       transition: background 1s; }
   .contentWrap .nowTempWrap {
     display: inline-block;
