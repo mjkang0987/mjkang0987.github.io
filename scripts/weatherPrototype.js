@@ -160,8 +160,37 @@
         this.loaderEl.classList.add('hidden');
         return this.data;
       },
+      setUI: function () {
+        this.city = this.weather.name.toLowerCase();
+        this.gemTemp = {
+          current: this.weather.main.temp,
+          max: this.weather.main.temp_max,
+          min: this.weather.main.temp_min
+        };
+        this.weatherState = this.weather.weather[0].description;
 
-    }
+        this.setCity();
+        this.setTemp();
+        this.setWeather();
+      },
+      setCity: function () {
+        this.cityEl.textContent = CITIES[this.city];
+      },
+      setTemp: function () {
+        this.temp = {
+          current: Math.round(this.gemTemp.current - ABSOLUTE),
+          max: Math.round(this.gemTemp.max - ABSOLUTE),
+          min: Math.round(this.gemTemp.min - ABSOLUTE)
+        };
+
+        this.tempEl.textContent = this.temp.current;
+        this.tempMaxEl.textContent = this.temp.max;
+        this.tempMinEl.textContent = this.temp.min;
+      },
+      setWeather: function () {
+        this.weatherEl.textContent = this.weatherState;
+      }
+    };
 
     return SetWeather;
   })();
