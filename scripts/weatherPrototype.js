@@ -14,6 +14,9 @@
     DAWN: '새벽'
   };
 
+  const TEMP = {
+    ABSOLUTE: 273
+  };
   const {MORNING, AFTERNOON} = TIME_TEXT;
 
   const API = {
