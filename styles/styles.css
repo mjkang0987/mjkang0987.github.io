@@ -162,12 +162,12 @@ header {
       content: "/";
       margin: 0 4px;
       font-size: 14px; }
-    .contentWrap .weatherInfo .highWrap:before {
+    .contentWrap .weatherInfo .maxWrap:before {
       content: "\2191";
       font-size: 14px; }
-    .contentWrap .weatherInfo .lowWrap {
+    .contentWrap .weatherInfo .minWrap {
       margin-left: 10px; }
-      .contentWrap .weatherInfo .lowWrap:before {
+      .contentWrap .weatherInfo .minWrap:before {
         content: "\2193";
         font-size: 14px; }
     .contentWrap .weatherInfo .number {
