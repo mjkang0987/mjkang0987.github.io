@@ -8,7 +8,7 @@
 
   const TIME_TEXT = {
     MORNING: ['오전', '아침'],
-    AFTERNOON: '오후',
+    AFTERNOON: ['오후', '점심'],
     DINNER: '저녁',
     NIGHT: '밤',
     DAWN: '새벽'
@@ -29,7 +29,7 @@
     FREEZING: ['야상', '패딩', '목도리', '누빔옷', '두꺼운 코트', '기모']
   };
 
-  const {MORNING, AFTERNOON} = TIME_TEXT;
+  const {MORNING, AFTERNOON, DINNER, NIGHT, DAWN} = TIME_TEXT;
   const {ABSOLUTE} = TEMP;
 
   const API = {
