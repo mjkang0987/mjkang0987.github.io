@@ -156,6 +156,8 @@
       this.tempMaxEl = this.docSelector({el: '.maxWrap span'});
       this.tempMinEl = this.docSelector({el: '.minWrap span'});
       this.weatherEl = this.docSelector({el: '.weather .weatherType'});
+      this.clothesTitleEl = this.docSelector({el: '.recommendClothes strong'});
+      this.clothesEl = this.docSelector({el: '.recommendClothes ul'});
       this.loaderEl = this.docSelector({el: '.loading'});
 
       this.city = `?q=${city}`;
@@ -187,6 +189,7 @@
         this.setCity();
         this.setTemp();
         this.setWeather();
+        this.setClothes();
       },
       setCity: function () {
         this.cityEl.textContent = CITIES[this.city];
@@ -204,6 +207,50 @@
       },
       setWeather: function () {
         this.weatherEl.textContent = this.weatherState;
+      },
+      setClothes: function () {
+        switch (this.temp) {
+        case this.temp > 5:
+          this.title = WINTER;
+          this.style = COLD;
+          break;
+        case this.temp > 9:
+          this.title = MIDDLE;
+          this.style = CHILLY;
+          break;
+        case this.temp > 11:
+          this.title = MIDDLE;
+          this.style = COOL;
+          break;
+        case this.temp > 16:
+          this.title = MIDDLE;
+          this.style = MILD;
+          break;
+        case this.temp > 19:
+          this.title = MIDDLE;
+          this.style = COZY;
+          break;
+        case this.temp > 22:
+          this.title = SUMMER;
+          this.style = WARM;
+          break;
+        case this.temp > 27:
+          this.title = SUMMER;
+          this.style = HOT;
+          break;
+        default:
+          this.title = WINTER;
+          this.style = FREEZING;
+          break;
+        }
+        this.clothesTitleEl.textContent = `대충 ${this.title} 옷`;
+        this.setStyles();
+      },
+      setStyles: function () {
+        this.styles = this.style.map((style =>
+            `<li>${style}</li>`
+        ));
+        this.clothesEl.innerHTML = this.styles;
       }
     };
 
