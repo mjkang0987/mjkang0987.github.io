@@ -249,7 +249,7 @@
       setStyles: function () {
         this.styles = this.style.map((style =>
             `<li>${style}</li>`
-        ));
+        )).join('');
         this.clothesEl.innerHTML = this.styles;
       }
     };
