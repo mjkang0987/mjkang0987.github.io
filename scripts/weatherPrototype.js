@@ -29,8 +29,15 @@
     FREEZING: ['야상', '패딩', '목도리', '누빔옷', '두꺼운 코트', '기모']
   };
 
+  const TITLE = {
+    SUMMER: '여름',
+    MIDDLE: '봄/가을',
+    WINTER: '겨울'
+  };
+
   const {MORNING, AFTERNOON, DINNER, NIGHT, DAWN} = TIME_TEXT;
   const {ABSOLUTE} = TEMP;
+  const {SUMMER, MIDDLE, WINTER} = TITLE;
 
   const API = {
     URL: 'https://api.openweathermap.org/data/2.5/weather',
