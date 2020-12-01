@@ -81,7 +81,7 @@
       this.timeHourEl = this.docSelector({el: 'header .hour'});
       this.timeMinuteEl = this.docSelector({el: 'header .minute'});
       this.timeMinuteEl = this.docSelector({el: 'header .minute'});
-
+      this.contentTimeEl = this.docSelector({el: '.weather .timeType'});
       this.init();
     };
 
@@ -119,11 +119,17 @@
 
         if (this.gemTime.hour > 12) {
           this.hour = this.gemTime.hour - 12;
-          this.timeText = AFTERNOON;
+          this.timeText = AFTERNOON[0];
         } else {
           this.hour = this.gemTime.hour;
-          this.timeText = MORNING;
+          this.timeText = MORNING[0];
         }
+
+        this.detailTime =
+          this.gemTime.hour < 6 ? DAWN
+            : this.gemTime.hour < 12 ? MORNING[1]
+            : this.gemTime.hour < 8 ? DINNER
+              : NIGHT;
 
         this.time = {
           hour: this.hour < 10 ? `0${this.hour}` : this.hour,
@@ -134,6 +140,7 @@
         this.timeTypeEl.textContent = this.timeText;
         this.timeHourEl.textContent = this.time.hour;
         this.timeMinuteEl.textContent = this.time.minutes;
+        this.contentTimeEl.textContent = `${this.detailTime},`;
       }
     };
 
