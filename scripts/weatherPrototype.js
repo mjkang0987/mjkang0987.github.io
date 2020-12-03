@@ -151,6 +151,12 @@
       city: city
     }) {
 
+      this.city = typeof city === 'undefined' ? '' : city;
+      this.lon = null;
+      this.lat = null;
+      this.queryString = '';
+      this.localItems = localStorage.getItem('locations');
+
       this.cityEl = this.docSelector({el: 'header .location'});
       this.tempEl = this.docSelector({el: '.nowTempWrap span'});
       this.tempMaxEl = this.docSelector({el: '.maxWrap span'});
@@ -165,19 +171,40 @@
     };
 
     SetWeather.prototype = {
-      init: async function () {
+      init: function () {
+        // if (!this.localItems) return this.getLocation();
+      },
+      getLocation: function() {
+        navigator.geolocation.getCurrentPosition(position => {
+          this.lon = position.coords.longitude;
+          this.lat = position.coords.latitude;
+          this.queryString = `?lat=${this.lat}&lon=${this.lon}`;
+          this.handlerWeather();
+        }, (error) => {
+          this.queryString = `?q=seoul`;
+          this.handlerWeather();
+          console.error(error);
+        }, {
+          enableHighAccuracy: false,
+          maximumAge: 0,
+          timeout: 3000
+        });
+      },
+      handlerWeather: async function() {
+        this.docSelector({el: 'body'}).classList.remove('load');
         this.weather = await this.getFetch();
-        console.log(this.weather);
         await this.setUI();
       },
       getFetch: async function () {
-        this.response = await fetch(`${URL}${this.city}${KEY}`);
+        await console.log(`${URL}${this.queryString}${KEY}`);
+        this.response = await fetch(`${URL}${this.queryString}${KEY}`);
         if (this.response.ok) this.data = await this.response.json();
         else this.data = null;
         this.loaderEl.classList.add('hidden');
         return this.data;
       },
       setUI: function () {
+        console.log(this.weather);
         this.city = this.weather.name.toLowerCase();
         this.gemTemp = {
           current: this.weather.main.temp,
@@ -264,9 +291,8 @@
     const UI = new UI_Prototype();
 
     SetWeather.prototype = Object.assign(SetWeather.prototype, Prototype.prototype);
-    const seoul = new SetWeather({
-      city: 'seoul'
-    });
+
+    new SetWeather({city: ''});
   };
   if (document.readyState === 'complete') {
     domReady();
