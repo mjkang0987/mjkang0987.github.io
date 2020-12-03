@@ -1,6 +1,6 @@
 ;(function() {
   'use strict';
-  let utils = {};
+  let utils = {} || function() {};
 
   const CITIES = {
     'seoul': '서울'
