@@ -168,7 +168,6 @@
       this.clothesEl = this.docSelector({el: '.recommendClothes ul'});
       this.loaderEl = this.docSelector({el: '.loading'});
 
-      this.city = `?q=${city}`;
       this.init();
     };
 
