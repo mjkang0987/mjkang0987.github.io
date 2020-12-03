@@ -82,6 +82,7 @@
       this.timeMinuteEl = this.docSelector({el: 'header .minute'});
       this.timeMinuteEl = this.docSelector({el: 'header .minute'});
       this.contentTimeEl = this.docSelector({el: '.weather .timeType'});
+      this.yearEl = this.docSelector({el: 'footer .year'});
       this.init();
     };
 
@@ -90,6 +91,7 @@
         this.getNow();
         this.getDate();
         this.setTime();
+        this.yearEl.textContent = this.date.year;
 
         this.now = setInterval(_ => {
           this.getNow();
