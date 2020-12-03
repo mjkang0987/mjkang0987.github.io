@@ -2,7 +2,16 @@ html,
 body {
   height: 100%; }
 
+@media (orientation: landscape) {
+  html,
+  body {
+    height: auto; }
+    html .contentWrap,
+    body .contentWrap {
+      padding-bottom: 100px; } }
+
 body {
+  overflow: hidden;
   margin: 0 auto;
   padding: 0;
   position: relative;
@@ -92,7 +101,6 @@ header {
     height: 20px; }
 
 .contentWrap {
-  height: calc(100% - 90px);
   padding: 0 20px;
   box-sizing: border-box; }
   .contentWrap h2 {
@@ -261,15 +269,15 @@ header {
 
 footer {
   display: flex;
+  justify-content: center;
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
   height: 50px;
   align-items: center;
-  justify-content: center;
   background-color: rgba(0, 0, 0, 0.1);
-  font-size: 11px;
-  color: rgba(0, 0, 0, 0.3); }
+  font-size: 11px; }
   footer span {
     padding-right: 10px;
     font-size: 11px;
