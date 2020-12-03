@@ -310,6 +310,91 @@ footer {
     height: 30px;
     animation: spin 2s linear infinite; }
 
+.layer {
+  visibility: hidden;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px 20px 20px;
+  box-sizing: border-box;
+  background-color: #fff;
+  transform: translateY(100px);
+  opacity: 0; }
+  .layer.on {
+    visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
+    transition: all .5s ease-in-out; }
+  .layer .buttonClose {
+    appearance: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: #fff; }
+    .layer .buttonClose span:before, .layer .buttonClose span:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 24px;
+      height: 1px;
+      background-color: #333;
+      border-radius: 5px;
+      transform-origin: left; }
+    .layer .buttonClose span:before {
+      transform: rotate(45deg) translate3d(-50%, -50%, 0); }
+    .layer .buttonClose span:after {
+      transform: rotate(-45deg) translate3d(-50%, -50%, 0); }
+  .layer label {
+    display: block;
+    font-size: 17px;
+    font-weight: bold; }
+  .layer input[type="search"] {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    border-radius: 6px;
+    margin-top: 5px;
+    font-size: 14px;
+    appearance: none;
+    border: 1px solid #ccc;
+    background: none; }
+  .layer input[type="search"]::-webkit-search-decoration,
+  .layer input[type="search"]::-webkit-search-cancel-button,
+  .layer input[type="search"]::-webkit-search-results-button,
+  .layer input[type="search"]::-webkit-search-results-decoration {
+    appearance: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #ccc;
+    background-size: cover; }
+  .layer .locations {
+    height: calc(100% - 80px);
+    box-sizing: border-box;
+    overflow-y: auto; }
+  .layer ul {
+    display: block; }
+    .layer ul li {
+      display: inline-block;
+      font-size: 0;
+      margin: 15px 10px 0 0; }
+      .layer ul li button {
+        appearance: none;
+        display: block;
+        border: 1px solid #ccc;
+        padding: 2px 6px 3px;
+        border-radius: 6px;
+        background: none;
+        font-size: 14px;
+        color: #000; }
+
 @keyframes spin {
   0% {
     transform: rotate(0deg); }
