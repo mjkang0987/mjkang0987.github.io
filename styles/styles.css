@@ -147,11 +147,14 @@ header {
     display: inline-block;
     flex-shrink: 0;
     align-items: baseline;
-    animation: fade-in 1s ease-in-out;
     background-color: #fff;
     border-radius: 10px;
     padding: 10px;
+    opacity: 0;
     box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.08); }
+    body:not(.load) .contentWrap .nowTempWrap {
+      animation: fade-in 1s ease-in-out;
+      animation-fill-mode: forwards; }
     .contentWrap .nowTempWrap span {
       font-size: 40px; }
     .contentWrap .nowTempWrap em {
@@ -161,10 +164,11 @@ header {
     display: flex;
     opacity: 0;
     margin-top: 10px;
-    justify-content: flex-end;
-    animation: fade-in 1s ease-in-out;
-    animation-fill-mode: forwards;
-    animation-delay: .8s; }
+    justify-content: flex-end; }
+    body:not(.load) .contentWrap .weatherInfo {
+      animation-delay: .8s;
+      animation: fade-in 1s ease-in-out;
+      animation-fill-mode: forwards; }
     .contentWrap .weatherInfo span {
       font-size: 0;
       color: #fff; }
@@ -207,7 +211,48 @@ header {
     width: 50%;
     margin-top: 5px;
     font-size: 14px;
-    vertical-align: middle; }
+    vertical-align: middle;
+    opacity: 0; }
+    body:not(.load) .contentWrap .recommendClothes li:nth-child(1) {
+      animation: fade-in 1s;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards; }
+    body:not(.load) .contentWrap .recommendClothes li:nth-child(2) {
+      animation: fade-in 1s;
+      animation-delay: 0.6s;
+      animation-fill-mode: forwards; }
+    body:not(.load) .contentWrap .recommendClothes li:nth-child(3) {
+      animation: fade-in 1s;
+      animation-delay: 0.9s;
+      animation-fill-mode: forwards; }
+    body:not(.load) .contentWrap .recommendClothes li:nth-child(4) {
+      animation: fade-in 1s;
+      animation-delay: 1.2s;
+      animation-fill-mode: forwards; }
+    body:not(.load) .contentWrap .recommendClothes li:nth-child(5) {
+      animation: fade-in 1s;
+      animation-delay: 1.5s;
+      animation-fill-mode: forwards; }
+    body:not(.load) .contentWrap .recommendClothes li:nth-child(6) {
+      animation: fade-in 1s;
+      animation-delay: 1.8s;
+      animation-fill-mode: forwards; }
+    body:not(.load) .contentWrap .recommendClothes li:nth-child(7) {
+      animation: fade-in 1s;
+      animation-delay: 2.1s;
+      animation-fill-mode: forwards; }
+    body:not(.load) .contentWrap .recommendClothes li:nth-child(8) {
+      animation: fade-in 1s;
+      animation-delay: 2.4s;
+      animation-fill-mode: forwards; }
+    body:not(.load) .contentWrap .recommendClothes li:nth-child(9) {
+      animation: fade-in 1s;
+      animation-delay: 2.7s;
+      animation-fill-mode: forwards; }
+    body:not(.load) .contentWrap .recommendClothes li:nth-child(10) {
+      animation: fade-in 1s;
+      animation-delay: 3s;
+      animation-fill-mode: forwards; }
     .contentWrap .recommendClothes li:before {
       content: "\002d";
       margin-right: 4px; }
@@ -240,7 +285,9 @@ footer {
   background-color: rgba(0, 0, 0, 0.3);
   text-align: center; }
   .loading.hidden {
-    display: none; }
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s; }
   .loading:before {
     content: "";
     display: inline-block;
