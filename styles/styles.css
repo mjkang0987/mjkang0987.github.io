@@ -50,7 +50,6 @@ header {
   header .info.on:before, header .info.on:after {
     left: 50%;
     top: 50%;
-    transform-origin: left;
     transition: all .3s; }
   header .info.on:before {
     transform: rotate(45deg) translate3d(-50%, -50%, 0); }
