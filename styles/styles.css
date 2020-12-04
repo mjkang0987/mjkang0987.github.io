@@ -362,11 +362,12 @@ footer {
     border-radius: 6px;
     margin-top: 10px;
     font-size: 14px;
-    appearance: none;
+    -webkit-appearance: none;
     border: 1px solid #ccc;
     background: none; }
   .layer input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
+    display: inline-block;
     height: 15px;
     width: 15px;
     border-radius: 50%;
