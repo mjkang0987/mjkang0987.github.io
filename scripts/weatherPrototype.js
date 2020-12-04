@@ -1,50 +1,20 @@
+import {
+  CITIES,
+  TIME_TEXT,
+  TEMP,
+  CLOTHES,
+  TITLE,
+  API
+} from './constans.js';
+
 ;(function() {
   'use strict';
   let utils = {} || function() {};
-
-  const CITIES = {
-    'seoul': '서울'
-  };
-
-  const TIME_TEXT = {
-    MORNING: ['오전', '아침'],
-    AFTERNOON: ['오후', '점심'],
-    DINNER: '저녁',
-    NIGHT: '밤',
-    DAWN: '새벽'
-  };
-
-  const TEMP = {
-    ABSOLUTE: 273
-  };
-
-  const CLOTHES = {
-    HOT: ['민소매', '반팔', '반바지', '짧은 치마', '린넨소재 옷'],
-    WARM: ['반팔', '얇은 셔츠', '반바지', '면바지'],
-    COZY: ['긴팔티', '블라우스', '면바지', '슬랙스'],
-    MILD: ['얇은 가디건', '얇은 니트', '맨투맨', '후드', '면바지', '청바지', '슬랙스'],
-    COOL: ['자켓', '가디건', '청자켓', '니트', '스타킹', '청바지'],
-    CHILLY: ['트렌치코트', '간절기 야상', '여러겹 껴입기', '기모바지'],
-    COLD: ['코트', '가죽자켓', '히트텍', '기모'],
-    FREEZING: ['야상', '패딩', '목도리', '누빔옷', '두꺼운 코트', '기모']
-  };
-
-  const TITLE = {
-    SUMMER: '여름',
-    MIDDLE: '봄/가을',
-    WINTER: '겨울'
-  };
 
   const {MORNING, AFTERNOON, DINNER, NIGHT, DAWN} = TIME_TEXT;
   const {ABSOLUTE} = TEMP;
   const {HOT, WARM, COZY, MILD, COOL, CHILLY, COLD, FREEZING} = CLOTHES;
   const {SUMMER, MIDDLE, WINTER} = TITLE;
-
-  const API = {
-    URL: 'https://api.openweathermap.org/data/2.5/weather',
-    KEY: '&lang=kr&appid=8d0fba684264cc55f9b735566611ac78'
-  };
-
   const {URL, KEY} = API;
 
   utils.Prototype = (function() {
