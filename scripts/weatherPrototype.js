@@ -161,17 +161,13 @@ import {
 
     SetWeather.prototype = {
       init: function () {
-        // if (!this.localItems) return this.getLocation();
+        if (!this.localItems) return this.getLocation();
       },
       getLocation: function() {
         navigator.geolocation.getCurrentPosition(position => {
-          this.lon = position.coords.longitude;
-          this.lat = position.coords.latitude;
-          this.queryString = `?lat=${this.lat}&lon=${this.lon}`;
-          this.handlerWeather();
+          this.successGeolocation({position: position});
         }, (error) => {
-          this.queryString = `?q=seoul`;
-          this.handlerWeather();
+         this.failGeolocation();
           console.error(error);
         }, {
           enableHighAccuracy: false,
@@ -179,13 +175,24 @@ import {
           timeout: 3000
         });
       },
-      handlerWeather: async function() {
-        this.docSelector({el: 'body'}).classList.remove('load');
+      successGeolocation: function({
+        position: position
+      }) {
+        this.lon = position.coords.longitude;
+        this.lat = position.coords.latitude;
+        this.queryString = `?lat=${this.lat}&lon=${this.lon}`;
+        this.fetchData();
+      },
+      failGeolocation: function() {
+        this.queryString = `?q=seoul`;
+        this.fetchData();
+      },
+      fetchData: async function() {
+        this.body.classList.remove('load');
         this.weather = await this.getFetch();
         await this.setUI();
       },
       getFetch: async function () {
-        await console.log(`${URL}${this.queryString}${KEY}`);
         this.response = await fetch(`${URL}${this.queryString}${KEY}`);
         if (this.response.ok) this.data = await this.response.json();
         else this.data = null;
