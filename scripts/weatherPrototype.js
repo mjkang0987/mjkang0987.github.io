@@ -25,7 +25,6 @@ import {
 
   const {MORNING, AFTERNOON, DINNER, NIGHT, DAWN} = TIME_TEXT;
   const {ABSOLUTE} = TEMP;
-  const {HOT, WARM, COZY, MILD, COOL, CHILLY, COLD, FREEZING} = CLOTHES;
   const {SUMMER, MIDDLE, WINTER} = TITLE;
   const {URL, KEY} = API;
 
@@ -226,45 +225,36 @@ import {
         this.weatherEl.textContent = this.weatherState;
       },
       setClothes: function () {
-        switch (this.temp) {
-        case this.temp > 5:
-          this.title = WINTER;
-          this.style = COLD;
-          break;
-        case this.temp > 9:
-          this.title = MIDDLE;
-          this.style = CHILLY;
-          break;
-        case this.temp > 11:
-          this.title = MIDDLE;
-          this.style = COOL;
-          break;
-        case this.temp > 16:
-          this.title = MIDDLE;
-          this.style = MILD;
-          break;
-        case this.temp > 19:
-          this.title = MIDDLE;
-          this.style = COZY;
-          break;
-        case this.temp > 22:
-          this.title = SUMMER;
-          this.style = WARM;
-          break;
-        case this.temp > 27:
-          this.title = SUMMER;
-          this.style = HOT;
-          break;
-        default:
-          this.title = WINTER;
-          this.style = FREEZING;
-          break;
-        }
+        this.title =
+          this.temp > 9 ? MIDDLE
+            : this.temp > 22 ? SUMMER
+            : WINTER;
+
         this.clothesTitleEl.textContent = `대충 ${this.title} 옷`;
+        this.setStyle();
         this.setStyles();
       },
+      setStyle: function() {
+        this.temps = {
+          5: 'FREEZING',
+          9: 'COLD',
+          11: 'CHILLY',
+          16: 'COOL',
+          19: 'MILD',
+          22: 'COZY',
+          27: 'WARM',
+          Infinity: 'HOT'
+        };
+
+        this.styleIndex = Object.keys(this.temps).map(Number).find(temp => {
+          return temp >= this.temp.current;
+        }, [1]);
+
+        this.style = this.temps[this.styleIndex];
+        this.tempWrapEl.dataset.temp = this.style.toLowerCase();
+      },
       setStyles: function () {
-        this.styles = this.style.map((style =>
+        this.styles = CLOTHES[this.style].map((style =>
             `<li>${style}</li>`
         )).join('');
         this.clothesEl.innerHTML = this.styles;
