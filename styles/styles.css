@@ -318,7 +318,7 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 30px 20px 20px;
+  padding: 20px;
   box-sizing: border-box;
   background-color: #fff;
   transform: translateY(100px);
@@ -333,8 +333,8 @@ footer {
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border: none;
     background-color: #fff; }
     .layer .buttonClose span:before, .layer .buttonClose span:after {
@@ -360,21 +360,19 @@ footer {
     width: 100%;
     padding: 5px;
     border-radius: 6px;
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 14px;
     appearance: none;
     border: 1px solid #ccc;
     background: none; }
-  .layer input[type="search"]::-webkit-search-decoration,
-  .layer input[type="search"]::-webkit-search-cancel-button,
-  .layer input[type="search"]::-webkit-search-results-button,
-  .layer input[type="search"]::-webkit-search-results-decoration {
-    appearance: none;
+  .layer input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    background-color: #ccc;
-    background-size: cover; }
+    background: url("../images/button-clear.svg") no-repeat center center;
+    background-size: cover;
+    opacity: .2; }
   .layer .locations {
     height: calc(100% - 80px);
     box-sizing: border-box;
