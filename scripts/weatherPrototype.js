@@ -101,6 +101,17 @@ import {
       setTime: function() {
         this.time = this.getTime();
 
+        this.time = {
+          hour: this.hour < 10 ? `0${this.hour}` : this.hour,
+          minutes: this.gemTime.minutes < 10 ? `0${this.gemTime.minutes}` : this.gemTime.minutes,
+          seconds: this.gemTime.seconds
+        };
+
+        this.setHalfTime();
+        this.setDetailTime();
+        this.setTimeText();
+      },
+      setHalfTime: function() {
         if (this.gemTime.hour > 12) {
           this.hour = this.gemTime.hour - 12;
           this.timeText = AFTERNOON[0];
@@ -108,19 +119,15 @@ import {
           this.hour = this.gemTime.hour;
           this.timeText = MORNING[0];
         }
-
+      },
+      setDetailTime: function() {
         this.detailTime =
           this.gemTime.hour < 6 ? DAWN
             : this.gemTime.hour < 12 ? MORNING[1]
             : this.gemTime.hour < 8 ? DINNER
               : NIGHT;
-
-        this.time = {
-          hour: this.hour < 10 ? `0${this.hour}` : this.hour,
-          minutes: this.gemTime.minutes < 10 ? `0${this.gemTime.minutes}` : this.gemTime.minutes,
-          seconds: this.gemTime.seconds
-        };
-
+      },
+      setTimeText: function() {
         this.timeTypeEl.textContent = this.timeText;
         this.timeHourEl.textContent = this.time.hour;
         this.timeMinuteEl.textContent = this.time.minutes;
