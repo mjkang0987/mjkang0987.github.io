@@ -147,6 +147,8 @@ import {
       this.queryString = '';
       this.localItems = localStorage.getItem('locations');
 
+      this.body = this.docSelector({el: 'body'});
+      this.tempWrapEl = this.docSelector({el: '.temperature'});
       this.cityEl = this.docSelector({el: 'header .location'});
       this.tempEl = this.docSelector({el: '.nowTempWrap span'});
       this.tempMaxEl = this.docSelector({el: '.maxWrap span'});
