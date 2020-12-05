@@ -203,7 +203,7 @@ import {
       },
       setUI: function () {
         console.log(this.weather);
-        this.city = this.weather.name.toLowerCase();
+        this.city = this.weather.name.replace('ŏ', 'o').toLowerCase();
         this.gemTemp = {
           current: this.weather.main.temp,
           max: this.weather.main.temp_max,

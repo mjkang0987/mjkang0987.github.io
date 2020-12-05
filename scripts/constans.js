@@ -9,7 +9,7 @@ const CITIES = {
   gapyeong: '가평군',
   goyang: '고양시',
   gwacheon: '과천시',
-  gwangmyeong: '광명시',
+  kwangmyong: '광명시',
   guri: '구리시',
   gunpo: '군포시',
   gimpo: '김포시',
