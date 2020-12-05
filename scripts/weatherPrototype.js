@@ -266,14 +266,17 @@ import {
     const Layer = function({
       trigger: trigger,
       el: el,
+      btnClose: btnClose,
       toggleClass: toggleClass
     }) {
       if (!trigger) return;
 
       this.trigger = this.docSelector({el : trigger});
       this.el = this.docSelector({el: el});
+      this.btnClose = this.el.querySelector(btnClose);
       this.toggleClass = toggleClass || 'on';
       this.trigger.addEventListener('click', this.open.bind(this));
+      this.btnClose.addEventListener('click', this.close.bind(this));
     }
 
     Layer.prototype = {
@@ -283,6 +286,10 @@ import {
       open: function() {
         this.trigger.classList.add(this.toggleClass);
         this.el.classList.add(this.toggleClass);
+      },
+      close: function() {
+        this.el.classList.remove(this.toggleClass);
+        this.trigger.classList.remove(this.toggleClass);
       }
     }
     return Layer;
@@ -297,6 +304,18 @@ import {
     SetWeather.prototype = Object.assign(SetWeather.prototype, Prototype.prototype);
     new SetWeather();
 
+    Layer.prototype = Object.assign(Layer.prototype, Prototype.prototype);
+    new Layer({
+      trigger: 'header .info',
+      el: '.layer.cities',
+      btnClose: '.buttonClose'
+    });
+
+    new Layer({
+      trigger: 'header .addLocation',
+      el: '.layer.cityAdd',
+      btnClose: '.buttonClose'
+    });
   };
   if (document.readyState === 'complete') {
     domReady();
