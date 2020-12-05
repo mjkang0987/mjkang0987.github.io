@@ -261,8 +261,34 @@ import {
 
     return SetWeather;
   })();
+
+  utils.Layer = (function() {
+    const Layer = function({
+      trigger: trigger,
+      el: el,
+      toggleClass: toggleClass
+    }) {
+      if (!trigger) return;
+
+      this.trigger = this.docSelector({el : trigger});
+      this.el = this.docSelector({el: el});
+      this.toggleClass = toggleClass || 'on';
+      this.trigger.addEventListener('click', this.open.bind(this));
+    }
+
+    Layer.prototype = {
+      init: function() {
+        console.log('init');
+      },
+      open: function() {
+        this.trigger.classList.add(this.toggleClass);
+        this.el.classList.add(this.toggleClass);
+      }
+    }
+    return Layer;
+  })();
   const domReady = () => {
-    const {Prototype, UI_Prototype, SetWeather} = utils;
+    const {Prototype, UI_Prototype, SetWeather, Layer} = utils;
     const prototype = new Prototype();
 
     UI_Prototype.prototype = Object.assign(UI_Prototype.prototype, Prototype.prototype);
