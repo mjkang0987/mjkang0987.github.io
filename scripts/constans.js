@@ -369,6 +369,11 @@ const API = {
   KEY: '&lang=kr&appid=8d0fba684264cc55f9b735566611ac78'
 };
 
+const MAGIC_NUMBER = {
+  FIRST: 0,
+  ONE: 1
+}
+
 export {
   CITIES,
   TIME_TEXT,
@@ -376,6 +381,7 @@ export {
   TEMPS,
   TITLE,
   API,
+  MAGIC_NUMBER,
   KR_1100,
   KR_1102,
   KR_1103,

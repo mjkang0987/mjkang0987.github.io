@@ -5,6 +5,7 @@ import {
   TEMPS,
   TITLE,
   API,
+  MAGIC_NUMBER,
   KR_1100,
   KR_1102,
   KR_1103,
@@ -27,6 +28,7 @@ import {
   const {ABSOLUTE} = TEMP;
   const {SUMMER, MIDDLE, WINTER} = TITLE;
   const {URL, KEY} = API;
+  const {FIRST, ONE} = MAGIC_NUMBER;
 
   utils.Prototype = (function() {
     const Prototype = function() {}
