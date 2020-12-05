@@ -215,6 +215,8 @@ import {
         this.setTemp();
         this.setWeather();
         this.setClothes();
+        this.setStyle();
+        this.setStyles();
       },
       setCity: function () {
         this.cityEl.textContent = CITIES[this.city];
@@ -240,8 +242,6 @@ import {
             : WINTER;
 
         this.clothesTitleEl.textContent = `대충 ${this.title} 옷`;
-        this.setStyle();
-        this.setStyles();
       },
       setStyle: function() {
         this.styleIndex = Object.keys(TEMPS).map(Number).find(temp => {
