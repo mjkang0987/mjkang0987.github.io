@@ -174,8 +174,8 @@ header {
     margin-top: 10px;
     justify-content: flex-end; }
     body:not(.load) .contentWrap .weatherInfo {
-      animation-delay: .8s;
       animation: fade-in 1s ease-in-out;
+      animation-delay: .8s;
       animation-fill-mode: forwards; }
     .contentWrap .weatherInfo span {
       font-size: 0;
