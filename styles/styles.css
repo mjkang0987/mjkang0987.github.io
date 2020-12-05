@@ -351,7 +351,8 @@ footer {
       transform: rotate(45deg) translate3d(-50%, -50%, 0); }
     .layer .buttonClose span:after {
       transform: rotate(-45deg) translate3d(-50%, -50%, 0); }
-  .layer label {
+  .layer label,
+  .layer .layerTitle {
     display: block;
     font-size: 17px;
     font-weight: bold; }
