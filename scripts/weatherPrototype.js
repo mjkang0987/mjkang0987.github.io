@@ -297,7 +297,6 @@ import {
     SetWeather.prototype = Object.assign(SetWeather.prototype, Prototype.prototype);
     new SetWeather();
 
-    new SetWeather({city: ''});
   };
   if (document.readyState === 'complete') {
     domReady();
