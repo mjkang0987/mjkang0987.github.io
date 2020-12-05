@@ -2,7 +2,7 @@ import {
   CITIES,
   TIME_TEXT,
   TEMP,
-  CLOTHES,
+  TEMPS,
   TITLE,
   API,
   KR_1100,
@@ -244,26 +244,15 @@ import {
         this.setStyles();
       },
       setStyle: function() {
-        this.temps = {
-          5: 'FREEZING',
-          9: 'COLD',
-          11: 'CHILLY',
-          16: 'COOL',
-          19: 'MILD',
-          22: 'COZY',
-          27: 'WARM',
-          Infinity: 'HOT'
-        };
-
-        this.styleIndex = Object.keys(this.temps).map(Number).find(temp => {
+        this.styleIndex = Object.keys(TEMPS).map(Number).find(temp => {
           return temp >= this.temp.current;
         }, [1]);
 
-        this.style = this.temps[this.styleIndex];
-        this.tempWrapEl.dataset.temp = this.style.toLowerCase();
+        this.style = TEMPS[this.styleIndex];
+        this.tempWrapEl.dataset.temp = this.style[FIRST].toLowerCase();
       },
       setStyles: function () {
-        this.styles = CLOTHES[this.style].map((style =>
+        this.styles = this.style.splice(ONE, this.style.length - ONE).map((style =>
             `<li>${style}</li>`
         )).join('');
         this.clothesEl.innerHTML = this.styles;
