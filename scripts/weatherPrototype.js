@@ -139,11 +139,9 @@ import {
     return UI_Prototype;
   })();
   utils.SetWeather = (function() {
-    const SetWeather = function({
-      city: city
-    }) {
+    const SetWeather = function() {
 
-      this.city = typeof city === 'undefined' ? '' : city;
+      this.city = '';
       this.lon = null;
       this.lat = null;
       this.queryString = '';
@@ -271,6 +269,7 @@ import {
     const UI = new UI_Prototype();
 
     SetWeather.prototype = Object.assign(SetWeather.prototype, Prototype.prototype);
+    new SetWeather();
 
     new SetWeather({city: ''});
   };
