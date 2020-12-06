@@ -293,6 +293,18 @@ import {
 
         if (this.isAddCity) this.searchForm.removeEventListener('input', this.search);
       },
+      getCity: function(e) {
+        this.value = e.target.value;
+        if (!this.value || this.value === '') return this.resetCities();
+
+        this.cities = Object.keys(FIRST_KEY).find(city => {
+          return city === this.value;
+        });
+
+        this.setCities();
+      },
+      resetCities: function() {
+        this.citiesWrapEl.innerHTML = '';
       }
     }
     return Layer;
