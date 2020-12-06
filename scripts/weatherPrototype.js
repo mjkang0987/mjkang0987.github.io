@@ -272,6 +272,11 @@ import {
 
       this.trigger.addEventListener('click', this.open.bind(this));
       this.btnClose.addEventListener('click', this.close.bind(this));
+
+      if (this.isAddCity) {
+        this.searchForm = this.el.querySelector('#search_city');
+        this.searchForm.addEventListener('input', this.getCity.bind(this));
+      }
     }
 
     Layer.prototype = {
