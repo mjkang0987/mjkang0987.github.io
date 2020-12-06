@@ -156,6 +156,21 @@ const CITIES = {
   jeju: '제주시'
 };
 
+const FIRST_KEY = {
+  ㄱ: KR_1100,
+  ㄴ: KR_1102,
+  ㄷ: KR_1103,
+  ㅁ: KR_1106,
+  ㅂ: KR_1107,
+  ㅅ: KR_1109,
+  ㅇ: KR_110B,
+  ㅈ: KR_110C,
+  ㅊ: KR_110E,
+  ㅌ: KR_1110,
+  ㅍ: KR_1111,
+  ㅎ: KR_1112
+}
+
 const KR_1100 = {
   gwangju: '광주',
   gapyeong: '가평군',
@@ -382,6 +397,7 @@ export {
   TITLE,
   API,
   MAGIC_NUMBER,
+  FIRST_KEY,
   KR_1100,
   KR_1102,
   KR_1103,
