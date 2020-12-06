@@ -264,6 +264,7 @@ import {
 
       this.trigger = this.docSelector({el : trigger});
       this.el = this.docSelector({el: el});
+      this.citiesWrapEl = this.el.querySelector('ul');
       this.btnClose = this.el.querySelector(btnClose);
       this.toggleClass = toggleClass || 'on';
       this.isAddCity = isAddCity;
@@ -302,6 +303,26 @@ import {
         });
 
         this.setCities();
+      },
+      setCities: function() {
+        this.resetCities();
+        if (this.cities === undefined) return;
+        this.firstKeyCites = FIRST_KEY[this.cities];
+
+        for (const [key, value] of Object.entries(FIRST_KEY_CITIES[this.firstKeyCites])) {
+          this.cityEl = this.createEl({tag: 'li'});
+          this.cityEl.dataset.city = key;
+          this.cityEl.innerHTML = `
+            <span>${value}</span>
+            <button 
+              type="button"
+              class="${this.btnClass}"
+              data-city="${key}">
+              ${this.btnText}
+            </button>
+          `;
+          this.citiesWrapEl.append(this.cityEl);
+        }
       },
       resetCities: function() {
         this.citiesWrapEl.innerHTML = '';
