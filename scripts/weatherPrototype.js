@@ -257,7 +257,8 @@ import {
       trigger: trigger,
       el: el,
       btnClose: btnClose,
-      toggleClass: toggleClass
+      toggleClass: toggleClass,
+      addCity: isAddCity
     }) {
       if (!trigger) return;
 
@@ -265,6 +266,7 @@ import {
       this.el = this.docSelector({el: el});
       this.btnClose = this.el.querySelector(btnClose);
       this.toggleClass = toggleClass || 'on';
+      this.isAddCity = isAddCity;
       this.trigger.addEventListener('click', this.open.bind(this));
       this.btnClose.addEventListener('click', this.close.bind(this));
     }
