@@ -350,7 +350,8 @@ import {
     new Layer({
       trigger: 'header .addLocation',
       el: '.layer.cityAdd',
-      btnClose: '.buttonClose'
+      btnClose: '.buttonClose',
+      addCity: true
     });
   };
   if (document.readyState === 'complete') {
