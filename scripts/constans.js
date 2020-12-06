@@ -157,198 +157,189 @@ const CITIES = {
 };
 
 const FIRST_KEY = {
-  ㄱ: KR_1100,
-  ㄴ: KR_1102,
-  ㄷ: KR_1103,
-  ㅁ: KR_1106,
-  ㅂ: KR_1107,
-  ㅅ: KR_1109,
-  ㅇ: KR_110B,
-  ㅈ: KR_110C,
-  ㅊ: KR_110E,
-  ㅌ: KR_1110,
-  ㅍ: KR_1111,
-  ㅎ: KR_1112
+  ㄱ: 'KR_1100',
+  ㄴ: 'KR_1102',
+  ㄷ: 'KR_1103',
+  ㅁ: 'KR_1106',
+  ㅂ: 'KR_1107',
+  ㅅ: 'KR_1109',
+  ㅇ: 'KR_110B',
+  ㅈ: 'KR_110C',
+  ㅊ: 'KR_110E',
+  ㅌ: 'KR_1110',
+  ㅍ: 'KR_1111',
+  ㅎ: 'KR_1112'
+};
+
+const FIRST_KEY_CITIES = {
+  KR_1100: {
+    gwangju: '광주',
+    gapyeong: '가평군',
+    goyang: '고양시',
+    gwacheon: '과천시',
+    gwangmyeong: '광명시',
+    guri: '구리시',
+    gunpo: '군포시',
+    gimpo: '김포시',
+    gangneung: '강릉시',
+    goseong: '고성군',
+    geoje: '거제시',
+    geochang: '거창군',
+    gimhae: '김해시',
+    gumi: '구미시',
+    gunwi: '군위군',
+    gimcheon: '김천시',
+    gangjin: '강진군',
+    goheung: '고흥군',
+    gokseong: '곡성군',
+    gwangyang: '광양시',
+    gurye: '구례군',
+    gochang: '고창군',
+    gunsan: '군산시',
+    gimje: '김제시',
+    gongju: '공주시',
+    geumsan: '금산군',
+    gwoisan: '괴산군'
+  },
+  KR_1102: {
+    namyangju: '남양주시',
+    namhae: '남해군',
+    naju: '나주시',
+    namwon: '남원시',
+    nonsan: '논산시'
+  },
+  KR_1103: {
+    daegu: '대구',
+    daejeon: '대전',
+    dongducheon: '동두천시',
+    donghae: '동해시',
+    damyang: '담양군',
+    dangjin: '당진군'
+  },
+  KR_1106: {
+    masan: '마산시',
+    mungyeong: '문경시',
+    miryang: '밀양시',
+    mokpo: '목포시',
+    muan: '무안군',
+    muju: '무주군'
+  },
+  KR_1107: {
+    busan: '부산',
+    bucheon: '부천시',
+    bonghwa: '봉화군',
+    boseong: '보성군',
+    buan: '부안군',
+    buyeo: '부여군'
+  },
+  KR_1109: {
+    seoul: '서울',
+    suwon: '수원시',
+    siheung: '시흥시',
+    samcheok: '삼척시',
+    sokcho: '속초시',
+    sacheon: '사천시',
+    sancheong: '산청군',
+    sangju: '상주시',
+    seongju: '성주군',
+    suncheon: '순천시',
+    shinan: '신안군',
+    sunchang: '순창군',
+    seosan: '서산시',
+    seocheon: '서천군'
+  },
+  KR_110B: {
+    incheon: '인천',
+    ulsan: '울산',
+    ansan: '안산시',
+    anseong: '안성시',
+    anyang: '안양시',
+    yangju: '양주군',
+    yangpyeong: '양평군',
+    yeoju: '여주군',
+    yeoncheon: '연천군',
+    osan: '오산시',
+    yongin: '용인시',
+    uiwang: '의왕시',
+    uijeongbu: '의정부시',
+    icheon: '이천시',
+    yanggu: '양구군',
+    yangyang: '양양군',
+    yeongwol: '영월군',
+    wonju: '원주시',
+    inje: '인제군',
+    yangsan: '양산시',
+    uiryeong: '의령군',
+    andong: '안동시',
+    yeongdeok: '영덕군',
+    yeongyang: '영양군',
+    yeongju: '영주시',
+    yeongcheon: '영천시',
+    yecheon: '예천군',
+    uiseong: '의성군',
+    yeosu: '여수시',
+    yeonggwang: '영광군',
+    wando: '완도군',
+    wanju: '완주군',
+    iksan: '익산시',
+    asan: '아산시',
+    yeongi: '연기군',
+    yesan: '예산군',
+    yeongdong: '영동군',
+    okcheon: '옥천군',
+    umseong: '음성군'
+  },
+  KR_110C: {
+    jeongseon: '정선군',
+    jinju: '진주시',
+    jinhae: '진해시',
+    jangseong: '장성군',
+    jangheung: '장흥군',
+    jindo: '진도군',
+    jangsu: '장수군',
+    jeonju: '전주시',
+    jeongeup: '정읍시',
+    jinan: '진안군'
+  },
+  KR_110E: {
+    cheorwon: '철원군',
+    chuncheon: '춘천시',
+    changnyeong: '창녕군',
+    changwon: '창원시',
+    cheongdo: '청도군',
+    cheongsong: '청송군',
+    chilgok: '칠곡군',
+    cheonan: '천안시',
+    cheongyang: '청양군',
+    cheongwon: '청원군',
+    cheongju: '청주시',
+    chungju: '충주시'
+  },
+  KR_1110: {
+    taebaek: '태백시',
+    tongyeong: '통영시',
+    taean: '태안군'
+  },
+  KR_1111: {
+    paju: '파주시',
+    pyeongtaek: '평택시',
+    pocheon: '포천군',
+    pohang: '포항시'
+  },
+  KR_1112: {
+    hanam: '하남시',
+    hwaseong: '화성시',
+    hongcheon: '홍천군',
+    hwacheon: '화천군',
+    hoengseong: '횡성군',
+    hadong: '하동군',
+    haman: '함안군',
+    hamyang: '함양군',
+    hapcheon: '합천군',
+    hwansun: '화순군',
+    hongseong: '홍성군'
+  }
 }
-
-const KR_1100 = {
-  gwangju: '광주',
-  gapyeong: '가평군',
-  goyang: '고양시',
-  gwacheon: '과천시',
-  gwangmyeong: '광명시',
-  guri: '구리시',
-  gunpo: '군포시',
-  gimpo: '김포시',
-  gangneung: '강릉시',
-  goseong: '고성군',
-  geoje: '거제시',
-  geochang: '거창군',
-  gimhae: '김해시',
-  gumi: '구미시',
-  gunwi: '군위군',
-  gimcheon: '김천시',
-  gangjin: '강진군',
-  goheung: '고흥군',
-  gokseong: '곡성군',
-  gwangyang: '광양시',
-  gurye: '구례군',
-  gochang: '고창군',
-  gunsan: '군산시',
-  gimje: '김제시',
-  gongju: '공주시',
-  geumsan: '금산군',
-  gwoisan: '괴산군'
-};
-
-const KR_1102 = {
-  namyangju: '남양주시',
-  namhae: '남해군',
-  naju: '나주시',
-  namwon: '남원시',
-  nonsan: '논산시'
-};
-
-const KR_1103 = {
-  daegu: '대구',
-  daejeon: '대전',
-  dongducheon: '동두천시',
-  donghae: '동해시',
-  damyang: '담양군',
-  dangjin: '당진군'
-};
-
-const KR_1106 = {
-  masan: '마산시',
-  mungyeong: '문경시',
-  miryang: '밀양시',
-  mokpo: '목포시',
-  muan: '무안군',
-  muju: '무주군'
-};
-
-const KR_1107 = {
-  busan: '부산',
-  bucheon: '부천시',
-  bonghwa: '봉화군',
-  boseong: '보성군',
-  buan: '부안군',
-  buyeo: '부여군'
-};
-
-const KR_1109 = {
-  seoul: '서울',
-  suwon: '수원시',
-  siheung: '시흥시',
-  samcheok: '삼척시',
-  sokcho: '속초시',
-  sacheon: '사천시',
-  sancheong: '산청군',
-  sangju: '상주시',
-  seongju: '성주군',
-  suncheon: '순천시',
-  shinan: '신안군',
-  sunchang: '순창군',
-  seosan: '서산시',
-  seocheon: '서천군'
-};
-
-const KR_110B = {
-  incheon: '인천',
-  ulsan: '울산',
-  ansan: '안산시',
-  anseong: '안성시',
-  anyang: '안양시',
-  yangju: '양주군',
-  yangpyeong: '양평군',
-  yeoju: '여주군',
-  yeoncheon: '연천군',
-  osan: '오산시',
-  yongin: '용인시',
-  uiwang: '의왕시',
-  uijeongbu: '의정부시',
-  icheon: '이천시',
-  yanggu: '양구군',
-  yangyang: '양양군',
-  yeongwol: '영월군',
-  wonju: '원주시',
-  inje: '인제군',
-  yangsan: '양산시',
-  uiryeong: '의령군',
-  andong: '안동시',
-  yeongdeok: '영덕군',
-  yeongyang: '영양군',
-  yeongju: '영주시',
-  yeongcheon: '영천시',
-  yecheon: '예천군',
-  uiseong: '의성군',
-  yeosu: '여수시',
-  yeonggwang: '영광군',
-  wando: '완도군',
-  wanju: '완주군',
-  iksan: '익산시',
-  asan: '아산시',
-  yeongi: '연기군',
-  yesan: '예산군',
-  yeongdong: '영동군',
-  okcheon: '옥천군',
-  umseong: '음성군'
-};
-
-const KR_110C = {
-  jeongseon: '정선군',
-  jinju: '진주시',
-  jinhae: '진해시',
-  jangseong: '장성군',
-  jangheung: '장흥군',
-  jindo: '진도군',
-  jangsu: '장수군',
-  jeonju: '전주시',
-  jeongeup: '정읍시',
-  jinan: '진안군'
-};
-
-const KR_110E = {
-  cheorwon: '철원군',
-  chuncheon: '춘천시',
-  changnyeong: '창녕군',
-  changwon: '창원시',
-  cheongdo: '청도군',
-  cheongsong: '청송군',
-  chilgok: '칠곡군',
-  cheonan: '천안시',
-  cheongyang: '청양군',
-  cheongwon: '청원군',
-  cheongju: '청주시',
-  chungju: '충주시'
-};
-
-const KR_1110 = {
-  taebaek: '태백시',
-  tongyeong: '통영시',
-  taean: '태안군'
-};
-
-const KR_1111 = {
-  paju: '파주시',
-  pyeongtaek: '평택시',
-  pocheon: '포천군',
-  pohang: '포항시'
-};
-
-const KR_1112 = {
-  hanam: '하남시',
-  hwaseong: '화성시',
-  hongcheon: '홍천군',
-  hwacheon: '화천군',
-  hoengseong: '횡성군',
-  hadong: '하동군',
-  haman: '함안군',
-  hamyang: '함양군',
-  hapcheon: '합천군',
-  hwansun: '화순군',
-  hongseong: '홍성군'
-};
 
 const TIME_TEXT = {
   MORNING: ['오전', '아침'],
@@ -398,16 +389,5 @@ export {
   API,
   MAGIC_NUMBER,
   FIRST_KEY,
-  KR_1100,
-  KR_1102,
-  KR_1103,
-  KR_1106,
-  KR_1107,
-  KR_1109,
-  KR_110B,
-  KR_110C,
-  KR_110E,
-  KR_1110,
-  KR_1111,
-  KR_1112
+  FIRST_KEY_CITIES
 };

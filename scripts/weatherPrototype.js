@@ -7,18 +7,7 @@ import {
   API,
   MAGIC_NUMBER,
   FIRST_KEY,
-  KR_1100,
-  KR_1102,
-  KR_1103,
-  KR_1106,
-  KR_1107,
-  KR_1109,
-  KR_110B,
-  KR_110C,
-  KR_110E,
-  KR_1110,
-  KR_1111,
-  KR_1112
+  FIRST_KEY_CITIES
 } from './constans.js';
 
 ;(function() {
