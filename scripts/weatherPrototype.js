@@ -290,6 +290,9 @@ import {
       close: function() {
         this.el.classList.remove(this.toggleClass);
         this.trigger.classList.remove(this.toggleClass);
+
+        if (this.isAddCity) this.searchForm.removeEventListener('input', this.search);
+      },
       }
     }
     return Layer;
