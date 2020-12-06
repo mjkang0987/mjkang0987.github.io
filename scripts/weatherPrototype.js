@@ -267,6 +267,9 @@ import {
       this.btnClose = this.el.querySelector(btnClose);
       this.toggleClass = toggleClass || 'on';
       this.isAddCity = isAddCity;
+      this.btnText = this.isAddCity ? '추가' : '삭제';
+      this.btnClass = this.isAddCity ? 'add' : 'remove';
+
       this.trigger.addEventListener('click', this.open.bind(this));
       this.btnClose.addEventListener('click', this.close.bind(this));
     }
