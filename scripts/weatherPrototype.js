@@ -132,10 +132,7 @@ import {
     const SetWeather = function() {
 
       this.city = '';
-      this.lon = null;
-      this.lat = null;
       this.queryString = '';
-      this.localItems = localStorage.getItem('locations');
 
       this.body = this.docSelector({el: 'body'});
       this.tempWrapEl = this.docSelector({el: '.temperature'});
@@ -153,30 +150,16 @@ import {
 
     SetWeather.prototype = {
       init: function () {
-        if (!this.localItems) return this.getLocation();
+        this.getItems();
+        if (this.localItems.length === 0) {
+          this.city = 'seoul';
+        } else {
+          this.city = this.localItems[FIRST];
+        }
+        this.getLocation();
       },
       getLocation: function() {
-        navigator.geolocation.getCurrentPosition(position => {
-          this.successGeolocation({position: position});
-        }, (error) => {
-         this.failGeolocation();
-          console.error(error);
-        }, {
-          enableHighAccuracy: false,
-          maximumAge: 0,
-          timeout: 3000
-        });
-      },
-      successGeolocation: function({
-        position: position
-      }) {
-        this.lon = position.coords.longitude;
-        this.lat = position.coords.latitude;
-        this.queryString = `?lat=${this.lat}&lon=${this.lon}`;
-        this.fetchData();
-      },
-      failGeolocation: function() {
-        this.queryString = `?q=seoul`;
+        this.queryString = `?q=${this.city}`;
         this.fetchData();
       },
       fetchData: async function() {
