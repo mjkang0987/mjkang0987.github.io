@@ -190,6 +190,7 @@ import {
         this.setCity();
         this.setTemp();
         this.setWeather();
+        this.setItems();
         this.setClothes();
         this.setStyle();
         this.setStyles();
