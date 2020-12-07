@@ -144,7 +144,10 @@ import {
       this.clothesTitleEl = this.docSelector({el: '.recommendClothes strong'});
       this.clothesEl = this.docSelector({el: '.recommendClothes ul'});
       this.loaderEl = this.docSelector({el: '.loading'});
+      this.addCitiesEl = this.docSelector({el: '.cityAdd ul'});
+      this.citiesEl = this.docSelector({el: '.cities ul'});
 
+      this.addCitiesEl.addEventListener('click', this.addItems.bind(this));
       this.init();
     };
 
@@ -229,7 +232,54 @@ import {
             `<li>${style}</li>`
         )).join('');
         this.clothesEl.innerHTML = this.styles;
-      }
+      },
+      getItems: function() {
+        this.localItems = JSON.parse(localStorage.getItem('cities'));
+        if (!this.localItems) return localStorage.setItem('cities', JSON.stringify([]));
+      },
+      addItems: function(e) {
+        if (e.target.tagName !== 'BUTTON') return;
+
+        this.target = e.target;
+        this.targetCity = this.target.dataset.city;
+
+        if (this.localItems.indexOf(this.targetCity) < 0) {
+          this.localItems.unshift(this.targetCity);
+          localStorage.setItem('cities', JSON.stringify(this.localItems));
+        } else {
+          return alert(`${CITIES[this.targetCity]}, 이곳은 이미 추가된 도시입니다`);
+        }
+
+        location.reload();
+      },
+      setItems: function() {
+        console.log(this.localItems);
+        this.addedCities = this.localItems.map(item => {
+          this.cityEl = this.createEl({tag: 'li'});
+          this.cityEl.innerHTML = `
+            <span>${CITIES[item]}</span>
+            <span>
+              <button 
+                type="button"
+                class="load"
+                data-city="${item}">
+                조회
+              </button>
+              <button 
+                type="button"
+                class="remove"
+                data-city="${item}">
+                삭제
+              </button>
+            </span>
+          `;
+        this.citiesEl.append(this.cityEl);
+        }).join('');
+        console.log(this.addedCities);
+      },
+      removeItems: function() {
+
+      },
     };
 
     return SetWeather;
