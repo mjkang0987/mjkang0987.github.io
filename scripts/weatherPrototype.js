@@ -185,7 +185,7 @@ import {
           max: this.weather.main.temp_max,
           min: this.weather.main.temp_min
         };
-        this.weatherState = this.weather.weather[0].description;
+        this.weatherState = this.weather.weather[FIRST].description;
 
         this.setCity();
         this.setTemp();
