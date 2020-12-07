@@ -314,16 +314,29 @@ import {
     }
 
     Layer.prototype = {
-      init: function() {
-        console.log('init');
-      },
       open: function() {
-        this.trigger.classList.add(this.toggleClass);
-        this.el.classList.add(this.toggleClass);
+        this.toggleClassMethod({
+          el: this.trigger,
+          methodType: 'add',
+          toggleClass: this.toggleClass
+        });
+        this.toggleClassMethod({
+          el: this.el,
+          methodType: 'add',
+          toggleClass: this.toggleClass
+        });
       },
       close: function() {
-        this.el.classList.remove(this.toggleClass);
-        this.trigger.classList.remove(this.toggleClass);
+        this.toggleClassMethod({
+          el: this.el,
+          methodType: 'remove',
+          toggleClass: this.toggleClass
+        });
+        this.toggleClassMethod({
+          el: this.trigger,
+          methodType: 'remove',
+          toggleClass: this.toggleClass
+        });
 
         if (this.isAddCity) this.searchForm.removeEventListener('input', this.search);
       },
