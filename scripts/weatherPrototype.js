@@ -357,7 +357,6 @@ import {
 
         for (const [key, value] of Object.entries(FIRST_KEY_CITIES[this.firstKeyCites])) {
           this.cityEl = this.createEl({tag: 'li'});
-          this.cityEl.dataset.city = key;
           this.cityEl.innerHTML = `
             <span>${value}</span>
             <button 
