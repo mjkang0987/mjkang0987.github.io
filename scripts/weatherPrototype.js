@@ -154,7 +154,9 @@ import {
     SetWeather.prototype = {
       init: function () {
         this.getItems();
-        if (this.localItems.length === 0) {
+
+        if (!this.localItems || this.localItems.length === 0) {
+          localStorage.setItem('cities', JSON.stringify([]));
           this.city = 'seoul';
         } else {
           this.city = this.localItems[FIRST];
@@ -236,7 +238,6 @@ import {
       },
       getItems: function() {
         this.localItems = JSON.parse(localStorage.getItem('cities'));
-        if (!this.localItems) return localStorage.setItem('cities', JSON.stringify([]));
       },
       addItems: function(e) {
         if (e.target.tagName !== 'BUTTON') return;
@@ -244,18 +245,21 @@ import {
         this.target = e.target;
         this.targetCity = this.target.dataset.city;
 
-        if (this.localItems.indexOf(this.targetCity) < 0) {
+        this.getItems();
+
+        if (this.localItems.indexOf(this.targetCity) > -1) {
+          return alert(`${CITIES[this.targetCity]}, 이곳은 이미 추가된 도시입니다`);
+        } else {
           this.localItems.unshift(this.targetCity);
           localStorage.setItem('cities', JSON.stringify(this.localItems));
-        } else {
-          return alert(`${CITIES[this.targetCity]}, 이곳은 이미 추가된 도시입니다`);
         }
 
         location.reload();
       },
       setItems: function() {
         console.log(this.localItems);
-        this.addedCities = this.localItems.map(item => {
+        if (!this.localItems || this.localItems.length === 0) return;
+          this.addedCities = this.localItems.map(item => {
           this.cityEl = this.createEl({tag: 'li'});
           this.cityEl.innerHTML = `
             <span>${CITIES[item]}</span>
