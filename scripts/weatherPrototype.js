@@ -36,12 +36,12 @@ import {
       }) {
         return document.createElement(tag);
       },
-      addEl: function({
-        wrap: wrap,
-        direction: dir,
-        el: el
+      toggleClassMethod: function({
+        el: el,
+        methodType: methodType,
+        toggleClass: toggleClass
       }) {
-        wrap.insertAdjacentElement(dir, el);
+        el.classList[methodType](toggleClass);
       }
     };
     return Prototype;
