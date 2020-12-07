@@ -37,7 +37,7 @@ const CITIES = {
   hanam: '하남시',
   hwaseong: '화성시',
   gangneung: '강릉시',
-  goseong: '강원도 고성군',
+  goseong: '고성군',
   donghae: '동해시',
   samcheok: '삼척시',
   sokcho: '속초시',
