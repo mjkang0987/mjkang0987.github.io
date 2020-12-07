@@ -309,7 +309,7 @@ import {
 
       if (this.isAddCity) {
         this.searchForm = this.el.querySelector('#search_city');
-        this.searchForm.addEventListener('input', this.getCity.bind(this));
+        this.searchForm.addEventListener('input', this.getKeyword.bind(this));
       }
     }
 
@@ -327,7 +327,7 @@ import {
 
         if (this.isAddCity) this.searchForm.removeEventListener('input', this.search);
       },
-      getCity: function(e) {
+      getKeyword: function(e) {
         this.value = e.target.value;
         if (!this.value || this.value === '') return this.resetCities();
 
@@ -335,11 +335,11 @@ import {
           return city === this.value;
         });
 
-        this.setCities();
+        this.setFirstKeyword();
       },
-      setCities: function() {
+      setFirstKeyword: function() {
         this.resetCities();
-        if (this.cities === undefined) return;
+        if (this.cities === undefined) return this.setKeyword();
         this.firstKeyCites = FIRST_KEY[this.cities];
 
         for (const [key, value] of Object.entries(FIRST_KEY_CITIES[this.firstKeyCites])) {
