@@ -222,7 +222,7 @@ import {
       setStyle: function() {
         this.styleIndex = Object.keys(TEMPS).map(Number).find(temp => {
           return temp >= this.temp.current;
-        }, [1]);
+        });
 
         this.style = TEMPS[this.styleIndex];
         this.tempWrapEl.dataset.temp = this.style[FIRST].toLowerCase();
