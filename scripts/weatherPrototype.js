@@ -370,6 +370,25 @@ import {
           this.citiesWrapEl.append(this.cityEl);
         }
       },
+      setKeyword: function() {
+        this.currentCities = Object.entries(CITIES).filter(([key, value]) => {
+          return value.indexOf(this.value) > -1;
+        });
+
+        this.currentCities.map(([key, value]) => {
+          this.cityEl = this.createEl({tag: 'li'});
+          this.cityEl.innerHTML = `
+            <span>${value.replace(this.value, `<strong>${this.value}</strong>`)}</span>
+            <button 
+              type="button"
+              class="${this.btnClass}"
+              data-city="${key}">
+              ${this.btnText}
+            </button>
+          `;
+          this.citiesWrapEl.append(this.cityEl);
+        }).join('');
+      },
       resetCities: function() {
         this.citiesWrapEl.innerHTML = '';
       }
