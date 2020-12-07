@@ -405,13 +405,13 @@ import {
     new SetWeather();
 
     Layer.prototype = Object.assign(Layer.prototype, Prototype.prototype);
-    new Layer({
+    const citiesLayer = new Layer({
       trigger: 'header .info',
       el: '.layer.cities',
       btnClose: '.buttonClose'
     });
 
-    new Layer({
+    const addCitiesLayer = new Layer({
       trigger: 'header .addLocation',
       el: '.layer.cityAdd',
       btnClose: '.buttonClose',
