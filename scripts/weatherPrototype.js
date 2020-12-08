@@ -310,9 +310,6 @@ utils.SetWeather = (function() {
       this.citiesEl.append(this.cityEl);
       }).join('');
     },
-    removeItems: function() {
-
-    },
   };
 
   return SetWeather;
