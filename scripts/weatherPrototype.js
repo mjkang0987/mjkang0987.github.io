@@ -254,9 +254,12 @@ utils.SetWeather = (function() {
 
       this[`${this.target.className}Items`]();
     },
+    addItems: function() {
+      if (this.localItems.list.indexOf(this.targetCity) > -1) {
         return alert(`${CITIES[this.targetCity]}, 이곳은 이미 추가된 도시입니다`);
       } else {
-        this.localItems.unshift(this.targetCity);
+        this.localItems.default = this.targetCity;
+        this.localItems.list.unshift(this.targetCity);
         localStorage.setItem('cities', JSON.stringify(this.localItems));
       }
 
