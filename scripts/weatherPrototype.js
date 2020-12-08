@@ -265,6 +265,17 @@ utils.SetWeather = (function() {
 
       location.reload();
     },
+    removeItems: function() {
+      if (this.localItems.default === this.targetCity) return alert(`${CITIES[this.targetCity]}, 이곳은 현재 선택된 도시 입니다.\n현재 선택된 도시는 삭제할 수 없습니다.`);
+
+      this.itemIndex = this.localItems.list.indexOf(this.targetCity);
+      this.localItems.list.splice(this.itemIndex, ONE);
+
+      localStorage.setItem('cities', JSON.stringify(this.localItems));
+
+      this.itemWrap = this.target.closest('li');
+      this.itemWrap.parentNode.removeChild(this.itemWrap);
+    },
     setItems: function() {
       console.log(this.localItems);
       if (!this.localItems || this.localItems.length === 0) return;
