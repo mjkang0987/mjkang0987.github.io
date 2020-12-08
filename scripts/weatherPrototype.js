@@ -144,7 +144,8 @@ utils.SetWeather = (function() {
     this.addCitiesEl = this.docSelector({el: '.cityAdd ul'});
     this.citiesEl = this.docSelector({el: '.cities ul'});
 
-    this.addCitiesEl.addEventListener('click', this.addItems.bind(this));
+    this.addCitiesEl.addEventListener('click', this.getTargetItem.bind(this));
+    this.citiesEl.addEventListener('click', this.getTargetItem.bind(this));
     this.init();
   };
 
@@ -237,15 +238,15 @@ utils.SetWeather = (function() {
     getItems: function() {
       this.localItems = JSON.parse(localStorage.getItem('cities'));
     },
-    addItems: function(e) {
-      if (e.target.tagName !== 'BUTTON') return;
-
+    getTargetItem: function(e) {
       this.target = e.target;
+      if (this.target.tagName !== 'BUTTON') return;
       this.targetCity = this.target.dataset.city;
 
       this.getItems();
 
-      if (this.localItems.indexOf(this.targetCity) > -1) {
+      this[`${this.target.className}Items`]();
+    },
         return alert(`${CITIES[this.targetCity]}, 이곳은 이미 추가된 도시입니다`);
       } else {
         this.localItems.unshift(this.targetCity);
