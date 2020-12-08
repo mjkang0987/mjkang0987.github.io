@@ -181,8 +181,8 @@ utils.SetWeather = (function() {
       return this.data;
     },
     setUI: function () {
-      console.log(this.weather);
       const {temp, temp_max, temp_min} = this.weather.main;
+
       this.city = this.weather.name.replace('ŏ', 'o').toLowerCase();
       this.city = this.weather.name.replace(' City', '').toLowerCase();
       this.city = this.weather.name.replace('-si', '').toLowerCase();
@@ -285,6 +285,7 @@ utils.SetWeather = (function() {
       localStorage.setItem('cities', JSON.stringify(this.localItems));
 
       location.reload();
+    },
     setItems: function() {
       this.getItems();
       if (!this.localItems) return;
