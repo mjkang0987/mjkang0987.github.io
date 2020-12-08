@@ -286,12 +286,14 @@ utils.SetWeather = (function() {
 
       location.reload();
     setItems: function() {
-      console.log(this.localItems);
-      if (!this.localItems || this.localItems.length === 0) return;
-        this.localItems.map(item => {
+      this.getItems();
+      if (!this.localItems) return;
+        this.localItems.list.map((item, index) => {
         this.cityEl = this.createEl({tag: 'li'});
         this.cityEl.innerHTML = `
-          <span>${CITIES[item]}</span>
+          <span>${CITIES[item]}
+            ${index === 0 ?  `<span class="default">선택됨</span>` : ''}
+          </span>
           <span>
             <button 
               type="button"

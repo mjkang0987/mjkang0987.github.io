@@ -565,6 +565,7 @@ footer span {
   display: flex;
   font-size: 14px;
   color: #000;
+  align-items: center;
 }
 
 .layer ul li span strong {
@@ -586,6 +587,23 @@ footer span {
 
 .layer ul li button + button {
   margin-left: 5px;
+}
+
+.layer ul li .default {
+  font-size: 11px;
+  color: #7d7d7d;
+}
+
+.layer ul li .default +  {
+}
+
+.layer ul li .default:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: #6ce700;
+  border-radius: 10px;
+  margin: 0 2px 0 10px;
 }
 
 @keyframes spin {
