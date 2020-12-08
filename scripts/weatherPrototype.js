@@ -184,6 +184,10 @@ utils.SetWeather = (function() {
       console.log(this.weather);
       const {temp, temp_max, temp_min} = this.weather.main;
       this.city = this.weather.name.replace('ŏ', 'o').toLowerCase();
+      this.city = this.weather.name.replace(' City', '').toLowerCase();
+      this.city = this.weather.name.replace('-si', '').toLowerCase();
+      // 규식이....
+
       this.gemTemp = {
         current: temp,
         max: temp_max,
