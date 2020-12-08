@@ -257,7 +257,7 @@ utils.SetWeather = (function() {
     setItems: function() {
       console.log(this.localItems);
       if (!this.localItems || this.localItems.length === 0) return;
-        this.addedCities = this.localItems.map(item => {
+        this.localItems.map(item => {
         this.cityEl = this.createEl({tag: 'li'});
         this.cityEl.innerHTML = `
           <span>${CITIES[item]}</span>
