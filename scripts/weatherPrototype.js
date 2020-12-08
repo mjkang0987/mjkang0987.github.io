@@ -153,11 +153,14 @@ utils.SetWeather = (function() {
     init: function () {
       this.getItems();
 
-      if (!this.localItems || this.localItems.length === 0) {
-        localStorage.setItem('cities', JSON.stringify([]));
+      if (this.localItems === null) {
         this.city = 'seoul';
+        localStorage.setItem('cities', JSON.stringify({
+          default: this.city,
+          list: [this.city]
+        }));
       } else {
-        this.city = this.localItems[FIRST];
+        this.city = this.localItems.default;
       }
       this.getLocation();
     },
