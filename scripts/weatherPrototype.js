@@ -276,6 +276,15 @@ utils.SetWeather = (function() {
       this.itemWrap = this.target.closest('li');
       this.itemWrap.parentNode.removeChild(this.itemWrap);
     },
+    loadItems: function() {
+      this.itemIndex = this.localItems.list.indexOf(this.targetCity);
+      this.localItems.list.splice(this.itemIndex, ONE);
+      this.localItems.default = this.targetCity;
+      this.localItems.list.unshift(this.targetCity);
+
+      localStorage.setItem('cities', JSON.stringify(this.localItems));
+
+      location.reload();
     setItems: function() {
       console.log(this.localItems);
       if (!this.localItems || this.localItems.length === 0) return;
