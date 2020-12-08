@@ -178,11 +178,12 @@ utils.SetWeather = (function() {
     },
     setUI: function () {
       console.log(this.weather);
+      const {temp, temp_max, temp_min} = this.weather.main;
       this.city = this.weather.name.replace('ŏ', 'o').toLowerCase();
       this.gemTemp = {
-        current: this.weather.main.temp,
-        max: this.weather.main.temp_max,
-        min: this.weather.main.temp_min
+        current: temp,
+        max: temp_max,
+        min: temp_min
       };
       this.weatherState = this.weather.weather[FIRST].description;
 
@@ -277,7 +278,6 @@ utils.SetWeather = (function() {
         `;
       this.citiesEl.append(this.cityEl);
       }).join('');
-      console.log(this.addedCities);
     },
     removeItems: function() {
 
