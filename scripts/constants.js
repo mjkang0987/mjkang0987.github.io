@@ -47,7 +47,6 @@ const CITIES = {
   wonju: '원주시',
   inje: '인제군',
   jeongseon: '정선군',
-  cheorwon: '철원군',
   chuncheon: '춘천시',
   taebaek: '태백시',
   pyeongchang: '평창군',
@@ -108,7 +107,6 @@ const CITIES = {
   shinan: '신안군',
   yeosu: '여수시',
   yeonggwang: '영광군',
-  wando: '완도군',
   jangseong: '장성군',
   jangheung: '장흥군',
   jindo: '진도군',
@@ -135,7 +133,6 @@ const CITIES = {
   boryung: '보령시',
   buyeo: '부여군',
   seosan: '서산시',
-  seocheon: '서천군',
   asan: '아산시',
   yeongi: '연기군',
   yesan: '예산군',
@@ -245,8 +242,7 @@ const FIRST_KEY_CITIES = {
     suncheon: '순천시',
     shinan: '신안군',
     sunchang: '순창군',
-    seosan: '서산시',
-    seocheon: '서천군'
+    seosan: '서산시'
   },
   KR_110B: {
     incheon: '인천',
@@ -279,7 +275,6 @@ const FIRST_KEY_CITIES = {
     uiseong: '의성군',
     yeosu: '여수시',
     yeonggwang: '영광군',
-    wando: '완도군',
     wanju: '완주군',
     iksan: '익산시',
     asan: '아산시',
@@ -302,7 +297,6 @@ const FIRST_KEY_CITIES = {
     jinan: '진안군'
   },
   KR_110E: {
-    cheorwon: '철원군',
     chuncheon: '춘천시',
     changnyeong: '창녕군',
     changwon: '창원시',
