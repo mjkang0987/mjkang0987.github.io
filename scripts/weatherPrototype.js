@@ -8,7 +8,7 @@ import {
   MAGIC_NUMBER,
   FIRST_KEY,
   FIRST_KEY_CITIES
-} from './constans.js';
+} from './constants.js';
 
 ;(function() {
   'use strict';
