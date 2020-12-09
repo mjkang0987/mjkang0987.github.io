@@ -386,7 +386,7 @@ utils.Layer = (function() {
     setFirstKeyword: function() {
       this.resetCities();
       if (this.cities === undefined) return this.setKeyword();
-      this.firstKeyCites = FIRST_KEY[this.cities];
+      this.firstKeyCities = FIRST_KEY[this.cities];
 
       for (const [key, value] of Object.entries(FIRST_KEY_CITIES[this.firstKeyCites])) {
         this.cityEl = this.createEl({tag: 'li'});
