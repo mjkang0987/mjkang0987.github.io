@@ -73,7 +73,7 @@ utils.UI_Prototype = (function() {
       this.setTime();
     },
     getDate: function() {
-      this.date = {
+      return this.date = {
         year: this.now.getFullYear(),
         month: this.now.getMonth() + 1,
         day: this.now.getDate()
