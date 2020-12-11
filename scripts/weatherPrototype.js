@@ -87,12 +87,12 @@ utils.UI_Prototype = (function() {
       };
     },
     setTime: function() {
-      this.time = this.getTime();
+      const {hour: h, minutes: m, seconds: s} = this.getTime();
 
-      this.time = {
-        hour: this.hour < 10 ? `0${this.hour}` : this.hour,
-        minutes: this.gemTime.minutes < 10 ? `0${this.gemTime.minutes}` : this.gemTime.minutes,
-        seconds: this.gemTime.seconds
+      const time = {
+        hour: h < 10 ? `0${h}` : h,
+        minutes: m < 10 ? `0${m}` : m,
+        seconds: s
       };
 
       this.setHalfTime();
@@ -117,8 +117,8 @@ utils.UI_Prototype = (function() {
     },
     setTimeText: function() {
       this.timeTypeEl.textContent = this.timeText;
-      this.timeHourEl.textContent = this.time.hour;
-      this.timeMinuteEl.textContent = this.time.minutes;
+      this.timeHourEl.textContent = hour;
+      this.timeMinuteEl.textContent = minutes;
       this.contentTimeEl.textContent = `${this.detailTime},`;
     }
   };
