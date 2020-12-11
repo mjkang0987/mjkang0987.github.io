@@ -97,7 +97,10 @@ utils.UI_Prototype = (function() {
 
       this.setHalfTime();
       this.setDetailTime();
-      this.setTimeText();
+      this.setTimeText({
+        hour: time.hour,
+        minutes: time.minutes
+      });
     },
     setHalfTime: function() {
       if (this.gemTime.hour > 12) {
@@ -115,7 +118,10 @@ utils.UI_Prototype = (function() {
           : this.gemTime.hour < 8 ? DINNER
             : NIGHT;
     },
-    setTimeText: function() {
+    setTimeText: function({
+      hour: hour,
+      minutes: minutes
+    }) {
       this.timeTypeEl.textContent = this.timeText;
       this.timeHourEl.textContent = hour;
       this.timeMinuteEl.textContent = minutes;
