@@ -243,10 +243,11 @@ utils.SetWeather = (function() {
       this.tempWrapEl.dataset.temp = this.style[FIRST].toLowerCase();
     },
     setStyles: function () {
-      this.styles = this.style.splice(ONE, this.style.length - ONE).map((style =>
-          `<li>${style}</li>`
-      )).join('');
-      this.clothesEl.innerHTML = this.styles;
+      this.clothesEl.innerHTML = this.style.splice(ONE, this.style.length - ONE)
+        .map((style =>
+            `<li>${style}</li>`
+        ))
+        .join('');
     },
     getItems: function() {
       this.localItems = JSON.parse(localStorage.getItem('cities'));
