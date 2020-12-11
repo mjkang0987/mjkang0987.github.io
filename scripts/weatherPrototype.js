@@ -410,11 +410,11 @@ utils.Layer = (function() {
       }
     },
     setKeyword: function() {
-      this.currentCities = Object.entries(CITIES).filter(([key, value]) => {
+      const currentCities = Object.entries(CITIES).filter(([key, value]) => {
         return value.indexOf(this.value) > -1;
       });
 
-      this.currentCities.map(([key, value]) => {
+      currentCities.map(([key, value]) => {
         this.cityEl = this.createEl({tag: 'li'});
         this.cityEl.innerHTML = `
           <span>${value.replace(this.value, `<strong>${this.value}</strong>`)}</span>
