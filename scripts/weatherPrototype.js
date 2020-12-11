@@ -388,7 +388,7 @@ utils.Layer = (function() {
       if (this.cities === undefined) return this.setKeyword();
       this.firstKeyCities = FIRST_KEY[this.cities];
 
-      for (const [key, value] of Object.entries(FIRST_KEY_CITIES[this.firstKeyCites])) {
+      for (const [key, value] of Object.entries(FIRST_KEY_CITIES[this.firstKeyCities])) {
         this.cityEl = this.createEl({tag: 'li'});
         this.cityEl.innerHTML = `
           <span>${value}</span>
