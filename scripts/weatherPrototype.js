@@ -235,11 +235,11 @@ utils.SetWeather = (function() {
       this.clothesTitleEl.textContent = `대충 ${this.title} 옷`;
     },
     setStyle: function() {
-      this.styleIndex = Object.keys(TEMPS).map(Number).find(temp => {
+      const styleIndex = Object.keys(TEMPS).map(Number).find(temp => {
         return temp >= this.temp.current;
       });
 
-      this.style = TEMPS[this.styleIndex];
+      this.style = TEMPS[styleIndex];
       this.tempWrapEl.dataset.temp = this.style[FIRST].toLowerCase();
     },
     setStyles: function () {
