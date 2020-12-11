@@ -73,7 +73,7 @@ utils.UI_Prototype = (function() {
       this.setTime();
     },
     getDate: function() {
-      this.date = {
+      return this.date = {
         year: this.now.getFullYear(),
         month: this.now.getMonth() + 1,
         day: this.now.getDate()
@@ -87,17 +87,20 @@ utils.UI_Prototype = (function() {
       };
     },
     setTime: function() {
-      this.time = this.getTime();
+      const {hour: h, minutes: m, seconds: s} = this.getTime();
 
-      this.time = {
-        hour: this.hour < 10 ? `0${this.hour}` : this.hour,
-        minutes: this.gemTime.minutes < 10 ? `0${this.gemTime.minutes}` : this.gemTime.minutes,
-        seconds: this.gemTime.seconds
+      const time = {
+        hour: h < 10 ? `0${h}` : h,
+        minutes: m < 10 ? `0${m}` : m,
+        seconds: s
       };
 
       this.setHalfTime();
       this.setDetailTime();
-      this.setTimeText();
+      this.setTimeText({
+        hour: time.hour,
+        minutes: time.minutes
+      });
     },
     setHalfTime: function() {
       if (this.gemTime.hour > 12) {
@@ -115,10 +118,13 @@ utils.UI_Prototype = (function() {
           : this.gemTime.hour < 8 ? DINNER
             : NIGHT;
     },
-    setTimeText: function() {
+    setTimeText: function({
+      hour: hour,
+      minutes: minutes
+    }) {
       this.timeTypeEl.textContent = this.timeText;
-      this.timeHourEl.textContent = this.time.hour;
-      this.timeMinuteEl.textContent = this.time.minutes;
+      this.timeHourEl.textContent = hour;
+      this.timeMinuteEl.textContent = minutes;
       this.contentTimeEl.textContent = `${this.detailTime},`;
     }
   };
@@ -229,18 +235,19 @@ utils.SetWeather = (function() {
       this.clothesTitleEl.textContent = `대충 ${this.title} 옷`;
     },
     setStyle: function() {
-      this.styleIndex = Object.keys(TEMPS).map(Number).find(temp => {
+      const styleIndex = Object.keys(TEMPS).map(Number).find(temp => {
         return temp >= this.temp.current;
       });
 
-      this.style = TEMPS[this.styleIndex];
+      this.style = TEMPS[styleIndex];
       this.tempWrapEl.dataset.temp = this.style[FIRST].toLowerCase();
     },
     setStyles: function () {
-      this.styles = this.style.splice(ONE, this.style.length - ONE).map((style =>
-          `<li>${style}</li>`
-      )).join('');
-      this.clothesEl.innerHTML = this.styles;
+      this.clothesEl.innerHTML = this.style.splice(ONE, this.style.length - ONE)
+        .map((style =>
+            `<li>${style}</li>`
+        ))
+        .join('');
     },
     getItems: function() {
       this.localItems = JSON.parse(localStorage.getItem('cities'));
@@ -386,9 +393,9 @@ utils.Layer = (function() {
     setFirstKeyword: function() {
       this.resetCities();
       if (this.cities === undefined) return this.setKeyword();
-      this.firstKeyCites = FIRST_KEY[this.cities];
+      this.firstKeyCities = FIRST_KEY[this.cities];
 
-      for (const [key, value] of Object.entries(FIRST_KEY_CITIES[this.firstKeyCites])) {
+      for (const [key, value] of Object.entries(FIRST_KEY_CITIES[this.firstKeyCities])) {
         this.cityEl = this.createEl({tag: 'li'});
         this.cityEl.innerHTML = `
           <span>${value}</span>
@@ -403,11 +410,11 @@ utils.Layer = (function() {
       }
     },
     setKeyword: function() {
-      this.currentCities = Object.entries(CITIES).filter(([key, value]) => {
+      const currentCities = Object.entries(CITIES).filter(([key, value]) => {
         return value.indexOf(this.value) > -1;
       });
 
-      this.currentCities.map(([key, value]) => {
+      currentCities.map(([key, value]) => {
         this.cityEl = this.createEl({tag: 'li'});
         this.cityEl.innerHTML = `
           <span>${value.replace(this.value, `<strong>${this.value}</strong>`)}</span>
