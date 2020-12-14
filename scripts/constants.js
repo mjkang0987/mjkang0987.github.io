@@ -372,6 +372,28 @@ const API = {
 const MAGIC_NUMBER = {
   FIRST: 0,
   ONE: 1
+};
+
+const docSelector = ({
+  el: el,
+  all: isAll
+}) => {
+  if (isAll) return document.querySelectorAll(el);
+  else return document.querySelector(el);
+};
+
+const createEl = ({
+  tag: tag
+}) => {
+  return document.createElement(tag);
+};
+
+const toggleClassMethod = ({
+  el: el,
+  methodType: methodType,
+  toggleClass: toggleClass
+}) => {
+  el.classList[methodType](toggleClass);
 }
 
 export {
@@ -383,5 +405,8 @@ export {
   API,
   MAGIC_NUMBER,
   FIRST_KEY,
-  FIRST_KEY_CITIES
+  FIRST_KEY_CITIES,
+  docSelector,
+  createEl,
+  toggleClassMethod
 };
