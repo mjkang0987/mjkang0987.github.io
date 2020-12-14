@@ -266,7 +266,7 @@ utils.SetWeather = (function() {
         return alert(`${CITIES[this.targetCity]}, 이곳은 이미 추가된 도시입니다`);
       } else {
         this.localItems.default = this.targetCity;
-        this.localItems.list.unshift(this.targetCity);
+        this.localItems.list = [this.targetCity, ...this.localItems.list];
         localStorage.setItem('cities', JSON.stringify(this.localItems));
       }
 
@@ -287,7 +287,7 @@ utils.SetWeather = (function() {
       this.itemIndex = this.localItems.list.indexOf(this.targetCity);
       this.localItems.list.splice(this.itemIndex, ONE);
       this.localItems.default = this.targetCity;
-      this.localItems.list.unshift(this.targetCity);
+      this.localItems.list = [this.targetCity, ...this.localItems.list];
 
       localStorage.setItem('cities', JSON.stringify(this.localItems));
 
