@@ -7,7 +7,10 @@ import {
   API,
   MAGIC_NUMBER,
   FIRST_KEY,
-  FIRST_KEY_CITIES
+  FIRST_KEY_CITIES,
+  docSelector,
+  createEl,
+  toggleClassMethod
 } from './constants.js';
 
 let utils = {} || function() {};
@@ -18,41 +21,14 @@ const {SUMMER, MIDDLE, WINTER} = TITLE;
 const {URL, KEY} = API;
 const {FIRST, ONE} = MAGIC_NUMBER;
 
-utils.Prototype = (function() {
-  const Prototype = function() {}
-
-  Prototype.prototype = {
-    docSelector: function({
-      el: el,
-      all: isAll
-    }) {
-      if (isAll) return document.querySelectorAll(el);
-      else return document.querySelector(el);
-    },
-    createEl: function({
-      tag: tag
-    }) {
-      return document.createElement(tag);
-    },
-    toggleClassMethod: function({
-      el: el,
-      methodType: methodType,
-      toggleClass: toggleClass
-    }) {
-      el.classList[methodType](toggleClass);
-    }
-  };
-  return Prototype;
-})();
-
 utils.UI_Prototype = (function() {
   const UI_Prototype = function() {
-    this.timeTypeEl = this.docSelector({el: 'header .type'});
-    this.timeHourEl = this.docSelector({el: 'header .hour'});
-    this.timeMinuteEl = this.docSelector({el: 'header .minute'});
-    this.timeMinuteEl = this.docSelector({el: 'header .minute'});
-    this.contentTimeEl = this.docSelector({el: '.weather .timeType'});
-    this.yearEl = this.docSelector({el: 'footer .year'});
+    this.timeTypeEl = docSelector({el: 'header .type'});
+    this.timeHourEl = docSelector({el: 'header .hour'});
+    this.timeMinuteEl = docSelector({el: 'header .minute'});
+    this.timeMinuteEl = docSelector({el: 'header .minute'});
+    this.contentTimeEl = docSelector({el: '.weather .timeType'});
+    this.yearEl = docSelector({el: 'footer .year'});
     this.init();
   };
 
@@ -137,18 +113,18 @@ utils.SetWeather = (function() {
     this.city = '';
     this.queryString = '';
 
-    this.body = this.docSelector({el: 'body'});
-    this.tempWrapEl = this.docSelector({el: '.temperature'});
-    this.cityEl = this.docSelector({el: 'header .location'});
-    this.tempEl = this.docSelector({el: '.nowTempWrap span'});
-    this.tempMaxEl = this.docSelector({el: '.maxWrap span'});
-    this.tempMinEl = this.docSelector({el: '.minWrap span'});
-    this.weatherEl = this.docSelector({el: '.weather .weatherType'});
-    this.clothesTitleEl = this.docSelector({el: '.recommendClothes strong'});
-    this.clothesEl = this.docSelector({el: '.recommendClothes ul'});
-    this.loaderEl = this.docSelector({el: '.loading'});
-    this.addCitiesEl = this.docSelector({el: '.cityAdd ul'});
-    this.citiesEl = this.docSelector({el: '.cities ul'});
+    this.body = docSelector({el: 'body'});
+    this.tempWrapEl = docSelector({el: '.temperature'});
+    this.cityEl = docSelector({el: 'header .location'});
+    this.tempEl = docSelector({el: '.nowTempWrap span'});
+    this.tempMaxEl = docSelector({el: '.maxWrap span'});
+    this.tempMinEl = docSelector({el: '.minWrap span'});
+    this.weatherEl = docSelector({el: '.weather .weatherType'});
+    this.clothesTitleEl = docSelector({el: '.recommendClothes strong'});
+    this.clothesEl = docSelector({el: '.recommendClothes ul'});
+    this.loaderEl = docSelector({el: '.loading'});
+    this.addCitiesEl = docSelector({el: '.cityAdd ul'});
+    this.citiesEl = docSelector({el: '.cities ul'});
 
     this.addCitiesEl.addEventListener('click', this.getTargetItem.bind(this));
     this.citiesEl.addEventListener('click', this.getTargetItem.bind(this));
@@ -297,7 +273,7 @@ utils.SetWeather = (function() {
       this.getItems();
       if (!this.localItems) return;
         this.localItems.list.map((item, index) => {
-        this.cityEl = this.createEl({tag: 'li'});
+        this.cityEl = createEl({tag: 'li'});
         this.cityEl.innerHTML = `
           <span>${CITIES[item]}
             ${index === 0 ?  `<span class="default">선택됨</span>` : ''}
@@ -335,8 +311,8 @@ utils.Layer = (function() {
   }) {
     if (!trigger) return;
 
-    this.trigger = this.docSelector({el : trigger});
-    this.el = this.docSelector({el: el});
+    this.trigger = docSelector({el : trigger});
+    this.el = docSelector({el: el});
     this.citiesWrapEl = this.el.querySelector('ul');
     this.btnClose = this.el.querySelector(btnClose);
     this.toggleClass = toggleClass || 'on';
@@ -355,24 +331,24 @@ utils.Layer = (function() {
 
   Layer.prototype = {
     open: function() {
-      this.toggleClassMethod({
+      toggleClassMethod({
         el: this.trigger,
         methodType: 'add',
         toggleClass: this.toggleClass
       });
-      this.toggleClassMethod({
+      toggleClassMethod({
         el: this.el,
         methodType: 'add',
         toggleClass: this.toggleClass
       });
     },
     close: function() {
-      this.toggleClassMethod({
+      toggleClassMethod({
         el: this.el,
         methodType: 'remove',
         toggleClass: this.toggleClass
       });
-      this.toggleClassMethod({
+      toggleClassMethod({
         el: this.trigger,
         methodType: 'remove',
         toggleClass: this.toggleClass
@@ -396,7 +372,7 @@ utils.Layer = (function() {
       this.firstKeyCities = FIRST_KEY[this.cities];
 
       for (const [key, value] of Object.entries(FIRST_KEY_CITIES[this.firstKeyCities])) {
-        this.cityEl = this.createEl({tag: 'li'});
+        this.cityEl = createEl({tag: 'li'});
         this.cityEl.innerHTML = `
           <span>${value}</span>
           <button 
@@ -415,7 +391,7 @@ utils.Layer = (function() {
       });
 
       currentCities.map(([key, value]) => {
-        this.cityEl = this.createEl({tag: 'li'});
+        this.cityEl = createEl({tag: 'li'});
         this.cityEl.innerHTML = `
           <span>${value.replace(this.value, `<strong>${this.value}</strong>`)}</span>
           <button 
@@ -435,22 +411,15 @@ utils.Layer = (function() {
   return Layer;
 })();
 const domReady = () => {
-  const {Prototype, UI_Prototype, SetWeather, Layer} = utils;
-  const prototype = new Prototype();
+  const {UI_Prototype, SetWeather, Layer} = utils;
 
-  UI_Prototype.prototype = Object.assign(UI_Prototype.prototype, Prototype.prototype);
   const UI = new UI_Prototype();
-
-  SetWeather.prototype = Object.assign(SetWeather.prototype, Prototype.prototype);
   new SetWeather();
-
-  Layer.prototype = Object.assign(Layer.prototype, Prototype.prototype);
   const citiesLayer = new Layer({
     trigger: 'header .info',
     el: '.layer.cities',
     btnClose: '.buttonClose'
   });
-
   const addCitiesLayer = new Layer({
     trigger: 'header .addLocation',
     el: '.layer.cityAdd',
