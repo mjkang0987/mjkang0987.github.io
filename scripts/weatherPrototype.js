@@ -119,8 +119,8 @@ utils.UI_Prototype = (function() {
             : NIGHT;
     },
     setTimeText: function({
-      hour: hour,
-      minutes: minutes
+      hour,
+      minutes
     }) {
       this.timeTypeEl.textContent = this.timeText;
       this.timeHourEl.textContent = hour;
@@ -327,10 +327,10 @@ utils.SetWeather = (function() {
 
 utils.Layer = (function() {
   const Layer = function({
-    trigger: trigger,
-    el: el,
-    btnClose: btnClose,
-    toggleClass: toggleClass,
+    trigger,
+    el,
+    btnClose,
+    toggleClass,
     addCity: isAddCity
   }) {
     if (!trigger) return;
