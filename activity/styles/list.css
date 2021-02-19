@@ -1,0 +1,2233 @@
+@charset "UTF-8";
+@-webkit-keyframes search-accordion {
+  0% {
+    opacity: 1;
+    max-height: 0;
+  }
+  50% {
+    opacity: 1;
+    max-height: 410px;
+  }
+  100% {
+    opacity: 1;
+    max-height: 410px;
+  }
+}
+
+@keyframes search-accordion {
+  0% {
+    opacity: 1;
+    max-height: 0;
+  }
+  50% {
+    opacity: 1;
+    max-height: 410px;
+  }
+  100% {
+    opacity: 1;
+    max-height: 410px;
+  }
+}
+
+@-webkit-keyframes search-accordion-sub {
+  0% {
+    opacity: 1;
+    max-height: 0;
+  }
+  50% {
+    opacity: 1;
+    max-height: 385px;
+  }
+  100% {
+    opacity: 1;
+    max-height: 385px;
+  }
+}
+
+@keyframes search-accordion-sub {
+  0% {
+    opacity: 1;
+    max-height: 0;
+  }
+  50% {
+    opacity: 1;
+    max-height: 385px;
+  }
+  100% {
+    opacity: 1;
+    max-height: 385px;
+  }
+}
+
+@keyframes search-accordion-sub {
+  0% {
+    opacity: 1;
+    max-height: 0;
+  }
+  50% {
+    opacity: 1;
+    max-height: 385px;
+  }
+  100% {
+    opacity: 1;
+    max-height: 385px;
+  }
+}
+
+@-webkit-keyframes layer-on {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes layer-on {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes calendar-on {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes calendar-on {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+body {
+  background-color: #fff;
+}
+
+.activityContainer * {
+  font-family: "Noto Sans KR", "Malgun Gothic", "돋움", Dotum, Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+.activityContainer img {
+  opacity: 1;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.activityContainer .lazy {
+  opacity: 0;
+}
+
+.activityContainer h1 {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.activityListWrapper {
+  width: 1280px;
+  margin: 0 auto;
+  font-size: 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.activityListLeft, .activityListRight {
+  position: relative;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.activityListLeft {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: auto;
+  width: 200px;
+  box-sizing: border-box;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  z-index: 2;
+}
+
+.activityListLeft + .activityListRight {
+  display: inline-block;
+  width: 1080px;
+  margin-left: 200px;
+  padding-left: 30px;
+}
+
+.activityListLeft.relative {
+  position: relative;
+}
+
+.activityListLeft.relative + .activityListRight {
+  display: inline-block;
+  width: 1080px;
+  margin-left: 0;
+  padding-left: 30px;
+}
+
+.activityListLeft.fixed {
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  width: 1280px;
+  margin: auto;
+  z-index: 0;
+}
+
+.activityListLeft.absoluteBottom {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+}
+
+.activityListRight {
+  display: block;
+  width: 100%;
+}
+
+.listTitleWrap {
+  position: relative;
+  padding-top: 28px;
+}
+
+.listTitleWrap h2 {
+  position: relative;
+  padding: 0 20px 18px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
+}
+
+.listTitleWrap h2:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #e9edf3;
+}
+
+.listTitleCategoryExpand {
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  top: 37px;
+  left: 10px;
+  width: 200px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  box-sizing: border-box;
+  border: solid 1px #666;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.listTitleCategoryExpand.active {
+  display: block;
+}
+
+.listTitleCategory li {
+  position: relative;
+  height: 42px;
+}
+
+.listTitleCategory li:first-child:before {
+  display: none;
+}
+
+.listTitleCategory li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #dfe5ed;
+}
+
+.listTitleCategory li:hover {
+  background-color: #f4f6f9;
+}
+
+.listTitleCategory li a {
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+  padding: 0 18px;
+  box-sizing: border-box;
+  line-height: 40px;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.listTitleCategoryWrapper {
+  position: relative;
+  height: 36px;
+  padding: 0 20px 18px;
+}
+
+.listTitleCategoryWrapper.active .listTitleCategoryExpand {
+  display: block;
+}
+
+.listTitleCategoryWrapper:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #e9edf3;
+}
+
+.listTitleCategoryWrapper .listSelectWrap {
+  display: inline-block;
+}
+
+.listTitleCategoryWrapper .buttonCategoryChange {
+  padding: 0 24px 0 0;
+  border: 0;
+  background: transparent;
+  font-size: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.listTitleCategoryWrapper .buttonCategoryChange .listTitle {
+  font-size: 24px;
+  line-height: 26px;
+  color: #000;
+  font-weight: 500;
+}
+
+.listTitleCategoryWrapper .buttonCategoryChange .listCount {
+  position: relative;
+  margin-left: 5px;
+}
+
+.listTitleCategoryWrapper .buttonCategoryChange .listCount:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: -18px;
+  width: 10px;
+  height: 6px;
+  background: url("../images/common/icon-select.png") no-repeat;
+  background-size: 10px auto;
+}
+
+.listCount {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #666;
+  vertical-align: baseline;
+}
+
+.listKeyword {
+  display: inline-block;
+  color: #000;
+  font-size: 16px;
+}
+
+.listKeyword strong {
+  font-weight: 500;
+}
+
+.listKeywordWrapper {
+  padding: 20px 20px 10px;
+}
+
+.listKeywordWrapper .linkAnotherKeyword {
+  position: relative;
+  margin-left: 20px;
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+
+.listKeywordWrapper .linkAnotherKeyword:after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid #333;
+}
+
+.listSortWrap {
+  position: absolute;
+  top: 46px;
+  right: 10px;
+  font-size: 0;
+}
+
+.listSortWrap li {
+  display: inline-block;
+  position: relative;
+  padding: 0 10px;
+}
+
+.listSortWrap li.active button {
+  font-weight: 500;
+}
+
+.listSortWrap li.active button span {
+  font-weight: 500;
+}
+
+.listSortWrap li:before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 1px;
+  height: 15px;
+  background-color: #dfe5ed;
+}
+
+.listSortWrap li:first-child:before {
+  display: none;
+}
+
+.listSortWrap li button {
+  border: none;
+  background: transparent;
+  padding: 2px;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+}
+
+.listFilterWrap {
+  display: none;
+  padding: 10px 0 10px;
+  font-size: 0;
+  white-space: normal;
+}
+
+.listFilterWrap.active {
+  display: block;
+}
+
+.listFilterWrap li {
+  display: inline-block;
+  position: relative;
+  margin: 10px 0 0 10px;
+}
+
+.listFilterWrap li button {
+  height: 30px;
+  padding: 0 26px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  line-height: 28px;
+  background: transparent url("../images/common/icon-category-delete.png") no-repeat right 10px center;
+  cursor: pointer;
+}
+
+.listFilterWrap li button span {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.listProductNoList {
+  padding-top: 190px;
+  text-align: center;
+}
+
+.listProductNoList strong {
+  font-size: 22px;
+  font-weight: 500;
+  color: #000;
+}
+
+.listProductNoList p {
+  margin-top: 36px;
+  font-size: 14px;
+  color: #999;
+}
+
+.listProductNoSearch {
+  padding: 164px 0 1300px;
+  text-align: center;
+}
+
+.listProductNoSearch strong {
+  font-size: 22px;
+  font-weight: 500;
+  color: #000;
+}
+
+.listProductNoSearch p {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #999;
+}
+
+.listProduct > li {
+  position: relative;
+  padding: 0 20px;
+  margin-top: 30px;
+  white-space: normal;
+}
+
+.listProduct > li:first-child {
+  margin-top: 0;
+}
+
+.listProduct > li:first-child:before {
+  display: none;
+}
+
+.listProduct > li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #e9edf3;
+}
+
+.listProduct > li a {
+  display: block;
+  width: 100%;
+  font-size: 0;
+}
+
+.listProductWrap {
+  position: relative;
+  padding: 10px 0 40px;
+}
+
+.productWish {
+  position: absolute;
+  top: 40px;
+  left: 193px;
+  width: 28px;
+  height: 27px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.productWish input[type="checkbox"] {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 3px;
+  height: 3px;
+}
+
+.productWish input[type="checkbox"] + label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/common/icon-heart.png");
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+  background-size: 28px auto;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.productWish.checked input[type="checkbox"] + label {
+  background-position: 5px -40px;
+}
+
+.productImage {
+  background: #ebebeb url("/images/common/noimg_200.jpg") no-repeat center center;
+  background-size: cover;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  width: 220px;
+  height: 160px;
+  margin-top: 30px;
+  border-radius: 10px;
+  vertical-align: top;
+}
+
+.productImage img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productInformation {
+  display: inline-block;
+  width: 560px;
+  margin-top: 10px;
+  vertical-align: top;
+}
+
+.productInformationWrapper {
+  display: inline-block;
+  position: relative;
+  width: 790px;
+  height: 170px;
+  box-sizing: border-box;
+  padding-left: 30px;
+  margin-top: 20px;
+  vertical-align: top;
+}
+
+.productBadge {
+  display: inline-block;
+  height: 24px;
+  border: solid 1px #ccc;
+  padding: 0 8px;
+  margin: 10px 5px 0 0;
+  border-radius: 5px;
+  line-height: 22px;
+  font-size: 12px;
+  color: #666;
+}
+
+.productBadgeList {
+  display: block;
+  width: 572px;
+  margin-bottom: 10px;
+}
+
+.productBadgeList + .productInformation {
+  margin-top: 0;
+}
+
+.productBadgeList + .productInformation .productTitle {
+  margin-top: 0;
+}
+
+.productBadgeList + .productInformation + .productPriceWrapper {
+  margin-top: 0;
+}
+
+.productBadgeList + .productInformation + .productPriceWrapper {
+  height: 124px;
+}
+
+.productTitle {
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin: 0 0 40px;
+  font-size: 18px;
+  color: #000;
+  font-weight: 500;
+}
+
+.productDescriptionWrap {
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  width: 572px;
+}
+
+.productDescription, .productGuide {
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.productDescription {
+  font-size: 14px;
+  color: #666;
+}
+
+.productGuide span {
+  font-size: 14px;
+  color: #666;
+  vertical-align: top;
+}
+
+.productGuide span:before {
+  content: "\00b7";
+  margin: 0 4px;
+  vertical-align: top;
+}
+
+.productGuide span:first-child {
+  padding-left: 0;
+}
+
+.productGuide span:first-child:before {
+  display: none;
+}
+
+.productPrice em,
+.productPrice .productCurrency {
+  font-size: 20px;
+  font-weight: 500;
+  vertical-align: middle;
+  color: #000;
+}
+
+.productPriceWrapper {
+  display: inline-block;
+  position: relative;
+  width: 188px;
+  height: 160px;
+  padding-left: 30px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.productOrigin em,
+.productOrigin .productCurrency {
+  text-decoration: line-through;
+  font-size: 14px;
+  color: #999;
+  vertical-align: middle;
+}
+
+.productOriginWrapper {
+  margin-top: 4px;
+}
+
+.productPercent {
+  margin-left: 10px;
+}
+
+.productPercent em,
+.productPercent .productCurrency {
+  font-size: 16px;
+  color: #dc941b;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.productPercent .productCurrency:after {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 14px;
+  background: url("../images/common/arrow-down.png") no-repeat center center;
+  background-size: auto 14px;
+  margin-left: 4px;
+  vertical-align: -1px;
+}
+
+.productScore {
+  position: absolute;
+  bottom: 3px;
+  left: 30px;
+  width: 100%;
+}
+
+.productReview {
+  display: block;
+  margin-top: 8px;
+}
+
+.productReview em,
+.productReview .productCurrency {
+  display: inline-block;
+  font-size: 14px;
+  color: #666;
+  vertical-align: middle;
+}
+
+.productReview em {
+  position: relative;
+  margin-right: 4px;
+}
+
+.productReview em:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #666;
+}
+
+.productStar {
+  display: inline-block;
+  width: 80px;
+  height: 14px;
+  background: url("../images/common/icon-star-gray.png") repeat-x;
+}
+
+.productStar[data-star="1"] i {
+  width: 16px;
+}
+
+.productStar[data-star="1.5"] i {
+  width: 24px;
+}
+
+.productStar[data-star="2"] i {
+  width: 32px;
+}
+
+.productStar[data-star="2.5"] i {
+  width: 40px;
+}
+
+.productStar[data-star="3"] i {
+  width: 48px;
+}
+
+.productStar[data-star="3.5"] i {
+  width: 56px;
+}
+
+.productStar[data-star="4"] i {
+  width: 64px;
+}
+
+.productStar[data-star="4.5"] i {
+  width: 72px;
+}
+
+.productStar[data-star="5"] i {
+  width: 80px;
+}
+
+.productStar[data-star="5.5"] i {
+  width: 88px;
+}
+
+.productStar i {
+  display: inline-block;
+  height: 14px;
+  background: url("../images/common/icon-star-point.png") repeat-x;
+}
+
+.listProductPagination {
+  position: relative;
+  padding: 50px 0 106px;
+  text-align: center;
+}
+
+.listProductPagination ul {
+  display: inline-block;
+}
+
+.listProductPagination:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #b6bdc7;
+}
+
+.listProductPagination li {
+  display: inline-block;
+  position: relative;
+  width: 45px;
+  height: 45px;
+  vertical-align: top;
+  background-color: #fff;
+  border: solid 1px #b6bdc7;
+  border-left: none;
+  text-align: center;
+}
+
+.listProductPagination li.paginationPrev + li {
+  border-left: solid 1px #b6bdc7;
+}
+
+.listProductPagination li.active a {
+  background-color: #333;
+  font-size: 12px;
+  line-height: 45px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.listProductPagination li.paginationFirst, .listProductPagination li.paginationPrev, .listProductPagination li.paginationLast, .listProductPagination li.paginationNext {
+  text-indent: -9999px;
+}
+
+.listProductPagination li.paginationFirst {
+  border-left: solid 1px #b6bdc7;
+}
+
+.listProductPagination li.paginationFirst:before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 7px solid #333;
+}
+
+.listProductPagination li.paginationFirst:after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 7px solid #333;
+}
+
+.listProductPagination li.paginationLast:before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid #333;
+}
+
+.listProductPagination li.paginationLast:after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid #333;
+}
+
+.listProductPagination li.paginationPrev {
+  margin-right: 10px;
+}
+
+.listProductPagination li.paginationPrev:after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 17px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 7px solid #333;
+}
+
+.listProductPagination li.paginationNext {
+  margin-left: 10px;
+  border-left: solid 1px #b6bdc7;
+}
+
+.listProductPagination li.paginationNext:after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 19px;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 7px solid #333;
+}
+
+.listProductPagination li a {
+  display: block;
+  width: 100%;
+  line-height: 45px;
+  font-size: 12px;
+  color: #333;
+}
+
+.activityListLeft .filterWrapper {
+  width: 200px;
+  padding: 35px 10px 182px;
+  background-color: #f4f6f9;
+  border: solid 1px #e9edf3;
+  border-top: none;
+  border-bottom: none;
+  box-sizing: border-box;
+}
+
+.activityListLeft .filterWrapper > div {
+  position: relative;
+  padding: 30px 10px;
+}
+
+.activityListLeft .filterWrapper > div:first-child {
+  padding: 0 10px 18px;
+}
+
+.activityListLeft .filterWrapper > div:first-child:before {
+  display: none;
+}
+
+.activityListLeft .filterWrapper > div:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #dfe5ed;
+}
+
+.activityListLeft .filterWrapper > div.filterDirect {
+  padding: 20px 10px;
+}
+
+.activityListLeft .filterWrapper > div.filterDirect input[type="checkbox"] {
+  top: 23px;
+  right: 13px;
+}
+
+.activityListLeft .filterWrapper > div.filterDate h3 {
+  margin-bottom: 15px;
+}
+
+.activityListLeft .filterWrapper > div h3 {
+  font-size: 14px;
+  color: #000;
+  font-weight: 500;
+}
+
+.activityListLeft .filterWrapper > div h3 span {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.activityListLeft .layerCalendar {
+  display: none;
+  position: absolute;
+  top: 107px;
+  left: 104px;
+  width: 312px;
+  padding: 20px 0;
+  box-sizing: border-box;
+  border: solid 1px #666;
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 4;
+}
+
+.activityListLeft .layerCalendar.active {
+  display: block;
+  -webkit-animation: calendar-on .3s;
+  animation: calendar-on .3s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.activityListLeft .layerCalendar .datepicker:after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 119px;
+  width: 72px;
+  height: 30px;
+  cursor: default;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel[data-view="days picker"] > ul:first-child {
+  position: relative;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel[data-view="days picker"] > ul:first-child:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #dfe5ed;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel[data-view="days picker"] li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel li[data-view="month prev"], .activityListLeft .layerCalendar .datepicker-panel li[data-view="month next"] {
+  width: 20px;
+  height: 20px;
+  border: none;
+  text-indent: -9999px;
+  padding: 0;
+  background: transparent url("../images/common/arrow-calendar.png") no-repeat;
+  cursor: pointer;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel li[data-view="month prev"] {
+  background-position: center 3px;
+  margin-right: 10px;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel li[data-view="month next"] {
+  background-position: center -32px;
+  margin-left: 10px;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel li[data-view="month current"] {
+  position: relative;
+  font-size: 18px;
+  color: #010101;
+  font-weight: 500;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel ul[data-view="week"] {
+  padding: 24px 15px 10px;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel ul[data-view="week"] li {
+  display: inline-block;
+  width: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #000;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] {
+  padding: 0 15px;
+  white-space: normal;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] li {
+  display: inline-block;
+  position: relative;
+  margin: 3px;
+  width: 34px;
+  height: 34px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] li[data-view="day prev"], .activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] li[data-view="day next"], .activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] li[data-view="day disabled"] {
+  color: #999;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] li:nth-child(7n + 1)[data-view="day prev"], .activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] li:nth-child(7n + 1)[data-view="day next"], .activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] li:nth-child(7n + 1)[data-view="day disabled"] {
+  color: #ffbec0;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] li:nth-child(7n + 1)[data-view="day"] {
+  color: #ef3e43;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] li:nth-child(7n + 1)[data-view="day picked"] {
+  color: #fff;
+}
+
+.activityListLeft .layerCalendar .datepicker-panel ul[data-view="days"] li[data-view="day picked"] {
+  background-color: #ef3e43;
+  color: #fff;
+}
+
+.filterTitle {
+  position: relative;
+}
+
+.filterTitle h2 {
+  font-size: 18px;
+  color: #000;
+  font-weight: 500;
+}
+
+.filterTitle h2 span {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.filterTitle .buttonFilterReset {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  border: none;
+  padding-left: 22px;
+  background: url("../images/common/icon-reset.png") no-repeat 6px center;
+  cursor: pointer;
+}
+
+.filterTitle .buttonFilterReset span {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.filterDirect {
+  position: relative;
+}
+
+.filterDirect label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+
+.filterDirect label span {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.filterDirect input[type="checkbox"] {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.filterDirect input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.filterDirect input[type="checkbox"] + label:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border: solid 1px #b6bdc7;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.filterDirect.checked label:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 4px;
+  width: 12px;
+  height: 10px;
+  background: url("../images/common/icon-check.png") no-repeat;
+  background-size: 11px auto;
+}
+
+.filterDate .dateList {
+  font-size: 0;
+}
+
+.filterDate .dateList li {
+  display: inline-block;
+  position: relative;
+}
+
+.filterDate .dateList li:first-child.active:before {
+  display: none;
+}
+
+.filterDate .dateList li:first-child .buttonFilterDate {
+  border-left: 1px solid #b6bdc7;
+}
+
+.filterDate .dateList li.active .buttonFilterDate span {
+  color: #000;
+  font-weight: 500;
+}
+
+.filterDate .dateList li.active:before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #000;
+}
+
+.filterDate .dateList li.active .buttonFilterDate {
+  border-color: #000;
+}
+
+.filterDate .dateList .buttonFilterDate {
+  height: 32px;
+  padding: 0 10px;
+  border: solid 1px #b6bdc7;
+  box-sizing: border-box;
+  border-radius: 0;
+  border-left: none;
+  background-color: #fff;
+  line-height: 26px;
+  font-size: 14px;
+  color: #999;
+  cursor: pointer;
+}
+
+.filterDate .dateList .buttonFilterDate.buttonSelectDate {
+  padding: 0;
+  width: 63px;
+}
+
+.filterLocationList, .filterCategoryList {
+  display: none;
+}
+
+.filterLocation.active .buttonToggle span:after, .filterCategory.active .buttonToggle span:after {
+  background-position: 0 0;
+}
+
+.filterLocation.active .filterLocationList, .filterCategory.active .filterLocationList {
+  display: block;
+}
+
+.filterLocation.active .filterCategoryList, .filterCategory.active .filterCategoryList {
+  display: block;
+}
+
+.filterLocation.active .buttonMoreLocation, .filterCategory.active .buttonMoreLocation {
+  display: block;
+}
+
+.filterLocation h3, .filterCategory h3 {
+  position: relative;
+  cursor: pointer;
+}
+
+.filterLocation .buttonToggle, .filterCategory .buttonToggle {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  width: 22px;
+  height: 16px;
+  border: none;
+  background-color: transparent;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+
+.filterLocation .buttonToggle span:after, .filterCategory .buttonToggle span:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 12px;
+  height: 6px;
+  background: url("../images/common/arrow-category.png") no-repeat 0 -26px;
+  background-size: 12px auto;
+}
+
+.filterLocation dt, .filterCategory dt {
+  margin-top: 30px;
+  white-space: normal;
+  font-size: 14px;
+  color: #000;
+  font-weight: 500;
+}
+
+.filterLocation dd, .filterCategory dd {
+  position: relative;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #000;
+}
+
+.filterLocation dd input[type="checkbox"], .filterCategory dd input[type="checkbox"] {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+.filterLocation dd input[type="checkbox"] + label, .filterCategory dd input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.filterLocation dd input[type="checkbox"] + label:before, .filterCategory dd input[type="checkbox"] + label:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border: solid 1px #b6bdc7;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.filterLocation dd.checked label:after, .filterCategory dd.checked label:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  width: 12px;
+  height: 10px;
+  background: url("../images/common/icon-check.png") no-repeat;
+  background-size: 11px auto;
+}
+
+.filterLocation dd label, .filterCategory dd label {
+  padding-left: 30px;
+  white-space: normal;
+}
+
+.filterLocation .buttonMoreLocation {
+  display: none;
+  width: 100%;
+  height: 40px;
+  margin-top: 30px;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #b6bdc7;
+  font-size: 14px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.filterPrice .filterSlider {
+  position: relative;
+  height: 3px;
+  width: 158px;
+  margin-top: 34px;
+}
+
+.filterPrice .filterSlider:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 138px;
+  height: 100%;
+  margin-left: -69px;
+  background-color: #cacaca;
+  border-radius: 3px;
+}
+
+.filterPrice .filterSliderBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 3px;
+  background-color: #666;
+  z-index: 1;
+}
+
+.filterPrice .filterSliderRange {
+  position: relative;
+  margin-top: 24px;
+}
+
+.filterPrice .filterSliderRange > div {
+  position: absolute;
+  top: 0;
+  font-size: 12px;
+  color: #000;
+}
+
+.filterPrice .filterSliderRange .priceMin {
+  left: 0;
+}
+
+.filterPrice .filterSliderRange .priceMax {
+  right: 0;
+}
+
+.filterPrice .gripLeft, .filterPrice .gripRight {
+  position: absolute;
+  top: -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.filterSearch label {
+  display: block;
+  position: relative;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.filterSearch label:before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 14px;
+  height: 14px;
+  background: url("../images/common/icon-search-small.png") no-repeat;
+}
+
+.filterSearch label input {
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  font-size: 14px;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #b6bdc7;
+  box-sizing: border-box;
+  padding: 0 32px 0 12px;
+}
+
+.activitySearchWrapper {
+  position: relative;
+  min-width: 1280px;
+  height: 328px;
+  box-sizing: border-box;
+  background: #fff url("/images/pages/activity/home/background-search.jpg") no-repeat center top;
+  background-size: auto 210px;
+  padding: 120px 0 15px;
+}
+
+.activitySearchWrapper h2 {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.activitySearchWrapper.typeSub {
+  height: 80px;
+  background: #63b9ce url("../images/common/background-search-small.jpg") no-repeat center top;
+  padding: 0;
+}
+
+.activitySearchWrapper.typeSub .activitySearchForm {
+  top: 20px;
+  right: 10px;
+  left: auto;
+  width: 310px;
+  height: 40px;
+  margin-left: 0;
+}
+
+.activitySearchWrapper.typeSub .activitySearchFormWrapper {
+  position: absolute;
+  width: 1280px;
+  height: 80px;
+  top: 0;
+  left: 50%;
+  margin-left: -640px;
+}
+
+.activitySearchWrapper.typeSub .activitySearchForm.active {
+  top: 15px;
+  height: auto;
+  border: solid 1px #999;
+  padding-top: 4px;
+  box-sizing: border-box;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
+}
+
+.activitySearchWrapper.typeSub .activitySearchForm.active .activitySearchExpand {
+  height: 310px;
+  padding: 20px 10px 20px 20px;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-animation: search-accordion-sub .3s;
+  animation: search-accordion-sub .3s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.activitySearchWrapper.typeSub .activitySearchForm.active .activitySearchExpand:before {
+  width: 286px;
+  margin-left: -143px;
+}
+
+.activitySearchWrapper.typeSub .activitySearchForm.active label:before {
+  left: 17px;
+}
+
+.activitySearchWrapper.typeSub .activitySearchForm.active .inputSearch {
+  padding-left: 41px;
+}
+
+.activitySearchWrapper.typeSub .activitySearchForm label {
+  display: inline-block;
+  width: 100%;
+}
+
+.activitySearchWrapper.typeSub .activitySearchForm label:before {
+  top: 11px;
+  width: 20px;
+  height: 20px;
+  background: url("../images/common/icon-search-small-color.png") no-repeat 0 center;
+}
+
+.activitySearchWrapper.typeSub .activitySearchForm .inputSearch {
+  height: 40px;
+  padding-left: 42px;
+  font-size: 14px;
+  border: 1px solid #fff;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  line-height: 40px;
+}
+
+.activitySearchWrapper.typeSub .searchTextWrapper > div:first-child h3 {
+  margin-top: 0;
+}
+
+.activitySearchWrapper.typeSub .searchTextWrapper > div h3 {
+  text-indent: 0;
+  margin: 30px 0 20px;
+  font-size: 14px;
+}
+
+.activitySearchWrapper.typeSub .searchTextLocation a {
+  padding-left: 20px;
+}
+
+.activitySearchWrapper.typeSub .searchTextLocation a:before {
+  left: 0;
+  width: 13px;
+  height: 18px;
+  background-size: 13px auto;
+}
+
+.activitySearchWrapper.typeSub .searchText li {
+  margin-top: 18px;
+}
+
+.activitySearchForm {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  width: 544px;
+  height: 50px;
+  border-radius: 50px;
+  margin-left: -272px;
+  background-color: #fff;
+}
+
+.activitySearchForm.active {
+  top: 110px;
+  height: auto;
+  padding-top: 10px;
+  border-radius: 25px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.activitySearchForm.active .inputSearch {
+  border-radius: 25px 25px 0 0;
+  box-shadow: none;
+}
+
+.activitySearchForm.active .activitySearchExpand {
+  display: block;
+  position: relative;
+  max-height: 410px;
+  box-sizing: border-box;
+  padding: 25px 20px;
+  background-color: #fff;
+  border-radius: 0 0 25px 25px;
+  z-index: 1;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  -webkit-animation: search-accordion .3s;
+  animation: search-accordion .3s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.activitySearchForm input[type="search"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.activitySearchForm input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.activitySearchForm input[type="search"]::-webkit-search-decoration, .activitySearchForm input[type="search"]::-webkit-search-cancel-button, .activitySearchForm input[type="search"]::-webkit-search-results-button, .activitySearchForm input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+.activitySearchForm label {
+  display: block;
+  position: relative;
+  width: 544px;
+  margin: 0 auto;
+}
+
+.activitySearchForm label:before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  width: 25px;
+  height: 25px;
+  background: url("../images/common/icon-search.png") no-repeat center center;
+  z-index: 1;
+}
+
+.activitySearchForm .inputSearch {
+  width: 100%;
+  height: 50px;
+  border-radius: 50px;
+  background-color: #fff;
+  border: none;
+  padding: 0 20px 0 60px;
+  box-sizing: border-box;
+  box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.1);
+  color: #000;
+  font-size: 18px;
+  line-height: 50px;
+  outline: none;
+}
+
+.activitySearchForm .inputSearch::-webkit-input-placeholder {
+  color: #999;
+}
+
+.activitySearchForm .inputSearch::placeholder {
+  color: #999;
+}
+
+.activitySearchForm .inputSearch:-ms-input-placeholder {
+  color: #999;
+}
+
+.activitySearchExpand {
+  display: none;
+  overflow: hidden;
+  position: relative;
+  max-height: 0;
+}
+
+.activitySearchExpand:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -252px;
+  width: 504px;
+  height: 1px;
+  background-color: #000;
+}
+
+.searchTags h3 {
+  margin: 15px 0 15px;
+  text-indent: 5px;
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+}
+
+.searchTags h3 .searchTagsTitle {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.searchTags ul {
+  font-size: 0;
+}
+
+.searchTags li {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  vertical-align: top;
+}
+
+.searchTags li a {
+  display: block;
+  padding: 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  color: #333;
+}
+
+.searchTagsWrapper {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 354px;
+  overflow-y: auto;
+}
+
+.searchTagsWrapper.active {
+  display: block;
+}
+
+.searchTagsWrapper > div:first-child h3 {
+  margin-top: 0;
+}
+
+.searchTagsWrapper .buttonRecentRemove {
+  position: absolute;
+  top: 2px;
+  right: 15px;
+  border: none;
+  background: none;
+  padding: 0 5px;
+  color: #666;
+  cursor: pointer;
+}
+
+.searchTagsWrapper .buttonRecentRemove span {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.searchText + .searchText h3 {
+  margin-top: 45px;
+}
+
+.searchText h3 {
+  margin: 20px 0 15px;
+  text-indent: 5px;
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+}
+
+.searchText h3 .searchTagsTitle {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.searchText li {
+  margin-top: 15px;
+}
+
+.searchText li:first-child {
+  margin-top: 0;
+}
+
+.searchText li a {
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+  color: #333;
+  vertical-align: top;
+  line-height: 16px;
+  word-break: break-all;
+}
+
+.searchText li strong {
+  font-weight: 500;
+  color: #1eb19e;
+}
+
+.searchTextWrapper {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 354px;
+  overflow-y: auto;
+}
+
+.searchTextWrapper.active {
+  display: block;
+}
+
+.searchTextWrapper > div:first-child h3 {
+  margin-top: 0;
+}
+
+.searchTextLocation a {
+  padding-left: 28px;
+}
+
+.searchTextLocation a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: 15px;
+  height: 22px;
+  background: url("../images/common/icon-location.png") no-repeat center center;
+}
+
+.searchTextProduct a {
+  padding-left: 5px;
+}
+
+.layer {
+  display: inline-block;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #666;
+  box-sizing: border-box;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.layerPosition {
+  height: 100%;
+  text-align: center;
+}
+
+.layerPosition:before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.layerWrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.layerWrapper.active {
+  display: block;
+  -webkit-animation: layer-on .3s ease-in-out;
+  animation: layer-on .3s ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.layerTitle {
+  position: relative;
+  height: 50px;
+  padding-left: 20px;
+}
+
+.layerTitle strong {
+  font-size: 16px;
+  color: #000;
+  line-height: 48px;
+  font-weight: 500;
+}
+
+.layerTitle:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #dfe5ed;
+}
+
+.layerContent {
+  overflow-y: auto;
+  height: 335px;
+}
+
+.layerContentWrapper {
+  display: inline-block;
+  width: 100%;
+  padding: 30px 30px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+
+.layerContentWrapper .layerSearchForm {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 0 0 0 42px;
+  border-radius: 0;
+  border: 1px solid #000;
+  background: url("../images/common/icon-search-middle.png") no-repeat 15px center;
+  line-height: 38px;
+  font-size: 14px;
+  color: #000;
+}
+
+.layerContentWrapper .layerSearchFormWrapper {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.layerContentWrapper .layerSearchForm::-webkit-input-placeholder {
+  color: #999;
+}
+
+.layerContentWrapper .layerSearchForm::placeholder {
+  color: #999;
+}
+
+.layer .buttonCloseLayer {
+  position: absolute;
+  right: 17px;
+  top: 17px;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border: none;
+  background: url("../images/common/icon-close.png") no-repeat center center;
+  cursor: pointer;
+}
+
+.layer .buttonCloseLayer span {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.layerLocation .layer {
+  width: 630px;
+}
+
+.layerLocation .layerContent {
+  padding-right: 10px;
+}
+
+.layerLocation .layerContent > div {
+  display: table;
+  position: relative;
+  width: 100%;
+}
+
+.layerLocation .layerContent > div:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #dee5eb;
+}
+
+.layerLocation .layerContent > div > div {
+  display: table-cell;
+  box-sizing: border-box;
+}
+
+.layerLocation .layerButtonWrap {
+  padding-top: 30px;
+  font-size: 0;
+  text-align: center;
+}
+
+.layerLocation .layerButtonWrap ul {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.layerLocation .layerButtonWrap li {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+}
+
+.layerLocation .layerButtonWrap li:first-child {
+  margin-left: 0;
+}
+
+.layerLocation .layer .buttonApply, .layerLocation .layer .buttonReset {
+  width: 120px;
+  height: 40px;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.layerLocation .layer .buttonApply span, .layerLocation .layer .buttonReset span {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 38px;
+}
+
+.layerLocation .layer .buttonApply {
+  background-color: #333;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.layerLocation .layer .buttonReset {
+  border: 1px solid #b6bdc7;
+  background: #fff url("../images/common/icon-reset.png") no-repeat 32px center;
+}
+
+.layerLocation .layer .buttonReset span {
+  padding-left: 20px;
+}
+
+.layerLocation .layerFilterNation {
+  width: 80px;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+
+.layerLocation .layerFilterNation strong {
+  color: #1eb19e;
+  font-weight: 500;
+}
+
+.layerLocation .layerFilterCity {
+  font-size: 0;
+  padding-bottom: 20px;
+}
+
+.layerLocation .layerFilterCity li {
+  display: inline-block;
+  position: relative;
+  margin: 20px 0 0 20px;
+  vertical-align: top;
+}
+
+.layerLocation .layerFilterCity li.checked label {
+  font-weight: 500;
+}
+
+.layerLocation .layerFilterCity li label {
+  padding-left: 30px;
+  font-size: 14px;
+  color: #000;
+}
+
+.layerLocation .layerFilterCity li label strong {
+  font-weight: 500;
+  color: #1eb19e;
+}
+
+.layerLocation .layerFilterCity li input[type="checkbox"] {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+.layerLocation .layerFilterCity li input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.layerLocation .layerFilterCity li input[type="checkbox"] + label:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border: solid 1px #b6bdc7;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.layerLocation .layerFilterCity li.checked label:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  width: 12px;
+  height: 10px;
+  background: url("../images/common/icon-check.png") no-repeat;
+  background-size: 11px auto;
+}
+
+.layerLocation .layerFilterNoList {
+  height: 334px;
+  box-sizing: border-box;
+  padding: 80px 0 0 0;
+}
+
+.layerLocation .layerFilterNoList strong {
+  display: block;
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.layerLocation .layerFilterNoList p {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
