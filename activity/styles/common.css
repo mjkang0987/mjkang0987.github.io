@@ -177,38 +177,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
   display: none;
 }
 
-@font-face {
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 300;
-  src: url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Light.eot");
-  src: local(※), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Light.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Light.woff") format("woff"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Light.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 400;
-  src: url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Regular.eot");
-  src: local(※), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Regular.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Regular.woff") format("woff"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Regular.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 500;
-  src: url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Medium.eot");
-  src: local(※), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Medium.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Medium.woff") format("woff"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Medium.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 700;
-  src: url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Bold.eot");
-  src: local(※), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Bold.woff2") format("woff2"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Bold.woff") format("woff"), url("//openimage.interpark.com/.fonts/NotoSansKR/2350.abv2/hinted/NotoSansKR-Bold.otf") format("opentype");
-}
-
 /* gnb변경 ver090601/main.css 같이변경*/
 #wrapBody_sp {
   height: 125px;
