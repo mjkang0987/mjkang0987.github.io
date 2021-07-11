@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>TO DO LIST</title>
+  <meta charset="utf-8">
+  <link
+    rel="stylesheet"
+    href="./todo.css">
+</head>
+<body>
+<i class="background"></i>
+<div class="content">
+  <h1 class="time">00:00:00</h1>
+  <form class="form-name">
+    <label>
+      <input
+        type="text"
+        name="name"
+        placeholder="input your name and enter"
+        required>
+    </label>
+    <input
+      type="submit"
+      value="submit">
+  </form>
+  <form class="form-todo">
+    <label>
+      <input
+        type="text"
+        name="toDo"
+        placeholder="input your to do and enter"
+        required>
+    </label>
+    <input
+      type="submit"
+      value="submit">
+  </form>
+  <div class="toDo">
+    <ul class="toDoList"></ul>
+  </div>
+  <div class="location">
+    <span class="city">--,</span>
+    <span class="temp">--</span>
+    <span class="weather">--</span>
+  </div>
+</div>
+<script src="./todo.js"></script>
+</body>
+</html>
