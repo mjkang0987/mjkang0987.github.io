@@ -1,0 +1,100 @@
+---
+groups:
+    invite: 청첩장
+---
+<%
+const {
+    name       : pkgName,
+    description: pkgDesc,
+    repository : repo
+} = pkgInfo;
+%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title><%= pkgName %></title>
+    <link rel="stylesheet"
+          href="/index/styles/index.css">
+</head>
+<body>
+    <main class="preview">
+        <aside class="aside">
+            <div class="aside-top">
+                <h1 class="aside-title">
+                    <a href="<%= repo.url %>"
+                       target="_blank"><%= pkgName %></a>
+                </h1>
+                <p class="aside-desc"><%= pkgDesc %></p>
+                <div class="aside-search">
+                    <label>
+                        <input type="search"
+                               class="input-search"
+                               placeholder="검색어를 입력하세요.">
+                    </label>
+                </div>
+            </div>
+            <details class="aside-bottom"
+                     open>
+                <summary>Preview Pages</summary>
+                <div class="group">
+                    <%
+                    let index = 0;
+                    for (const [groupKey, groupValue] of list) { %>
+                        <details class="group-wrap"
+                                 open
+                                 data-keywords="<%= groupKey %> <%= groupValue.group %>"
+                                 data-index="<%= index %>">
+                            <summary class="group-name"><%= groupValue.group %></summary>
+                            <ul class="groups">
+                                <% if (!groupValue.pages.size) { %>
+                                    <li class="group-element null">하위 페이지 없음</li>
+                                <% } %>
+                                <% for (const page of groupValue.pages) { %>
+                                    <li class="group-element<%= page.unexposed ? ' disabled' : '' %>">
+                                        <button type="button"
+                                                class="button-preview"
+                                                data-group-key="<%= groupKey %>"
+                                                data-group="<%= groupValue.group %>"
+                                                data-state-key="<%= page.state %>"
+                                                data-state="<%= page.text %>"
+                                                data-token="<%= page.token %>"
+                                                data-href="<%= page.href %>"
+                                                data-keywords="<%= groupKey %> <%= groupValue.group %> <%= page.state %> <%= page.text %>">
+                                            <span class="button-text"><%= page.text %></span>
+                                        </button>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        </details>
+                    <% index++;
+                    } %>
+                    <div class="group-empty">검색 결과 없음</div>
+                </div>
+            </details>
+        </aside>
+        <span class="aside-change"
+              role="slider">
+            <span class="a11y">preview width change</span>
+        </span>
+        <section class="view">
+            <header class="view-header">
+                <strong></strong>
+                <a href="#"
+                   target="_blank">WINDOW OPEN</a>
+            </header>
+            <div class="view-iframe">
+                <iframe src=""
+                        title="타이틀 내용"></iframe>
+            </div>
+        </section>
+    </main>
+    <script type="module"
+            src="/index/scripts/index.js"
+            defer="defer"></script>
+</body>
+</html>
