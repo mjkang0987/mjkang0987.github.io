@@ -348,7 +348,7 @@ const generatorImages = async () => {
 
         const types = {
             jpeg: ['jpeg', 'jpg', 'webp'],
-            jpg : ['jpg', 'webp'],
+            jpg : ['jpeg', 'jpg', 'webp'],
             png : ['png', 'avif', 'webp'],
             webp: ['webp'],
             avif: ['avif']
@@ -363,8 +363,12 @@ const generatorImages = async () => {
         const buffer = await sharp(data)[types[imageType][0]]({quality: qualityOpt})
             .toBuffer();
 
+        if (!fs.existsSync(`${DIST}/${pathObj.dir}`)) {
+            fs.mkdirSync(`${DIST}/${pathObj.dir}`, {recursive: true});
+        }
+
         types[imageType].map((type) => {
-            fs.writeFileSync(`${SRC}/${pathObj.dir}/${pathObj.name}.min.${type}`, buffer, (err) => {
+            fs.writeFileSync(`${DIST}/${pathObj.dir}/${pathObj.name}.${type}`, buffer, (err) => {
                 if (err) {
                     return console.error(err, 'image can not created!');
                 }
