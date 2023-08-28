@@ -1,0 +1,109 @@
+<%
+/**
+ * @type {string}
+ * @example 'https://../../*.${format}' || 'dummy';
+ */
+var source = isString({str: source}) ? source : 'dummy';
+
+/**
+ * width, height
+ * @type {number|undefined}
+ */
+var width = isNumber({num: width}) ? width : 300;
+var height = isNumber({num: height}) ? height : 300;
+
+/**
+ * background, color
+ * @type {string|undefined}
+ * @example ff0000(Hex code without hash, Only used dummy)
+ */
+var background = isString({str: background}) ? background : '';
+var color = isString({src: color}) ? color : '';
+
+/**
+ * @type {string|null}
+ * @example 'lazy' || 'eager(default state)' || null;
+ */
+var loading = isString({str: loading}) ? loading : null;
+
+/**
+ * @type {boolean}
+ * @example true || false;
+ */
+var isBlur = isBlur || false;
+
+/**
+ * @type {string|undefined}
+ */
+var alt = isString({str: alt}) ? alt : '...';
+
+/**
+ * @type {number|undefined}
+ */
+var scale = isNumber({num: scale}) ? (scale > 3 || scale < 0 ? 3 : scale) : 3;
+
+/**
+ * @type {boolean|undefined}
+ */
+var isDraggable = isDraggable || true;
+
+/**
+ * @type {*|*[]}
+ */
+var modernFormats = isArray({arr: modernFormats}) ? modernFormats : [];
+
+const isDummy = source === 'dummy';
+const sourceObject = {};
+
+let isModernFormat = false;
+
+if (!isDummy) {
+    const pattern = /\.(bmp|gif|jpg|jpeg|png|avif|webp)/;
+    const modernPattern = /\.(avif|webp)/;
+    const isMatching = source.match(pattern);
+
+    isModernFormat = source.match(modernPattern);
+
+    const pathObject = source.split('.');
+
+    sourceObject.extension = isMatching ? source.match(pattern)[0] : '';
+    sourceObject.minifyIndex = pathObject.indexOf('min');
+    sourceObject.minify = sourceObject.minifyIndex > -1;
+    sourceObject.sourcePath = !isDummy && isMatching ? pathObject.slice(0, sourceObject.minify ? sourceObject.minifyIndex : pathObject.length - 1) : '';
+}
+
+let arraySource = [];
+
+for (let i = 1; i <= scale; i++) {
+    if (source === 'dummy') {
+        const base = `${process.env.DUMMY_IMG}/${width * i}x${height * i}`;
+        const dummyBackground = background ? `/${background}` : '';
+        const dummyColor = color ? `/${color}` : '';
+
+        arraySource.push(base + dummyBackground + dummyColor);
+    }
+
+    if (source !== 'dummy') {
+        arraySource.push(`${sourceObject.sourcePath}@${i}x${sourceObject.minify ? '.min' : ''}${sourceObject.extension}`);
+    }
+}
+%>
+
+<% if (isModernFormat) { %>
+    <!-- 해당 포맷은 일부 브라우저에서 지원하지 않는 포맷입니다. -->
+<% } %>
+
+<% if (modernFormats.length > 0) {
+    for (let i = 0; i < modernFormats.length; i++) { %>
+    <source type="image/<%= modernFormats[i] %>"
+            srcset="<%= arraySource.reduce((acc, curr, index) => `${acc}${curr.replace(`${sourceObject.extension}`, `.${modernFormats[i]}`)} ${index + 1}x${index < arraySource.length - 1 ? ', ' : ''}`, '').trim(); %>">
+<% }
+    } %>
+<img width="<%= width %>"
+     height="<%= height %>"
+     <%- loading ? `loading="${loading}"` : '' %>
+     src="<%= arraySource[1] %>"
+     srcset="<%= arraySource.reduce((acc, curr, index) => `${acc}${curr} ${index + 1}x${index < arraySource.length - 1 ? ', ' : ''}`, '').trim(); %>"
+     alt="<%= alt %>"
+     <%- !isDraggable ? 'draggable="false"' : '' %>
+     style="filter: blur(<%= !isBlur ? '0px' : '4px'; %>)">
