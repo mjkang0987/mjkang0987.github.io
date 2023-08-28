@@ -1,0 +1,51 @@
+@use "./../../css/partials/components/mixin" as gm;
+@use "./partials/mixin" as m;
+@use "./partials/reset";
+@use "./../../css/partials/components/common";
+
+.preview {
+    display: grid;
+    overflow: hidden;
+    @include m.respond-to(m.$desktop) {
+        grid-template-columns: repeat(1, auto 4px 1fr);
+    }
+    @include m.respond-to(m.$mobile) {
+        grid-template-rows: repeat(1, 195px 1fr);
+    }
+    height: 100%;
+
+    @import "./partials/preview";
+}
+
+.aside {
+    display: grid;
+    @include m.respond-to(m.$desktop) {
+        grid-template-rows: repeat(1, 155px 1fr);
+        min-width: 220px;
+        max-width: 400px;
+    }
+
+    @include m.respond-to(m.$mobile) {
+        grid-template-rows: repeat(1, 155px 40px);
+    }
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+    @import "./partials/aside";
+}
+
+.group {
+    height: 100%;
+
+    @import "./partials/group";
+}
+
+.view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    @import "./partials/view";
+}
