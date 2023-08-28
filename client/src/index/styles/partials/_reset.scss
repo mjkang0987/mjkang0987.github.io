@@ -1,0 +1,53 @@
+@use "./mixin" as m;
+
+body,
+div,
+p,
+span,
+aside,
+section,
+ul,
+li,
+a,
+button,
+img,
+h1,
+h2,
+iframe {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    appearance: none;
+    background-color: transparent;
+    font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", Dotum, "돋움", Arial, sans-serif;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+iframe {
+    border: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: m.$white;
+    font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", Dotum, "돋움", Arial, sans-serif;
+    user-select: none;
+}
