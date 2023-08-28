@@ -1,0 +1,138 @@
+<%
+var index = index;
+
+const contents = ['visual', 'pictures', 'map', 'account'];
+%>
+
+<article class="content content-<%= contents[index] %>" style="display: <%= index === 3 ? 'flex' : 'flex'
+ %>">
+    <% if (index === 0) { %>
+        <span class="visual-text" aria-hidden="true">VISUAL TEXT</span>
+
+        <div class="detail">
+            <div class="division-horizon downUp">
+                <picture class="img">
+                    <%- include(`${process.env.INCLUDE_PATH}/components/_image`, {
+                        width: 400,
+                        height: 500,
+                        alt: '사진'
+                    });%>
+                </picture>
+                <strong class="title">
+                    <span class="text">Text</span>
+                    <span class="text">⭐️</span>
+                    <span class="text">Text</span>
+                </strong>
+            </div>
+            <p class="desc downUp">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+        </div>
+    <% } %>
+    <% if (index === 1) { %>
+        <%
+            const width = [
+                [150, 300],
+                [350, 300],
+                [400, 300],
+                [300, 300],
+                [200, 500],
+                [160, 90],
+                [90, 160],
+                [150, 100]
+            ]
+        %>
+        <ul class="grids">
+            <% for(let i = 0; i < 7; i++) { %>
+                <li class="grid grid-<%= i + 1 %>">
+                    <button type="button"
+                            class="btn-slide"
+                            aria-haspopup="dialog"
+                            aria-controls="layer-slide">
+                        <%- include(`${process.env.INCLUDE_PATH}/components/_image`, {
+                            width: width[i][0],
+                            height: width[i][1],
+                            loading: 'lazy'
+                        }); %>
+                        <span class="badges">
+                            <% ['orange', 'violet', 'blue'].map((b) => { %>
+                            <span class="badge badge-<%= b %>">#<%= b %></span>
+                            <% }); %>
+                        </span>
+                    </button>
+                </li>
+            <% } %>
+        </ul>
+
+        <div id="layer-slide"
+             class="layer"
+             role="dialog"
+             aria-modal="true"
+             aria-label="Photos layer"
+             tabindex="-1">
+            <div class="slide-wrap">
+                <div class="slides">
+                    <ul>
+                        <% for(let i = 0; i < 7; i++) { %>
+                            <li class="slide">
+                                <picture class="img">
+                                    <%- include(`${process.env.INCLUDE_PATH}/components/_image`, {
+                                        width: width[i][0],
+                                        height: width[i][1],
+                                        loading: 'lazy'
+                                    }); %>
+                                </picture>
+                                <%= i + 1 %>
+                            </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <button type="button" aria-label="close">닫기</button>
+        </div>
+    <% } %>
+    <% if (index === 2) { %>
+        <div id="map" class="map"></div>
+    <% } %>
+    <% if (index === 3) { %>
+        <div class="account-wrap">
+            <ul class="accounts">
+            <%
+                const namesKR = ['가', '나', '다', '라'];
+                const namesEN = ['a', 'b', 'c', 'd'];
+                for (let i = 0; i < 4; i++) {  %>
+                    <li class="account">
+                        <strong class="title"><%= namesKR[i] %></strong>
+                        <span class="text">
+                            <%= i %>-<%= namesEN[i] %>
+                            <input type="text" id="<%= namesEN[i] %>" class="a11y" aria-label="<%= namesKR[i] %>" value="<%= i %>-<%= namesEN[i] %>" aria-hidden="true" readonly>
+                        </span>
+
+                        <button type="button"
+                                class="btn-copy"
+                                aria-controls="<%= namesEN[i] %>">
+                            COPY
+                        </button>
+                    </li>
+                <% } %>
+                <li class="account">
+                    <strong class="title">공유하기</strong>
+                    <span class="text">
+                            공유하기
+                            <input type="text" id="share-url" class="a11y" aria-label="URL 공유하기" value="" aria-hidden="true" readonly>
+                        </span>
+
+                    <button type="button"
+                            class="btn-share"
+                            aria-controls="share-url">
+                        SHARE
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="eun">냥냥냥냥녕냥</div>
+    <% } %>
+    <% if (index === 4) { %>
+        <figure class="img-wrap">
+            <%- include(`${process.env.INCLUDE_PATH}/components/_image`) %>
+        </figure>
+    <% } %>
+</article>

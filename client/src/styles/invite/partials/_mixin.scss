@@ -1,0 +1,74 @@
+@use "sass:math";
+
+$fontVisual: 100vw;
+$fontTitle: 24px;
+$fontBody: 18px;
+$fontSub: 14px;
+$fontMini: 10px;
+
+$black: #111;
+$gray: #898989;
+$white: #fff;
+
+$mobile: 300;
+
+$headerHeight: 60px;
+
+$imgPath: '';
+//$imgPath: 'https://mjkang0987.github.io/client/dist';
+
+@function vw($val) {
+    @return math.div($val, $mobile) * 100vw;
+}
+
+@mixin fonts($val) {
+    @if ($val == "m") {
+        font-family: MapoFlowerIsland, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
+    } @else {
+        font-family: Pretendard, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
+    }
+}
+
+@mixin respond-to($media) {
+    @media all and #{$media} {
+        @content;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes downUp {
+    0% {
+        transform: translateY(20px);
+    }
+
+    80% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes rightLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200%);
+    }
+}

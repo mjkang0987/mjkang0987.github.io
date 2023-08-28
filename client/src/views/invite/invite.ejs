@@ -1,0 +1,24 @@
+---
+group: invite
+state:
+    default: 기본
+---
+<!DOCTYPE html>
+<head>
+    <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_head`, {
+        title: 'EUN && JIWOO',
+        desc: '✨EUN && JIWOO Wedding Ceremony'
+    }); %>
+    <link rel="stylesheet" href="<%= process.env.BASE_PATH %>/styles/invite/styles<%= process.env.MINIFY %>.css<%= `?${setTimestamp()}`; %>">
+</head>
+<body>
+    <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_header`); %>
+    <main role="main">
+        <% for(let i = 0; i < 5; i++) { %>
+            <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_contents`, {index: i}); %>
+        <% } %>
+    </main>
+    <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_footer`); %>
+    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=hd2fu3fh50&submodules=geocoder"></script>
+    <script src="<%= process.env.BASE_PATH; %>/scripts/invite/scripts<%= process.env.MINIFY %>.js<%= `?${setTimestamp()}`; %>" defer></script>
+</body>
