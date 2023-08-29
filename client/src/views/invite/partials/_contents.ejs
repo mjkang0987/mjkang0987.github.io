@@ -7,10 +7,10 @@ const contents = ['visual', 'pictures', 'map', 'account'];
 <article class="content content-<%= contents[index] %>" style="display: <%= index === 3 ? 'flex' : 'flex'
  %>">
     <% if (index === 0) { %>
-        <span class="visual-text" aria-hidden="true">VISUAL TEXT</span>
+        <span class="visual-text" aria-hidden="true">EUN &amp; JIWOO WEDDING</span>
 
         <div class="detail">
-            <div class="division-horizon downUp">
+            <div class="img-wrap downUp">
                 <picture class="img">
                     <%- include(`${process.env.INCLUDE_PATH}/components/_image`, {
                         width: 400,
@@ -18,13 +18,15 @@ const contents = ['visual', 'pictures', 'map', 'account'];
                         alt: '사진'
                     });%>
                 </picture>
-                <strong class="title">
-                    <span class="text">Text</span>
-                    <span class="text">⭐️</span>
-                    <span class="text">Text</span>
-                </strong>
+                <strong>2024년 2월 3일 토요일 오후 13:20<br>신도림 웨스턴 베니비스</strong>
             </div>
-            <p class="desc downUp">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+            <p class="desc downUp">
+                두 사람의 사랑은 한마음으로 시작되었고,
+                <br>이제는 그 사랑으로 하나의 삶을 만들어가기로 결심했습니다.
+                <br><br>김은과 강지우의 행복한 여정에 함께 참여해 주시기를 간청드립니다.
+                <br>.<br>.<br>.
+                <br><br>은, 그리고 지우 드림.
+            </p>
         </div>
     <% } %>
     <% if (index === 1) { %>

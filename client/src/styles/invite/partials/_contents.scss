@@ -19,6 +19,7 @@
                 isolation: isolate;
                 animation: rightLeft 40s linear infinite;
                 opacity: .2;
+                @include m.fonts("a");
             }
         }
 
@@ -32,7 +33,7 @@
                 height: 100%;
                 background-image: url("#{m.$imgPath}/images/invite/bg.jpg");
                 background-size: cover;
-                filter: contrast(120%) grayscale(5%);
+                filter: contrast(-10%);
                 pointer-events: none;
             }
 
@@ -51,7 +52,8 @@
 
             .detail {
                 position: relative;
-                padding: m.vw(80) m.vw(14) 0;
+                width: 100%;
+                padding: m.vw(30) m.vw(14) 0;
                 isolation: isolate;
                 z-index: 1;
 
@@ -96,13 +98,41 @@
             .img {
                 flex-shrink: 0;
                 overflow: hidden;
-                width: m.vw(120);
-                margin-right: m.vw(15);
-                border-radius: 10px;
-                border: 4px solid rgb(255 255 255 / .5);
-                box-sizing: border-box;
+                width: 80%;
+                max-width: 500px;
+                border-radius: 5px;
+                border: solid rgb(255 255 255 / .9);
+                border-width: 10px 10px 100px;
                 aspect-ratio: 1;
                 box-shadow: 0 0 10px 0 rgb(0 0 0 / .2);
+                @include m.respond-to(map-get(m.$max, 360)) {
+                    border-bottom-width: m.vw(80);
+                }
+
+                &-wrap {
+                    display: flex;
+                    justify-content: center;
+                    position: relative;
+                    margin: 0 auto;
+
+                    strong {
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        position: absolute;
+                        left: 50%;
+                        bottom: 20px;
+                        text-align: center;
+                        transform: translateX(-50%);
+                        font-size: m.$fontSubTitle;
+                        line-height: 140%;
+
+                        @include m.respond-to(map-get(m.$max, 360)) {
+                            bottom: 15px;
+                            font-size: m.vw(14);
+                        }
+                    }
+                }
 
                 img {
                     width: 100%;
@@ -115,14 +145,18 @@
             .desc {
                 display: flex;
                 flex-wrap: wrap;
+                justify-content: center;
+                max-width: 600px;
                 width: 100%;
                 padding: m.vw(40) 0;
+                margin: 0 auto;
                 text-align: center;
                 font-size: m.$fontBody;
+                line-height: 200%;
                 font-weight: 400;
                 font-style: italic;
                 color: m.$gray;
-                @include m.fonts("m");
+                word-break: keep-all;
 
                 &:before,
                 &:after {
@@ -132,6 +166,7 @@
                     height: m.vw(30);
                     box-sizing: border-box;
                     font-size: m.vw(40);
+                    line-height: 100%;
                 }
 
                 &:before {
@@ -140,7 +175,7 @@
 
                 &:after {
                     content: "”";
-                    padding-top: m.vw(15);
+                    margin-top: m.vw(20);
                 }
             }
         }
@@ -428,102 +463,6 @@
         }
     }
 
-    .circle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        border: 6px solid #d9d9d9;
-        width: 100px;
-        height: 100px;
-        border-radius: 50px;
-        margin: 30px auto;
-        box-sizing: border-box;
-
-        &[data-radius="0"] {
-            .graph {
-                &:before {
-                    display: none;
-                }
-            }
-        }
-
-        .graph {
-            --deg: 0deg;
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            width: calc(100% + 12px);
-            height: calc(100% + 12px);
-            border-radius: 100%;
-            background-image: conic-gradient(#f6330a var(--deg), #f6330a var(--deg), transparent var(--deg), transparent var(--deg));
-
-            &:before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 50%;
-                width: 6px;
-                height: 6px;
-                border-radius: 3px;
-                background-color: #f6330a;
-                transform: translateX(-50%);
-            }
-        }
-
-        .endDot {
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            width: calc(100% + 12px);
-            height: calc(100% + 12px);
-            border-radius: 100%;
-
-            &:after {
-                content: "";
-                position: absolute;
-                top: 51%;
-                left: 51%;
-                width: 6px;
-                height: 6px;
-                margin: -4px;
-                border-radius: 100%;
-                background-color: #f6330a;
-                transform: translate(47px);
-            }
-        }
-
-        .circle_badge {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 100%;
-            background-color: rgb(0 0 0);
-        }
-    }
-
-    .bar {
-        display: flex;
-        gap: 10px;
-        align-items: flex-end;
-        overflow: hidden;
-        width: 50%;
-        height: 400px;
-        background-color: #fff;
-        padding: 40px 20px 0;
-        box-sizing: border-box;
-
-        .graph {
-            flex: 1;
-            height: 100%;
-            background-color: #f6330a;
-            border-radius: 5px 5px 0 0;
-            transform: translateY(100%);
-        }
-    }
-
     .downUp {
         opacity: 0;
     }
@@ -545,14 +484,6 @@
         .grid {
             opacity: .3;
             transform: scale(1);
-        }
-    }
-
-    .division {
-        &-horizon {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
         }
     }
 
