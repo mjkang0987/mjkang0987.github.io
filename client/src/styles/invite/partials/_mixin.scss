@@ -2,6 +2,7 @@
 
 $fontVisual: 100vw;
 $fontTitle: 24px;
+$fontSubTitle: 20px;
 $fontBody: 18px;
 $fontSub: 14px;
 $fontMini: 10px;
@@ -14,8 +15,32 @@ $mobile: 300;
 
 $headerHeight: 60px;
 
-$imgPath: '';
-//$imgPath: 'https://mjkang0987.github.io/client/dist';
+//$imgPath: '';
+$imgPath: 'https://mjkang0987.github.io/client/dist';
+
+$w300: 300px;
+$w360: 360px;
+$w767: 767px;
+$w768: 768px;
+$w1023: 1023px;
+$w1024: 1024px;
+$w1200: 1200px;
+$w1279: 1279px;
+$w1280: 1280px;
+
+$max: (
+    360: 'max-width: #{$w360}',
+    767: 'max-width: #{$w767}',
+    1023: 'max-width: #{$w1023}',
+    1279: 'max-width: #{$w1279}'
+);
+
+$min: (
+    768: 'min-width: #{$w768}',
+    1024: 'min-width: #{$w1024}',
+    1200: 'min-width: #{$w1200}',
+    1280: 'min-width: #{$w1280}'
+);
 
 @function vw($val) {
     @return math.div($val, $mobile) * 100vw;
@@ -29,9 +54,15 @@ $imgPath: '';
     }
 }
 
-@mixin respond-to($media) {
-    @media all and #{$media} {
-        @content;
+@mixin respond-to($valMin, $valMax: false) {
+    @if ($valMax) {
+        @media (#{$valMin}) and (#{$valMax}) {
+            @content;
+        }
+    } @else {
+        @media (#{$valMin}) {
+            @content;
+        }
     }
 }
 
