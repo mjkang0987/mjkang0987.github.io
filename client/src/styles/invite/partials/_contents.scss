@@ -115,39 +115,28 @@
             .img {
                 flex-shrink: 0;
                 overflow: hidden;
-                width: 80%;
-                max-width: 500px;
-                border-radius: 5px;
-                border: solid rgb(255 255 255 / .9);
-                border-width: 10px 10px 100px;
+                width: 100%;
                 aspect-ratio: 1;
-                box-shadow: 0 0 10px 0 rgb(0 0 0 / .2);
-                @include m.respond-to(map-get(m.$max, 360)) {
-                    border-bottom-width: m.vw(80);
-                }
+                background-color: m.$white;
 
                 &-wrap {
                     display: flex;
+                    flex-direction: column;
                     justify-content: center;
+                    align-items: center;
+                    max-width: 500px;
                     position: relative;
+                    border: 10px solid m.$white;
                     margin: 0 auto;
+                    box-shadow: 0 0 10px 0 rgb(0 0 0 / .2);
 
                     strong {
                         display: flex;
                         justify-content: center;
-                        width: 100%;
-                        position: absolute;
-                        left: 50%;
-                        bottom: 20px;
+                        padding: 25px 20px 10px;
                         text-align: center;
-                        transform: translateX(-50%);
                         font-size: m.$fontSubTitle;
                         line-height: 140%;
-
-                        @include m.respond-to(map-get(m.$max, 360)) {
-                            bottom: 15px;
-                            font-size: m.vw(14);
-                        }
                     }
                 }
 
