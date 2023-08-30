@@ -103,6 +103,23 @@ const JS = (() => {
         console.log(text.join(''), ...style);
     };
 
+    const setDays = () => {
+        const timer = document.querySelector('.timer-count');
+        const current = new Date();
+        const weddingDay = new Date('2024-2-3');
+
+        const diff = weddingDay - current;
+
+        const diffDay = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const diffHour = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const diffMin = Math.floor((diff / (1000 * 60)) % 60);
+        const diffSec = Math.floor(diff / 1000 % 60);
+
+        if (timer) {
+            timer.textContent = `${diffDay}일 ${diffHour}시간 ${diffMin}분 ${diffSec}초`;
+        }
+    };
+
     const copyright = () => {
         const year = document.querySelector('.copy-year');
         const share = document.getElementById('share-url');
@@ -958,6 +975,7 @@ const JS = (() => {
         // setGraph();
         // print();
         // setMap();
+        setInterval(setDays, 1000);
 
         scrollEvent();
 
