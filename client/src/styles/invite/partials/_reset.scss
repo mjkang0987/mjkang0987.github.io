@@ -58,7 +58,7 @@ body {
 body,
 input,
 button {
-    @include m.fonts("a");
+    @include m.fonts("m");
     font-weight: 100;
     letter-spacing: -.4px;
 }
