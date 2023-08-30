@@ -50,7 +50,7 @@ const contents = ['visual', 'pictures', 'map', 'account'];
             <% for(let i = 0; i < 7; i++) { %>
                 <li class="grid grid-<%= i + 1 %>">
                     <button type="button"
-                            class="btn-slide"
+                            class="button-slide"
                             aria-haspopup="dialog"
                             aria-controls="layer-slide">
                         <%- include(`${process.env.INCLUDE_PATH}/components/_image`, {
