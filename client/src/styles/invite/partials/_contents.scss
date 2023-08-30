@@ -484,11 +484,29 @@
         opacity: 0;
     }
 
+    .spin {
+        opacity: 0;
+        transform: rotateY(-90deg);
+    }
+
     .active {
         .downUp {
             animation-name: downUp, fadeIn;
             animation-duration: .5s, .7s;
-            animation-timing-function: ease-in-out;
+            animation-timing-function: cubic-bezier(.2,.81,.6,1);
+            animation-fill-mode: forwards;
+
+            @for $i from 0 to 11 {
+                &:nth-child(#{$i + 1}) {
+                    animation-delay: #{($i) * .3}s;
+                }
+            }
+        }
+
+        .spin {
+            animation-name: spin, fadeIn;
+            animation-duration: 1.5s, 1.8s;
+            animation-timing-function: cubic-bezier(.2,.81,.6,1);
             animation-fill-mode: forwards;
 
             @for $i from 0 to 11 {
