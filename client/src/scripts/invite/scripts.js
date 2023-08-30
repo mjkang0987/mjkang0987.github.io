@@ -948,7 +948,7 @@ const JS = (() => {
         const setLayer = bindLayer();
 
         setLayer({
-            trigger: '.btn-slide',
+            trigger: '.button-slide',
             target : '#layer-slide'
         });
 
