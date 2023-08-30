@@ -92,7 +92,7 @@ const JS = (() => {
 
     const print = () => {
         const text = [
-            '%cKIM EUN%c && %cKANG JIWOO'
+            '%cEUN%c & %cJIWOO'
         ];
         const style = [
             'background-color: rgb(106, 116, 249); color: #fff; padding: 2px 4px;',
