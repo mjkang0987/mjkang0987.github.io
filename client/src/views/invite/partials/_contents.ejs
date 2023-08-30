@@ -10,7 +10,11 @@ const contents = ['visual', 'pictures', 'map', 'account'];
         <span class="visual-text" aria-hidden="true">EUN &amp; JIWOO WEDDING</span>
 
         <div class="detail">
-            <div class="img-wrap downUp">
+            <div class="timer downUp">
+                <strong class="timer-title">가족이 되기까지 남은 시간</strong>
+                <p class="timer-count">----</p>
+            </div>
+            <div class="img-wrap spin">
                 <picture class="img">
                     <%- include(`${process.env.INCLUDE_PATH}/components/_image`, {
                         width: 400,
