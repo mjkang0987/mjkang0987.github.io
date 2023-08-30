@@ -92,7 +92,7 @@ const JS = (() => {
 
     const print = () => {
         const text = [
-            '%cKIM EUN%c && %cKANG JIWOO'
+            '%cEUN%c & %cJIWOO'
         ];
         const style = [
             'background-color: rgb(106, 116, 249); color: #fff; padding: 2px 4px;',
@@ -101,6 +101,23 @@ const JS = (() => {
         ];
 
         console.log(text.join(''), ...style);
+    };
+
+    const setDays = () => {
+        const timer = document.querySelector('.timer-count');
+        const current = new Date();
+        const weddingDay = new Date('2024-2-3');
+
+        const diff = weddingDay - current;
+
+        const diffDay = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const diffHour = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const diffMin = Math.floor((diff / (1000 * 60)) % 60);
+        const diffSec = Math.floor(diff / 1000 % 60);
+
+        if (timer) {
+            timer.textContent = `${diffDay}일 ${diffHour}시간 ${diffMin}분 ${diffSec}초`;
+        }
     };
 
     const copyright = () => {
@@ -836,45 +853,6 @@ const JS = (() => {
         });
     };
 
-    const setGraph = () => {
-        (() => {
-            const setCircleGraph = () => {
-                const circle = document.querySelector('.circle');
-                const circleGraph = circle.querySelector('.graph');
-
-                const endDot = circle.querySelector('.endDot');
-                const count = Number(circle.dataset.count);
-
-                /* Calculate count to degrees */
-                const deg = 360 * (count / 20);
-
-                /* Calculate visual element degrees based on initial value */
-                endDot.style.transform = `rotate(${deg - 90}deg)`;
-
-                /* Change CSS custom properties */
-                circleGraph.style.setProperty('--deg', `${deg}deg`);
-            };
-
-            const setBarGraph = () => {
-                const bar = document.querySelector('.bar');
-                const barGraphs = bar.querySelectorAll('.graph');
-
-                const total = [...barGraphs].map(b => Number(b.dataset.count));
-
-                /* Get maximum count */
-                const max = Math.max(...total);
-
-                /* Define position to percent of each bar based on its maximum count */
-                for (let i = 0; i < barGraphs.length; i++) {
-                    barGraphs[i].style.transform = `translateY(${100 - (total[i] / max * 100)}%)`;
-                }
-            };
-
-            setCircleGraph();
-            setBarGraph();
-        })();
-    };
-
     const setToast = (msg, trigger, timing = 3000) => {
         let toast = BODY.querySelector('.layer-toast');
 
@@ -954,10 +932,9 @@ const JS = (() => {
 
     const init = () => {
         setCurrent();
+        print();
 
-        // setGraph();
-        // print();
-        // setMap();
+        setInterval(setDays, 1000);
 
         scrollEvent();
 
@@ -971,7 +948,7 @@ const JS = (() => {
         const setLayer = bindLayer();
 
         setLayer({
-            trigger: '.btn-slide',
+            trigger: '.button-slide',
             target : '#layer-slide'
         });
 

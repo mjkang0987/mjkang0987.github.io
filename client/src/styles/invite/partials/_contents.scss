@@ -53,7 +53,7 @@
             .detail {
                 position: relative;
                 width: 100%;
-                padding: m.vw(30) m.vw(14) 0;
+                padding: m.vw(10) m.vw(14) 0;
                 isolation: isolate;
                 z-index: 1;
 
@@ -65,6 +65,23 @@
                     width: 100vw;
                     height: 100%;
                     background-color: #fff;
+                }
+            }
+
+            .timer {
+                padding: m.vw(10) 0;
+                font-size: m.$fontTitle;
+                font-weight: 900;
+                color: m.$white;
+                text-align: center;
+
+                &-title {
+                    font-size: m.$fontBody;
+                }
+
+                &-count {
+                    font-size: m.$fontTitle;
+                    padding-top: 5px;
                 }
             }
 
@@ -98,39 +115,28 @@
             .img {
                 flex-shrink: 0;
                 overflow: hidden;
-                width: 80%;
-                max-width: 500px;
-                border-radius: 5px;
-                border: solid rgb(255 255 255 / .9);
-                border-width: 10px 10px 100px;
+                width: 100%;
                 aspect-ratio: 1;
-                box-shadow: 0 0 10px 0 rgb(0 0 0 / .2);
-                @include m.respond-to(map-get(m.$max, 360)) {
-                    border-bottom-width: m.vw(80);
-                }
+                background-color: m.$white;
 
                 &-wrap {
                     display: flex;
+                    flex-direction: column;
                     justify-content: center;
+                    align-items: center;
+                    max-width: 500px;
                     position: relative;
+                    border: 10px solid m.$white;
                     margin: 0 auto;
+                    box-shadow: 0 0 10px 0 rgb(0 0 0 / .2);
 
                     strong {
                         display: flex;
                         justify-content: center;
-                        width: 100%;
-                        position: absolute;
-                        left: 50%;
-                        bottom: 20px;
+                        padding: 25px 20px 10px;
                         text-align: center;
-                        transform: translateX(-50%);
                         font-size: m.$fontSubTitle;
                         line-height: 140%;
-
-                        @include m.respond-to(map-get(m.$max, 360)) {
-                            bottom: 15px;
-                            font-size: m.vw(14);
-                        }
                     }
                 }
 
@@ -257,7 +263,7 @@
                 }
             }
 
-            .btn-slide {
+            .button-slide {
                 display: flex;
                 width: 100%;
                 height: 100%;
@@ -333,7 +339,7 @@
                 }
             }
 
-            .btn-copy {
+            .button-copy {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -443,7 +449,7 @@
             font-weight: 700;
             background-color: rgb(255 255 255 / .9);
             border-radius: 5px;
-            box-shadow: 0 0 50px 0 rgb(0 0 0 / .3);
+            box-shadow: 0 0 20px 0 rgb(0 0 0 / .1);
             opacity: 0;
             transform: translate(-50%, 30px);
             transition: opacity .5s ease-in-out, transform .3s ease-in-out;
@@ -467,11 +473,29 @@
         opacity: 0;
     }
 
+    .spin {
+        opacity: 0;
+        transform: rotateY(-90deg);
+    }
+
     .active {
         .downUp {
             animation-name: downUp, fadeIn;
             animation-duration: .5s, .7s;
-            animation-timing-function: ease-in-out;
+            animation-timing-function: cubic-bezier(.2,.81,.6,1);
+            animation-fill-mode: forwards;
+
+            @for $i from 0 to 11 {
+                &:nth-child(#{$i + 1}) {
+                    animation-delay: #{($i) * .3}s;
+                }
+            }
+        }
+
+        .spin {
+            animation-name: spin, fadeIn;
+            animation-duration: 1.5s, 1.8s;
+            animation-timing-function: cubic-bezier(.2,.81,.6,1);
             animation-fill-mode: forwards;
 
             @for $i from 0 to 11 {

@@ -112,7 +112,7 @@
         "html-validate": "^7.18.1",
         "js-beautify": "^1.14.9",
         "nodemon": "^2.0.22",
-        "postcss": "^8.4.28",
+        "postcss": "^8.4.29",
         "postcss-cli": "^10.1.0",
         "postcss-nested": "^6.0.1",
         "postcss-sort-media-queries": "^5.2.0",
@@ -121,6 +121,6 @@
         "stylelint": "^15.10.3",
         "stylelint-config-recommended-scss": "^10.0.0",
         "stylelint-scss": "^4.7.0",
-        "terser": "^5.19.2"
+        "terser": "^5.19.3"
     }
 }
