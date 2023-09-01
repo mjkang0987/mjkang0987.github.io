@@ -157,6 +157,12 @@
 @include c.contents;
 
 .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
     isolation: isolate;
     background-color: m.$white;
+    font-size: m.$fontSub;
+    @include m.fonts("a");
 }
