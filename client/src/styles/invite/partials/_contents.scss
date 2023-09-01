@@ -289,6 +289,7 @@
             }
 
             .badge {
+                @include m.fonts("a");
                 transform: translateY(-10px);
                 transition: transform .3s ease-in-out;
 
@@ -633,8 +634,8 @@
                     box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2) inset;
                 }
             }
-                }
-            }
+        }
+    }
 
     .fix-address {
         display: flex;
