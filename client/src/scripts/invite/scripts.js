@@ -106,7 +106,7 @@ const JS = (() => {
     const setDays = () => {
         const timer = document.querySelector('.timer-count');
         const current = new Date();
-        const weddingDay = new Date('2024-2-3');
+        const weddingDay = new Date(2024, 2, 3, 13, 20, 0);
 
         const diff = weddingDay - current;
 
