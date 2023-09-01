@@ -191,6 +191,14 @@
         &-pictures {
             display: flex;
             z-index: 10;
+
+            &.active {
+                ~ .fix-address {
+                    opacity: 1;
+                    pointer-events: auto;
+                    z-index: 10;
+                }
+            }
         }
 
         .grid {
@@ -624,6 +632,26 @@
                     box-shadow: 2px 2px 2px 0 rgb(0 0 0 / .3) inset;
                 }
             }
+
+    .fix-address {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        font-size: m.$fontBody;
+        background-color: rgb(255 255 255 / .8);
+        opacity: 0;
+        pointer-events: none;
+
+        address {
+            font-style: normal;
         }
     }
 }
