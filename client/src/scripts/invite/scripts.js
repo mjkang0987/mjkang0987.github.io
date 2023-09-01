@@ -106,7 +106,7 @@ const JS = (() => {
     const setDays = () => {
         const timer = document.querySelector('.timer-count');
         const current = new Date();
-        const weddingDay = new Date('2024-2-3');
+        const weddingDay = new Date(2024, 2, 3, 13, 20, 0);
 
         const diff = weddingDay - current;
 
@@ -762,18 +762,18 @@ const JS = (() => {
 
     const setMap = () => {
         const address = [
-            '서울 마포구 월드컵북로50길 9',
-            '서울시 마포구 상암동 41-10',
-            '2층 오카야'
+            '서울 구로구 새말로 97',
+            '서울시 구로구 구로동 3-25',
+            '신도림 테크노마트 7층 '
         ];
 
-        const link = 'https://naver.me/5y4oecGP';
+        const link = 'https://naver.me/xUStXdcX';
 
         const arrayMarker = [
             '<div class="address-wrap">',
             '    <ul class="addresses">',
-            `        <li class="address"><strong class="title">도로명주소</strong>${address[0]} ${address[2]}</li>`,
-            `        <li class="address"><strong class="title">지번주소</strong>${address[1]} ${address[2]}</li>`,
+            `        <li class="address"><strong class="title">도로명주소</strong><address>${address[0]} ${address[2]}</li></address>`,
+            `        <li class="address"><strong class="title">지번주소</strong><address>${address[1]} ${address[2]}</li></address>`,
             '    </ul>',
             `    <a href="${link}" class="link" target="_blank">네이버 지도 바로가기</a>`,
             '    <span class="marker">',
@@ -933,6 +933,7 @@ const JS = (() => {
     const init = () => {
         setCurrent();
         print();
+        setMap();
 
         setInterval(setDays, 1000);
 
