@@ -234,6 +234,7 @@ li {
   cursor: pointer;
   background-color: #fff;
   transform: rotate(90deg);
+  font-family: Pretendard, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
 }
 .button-info:before {
   content: ":P";
@@ -359,6 +360,7 @@ li {
   border: 10px solid #fff;
   margin: 0 auto;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 }
 .content-visual .img-wrap strong {
   display: flex;
@@ -367,6 +369,7 @@ li {
   text-align: center;
   font-size: 20px;
   line-height: 140%;
+  background-color: #fff;
 }
 .content-visual .img img {
   width: 100%;
@@ -408,6 +411,12 @@ li {
 }
 .content-pictures {
   display: flex;
+  z-index: 10;
+}
+.content-pictures.active ~ .fix-address {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 10;
 }
 .content .grid {
   display: flex;
@@ -498,6 +507,7 @@ li {
   pointer-events: none;
 }
 .content .grid .badge {
+  font-family: Pretendard, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
   transform: translateY(-10px);
   transition: transform 0.3s ease-in-out;
 }
@@ -787,7 +797,8 @@ li {
 }
 
 .map {
-  width: 100vw;
+  margin: 30px auto;
+  width: 100%;
   aspect-ratio: 16/9;
 }
 
@@ -857,10 +868,37 @@ li {
   border-radius: 6px;
   background-color: #fff;
   transform: translateX(-50%);
-  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.3) inset;
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2) inset;
+}
+
+.fix-address {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  pointer-events: none;
+}
+.fix-address address {
+  font-style: normal;
 }
 
 .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
   isolation: isolate;
   background-color: #fff;
+  font-size: 14px;
+  font-family: Pretendard, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
 }
