@@ -134,6 +134,7 @@
         cursor: pointer;
         background-color: #fff;
         transform: rotate(90deg);
+        @include m.fonts("a");
 
         &:before {
             content: ":P";
