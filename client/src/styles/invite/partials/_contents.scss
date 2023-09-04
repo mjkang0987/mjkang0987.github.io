@@ -7,6 +7,12 @@
         background-color: #fff;
         isolation: isolate;
 
+        > .title {
+            font-size: m.$fontTitle;
+            display: flex;
+            padding: 20px;
+        }
+
         .visual {
             &-text {
                 position: fixed;
@@ -190,6 +196,7 @@
 
         &-pictures {
             display: flex;
+            flex-direction: column;
             z-index: 10;
 
             &.active {
@@ -306,6 +313,12 @@
 
         &-account {
             flex-direction: column;
+        }
+
+        &-map {
+            flex-direction: column;
+            justify-content: center;
+            z-index: 11;
         }
 
         .account {

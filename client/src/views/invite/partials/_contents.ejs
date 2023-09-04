@@ -46,6 +46,7 @@ const contents = ['visual', 'pictures', 'map', 'account'];
                 [150, 100]
             ]
         %>
+        <strong class="title downUp">제주도에서</strong>
         <ul class="grids">
             <% for(let i = 0; i < 7; i++) { %>
                 <li class="grid grid-<%= i + 1 %>">
@@ -96,9 +97,11 @@ const contents = ['visual', 'pictures', 'map', 'account'];
         </div>
     <% } %>
     <% if (index === 2) { %>
+        <strong class="title downUp">오시는 길</strong>
         <div id="map" class="map"></div>
     <% } %>
     <% if (index === 3) { %>
+        <strong class="title downUp">마음 전하실 곳</strong>
         <div class="account-wrap">
             <ul class="accounts">
             <%
