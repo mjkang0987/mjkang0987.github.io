@@ -106,7 +106,7 @@ const JS = (() => {
     const setDays = () => {
         const timer = document.querySelector('.timer-count');
         const current = new Date();
-        const weddingDay = new Date(2024, 2, 3, 13, 20, 0);
+        const weddingDay = new Date(2024, 1, 3, 13, 20, 0);
 
         const diff = weddingDay - current;
 
@@ -772,8 +772,8 @@ const JS = (() => {
         const arrayMarker = [
             '<div class="address-wrap">',
             '    <ul class="addresses">',
-            `        <li class="address"><strong class="title">도로명주소</strong><address>${address[0]} ${address[2]}</li></address>`,
-            `        <li class="address"><strong class="title">지번주소</strong><address>${address[1]} ${address[2]}</li></address>`,
+            `        <li class="address"><strong class="title">도로명주소</strong><address>${address[0]}<br>${address[2]}</li></address>`,
+            `        <li class="address"><strong class="title">지번주소</strong><address>${address[1]}<br>${address[2]}</li></address>`,
             '    </ul>',
             `    <a href="${link}" class="link" target="_blank">네이버 지도 바로가기</a>`,
             '    <span class="marker">',

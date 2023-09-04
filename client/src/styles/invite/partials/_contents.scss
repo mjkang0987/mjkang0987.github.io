@@ -7,6 +7,12 @@
         background-color: #fff;
         isolation: isolate;
 
+        > .title {
+            font-size: m.$fontTitle;
+            display: flex;
+            padding: 20px;
+        }
+
         .visual {
             &-text {
                 position: fixed;
@@ -190,6 +196,7 @@
 
         &-pictures {
             display: flex;
+            flex-direction: column;
             z-index: 10;
 
             &.active {
@@ -244,7 +251,7 @@
 
             &s {
                 display: grid;
-                gap: m.vw(2);
+                gap: 10px;
                 width: 100%;
                 max-width: 1200px;
                 margin: 0 auto;
@@ -306,6 +313,12 @@
 
         &-account {
             flex-direction: column;
+        }
+
+        &-map {
+            flex-direction: column;
+            justify-content: center;
+            z-index: 11;
         }
 
         .account {
@@ -555,14 +568,13 @@
     }
 
     .map {
-        margin: 30px auto;
         width: 100%;
         aspect-ratio: 16 / 9;
+        max-height: 60vh;
     }
 
     .address {
         display: flex;
-        white-space: nowrap;
         font-size: m.$fontSub;
 
         + .address {
@@ -581,6 +593,7 @@
             left: 50%;
             bottom: 100%;
             margin-bottom: 10px;
+            width: 280px;
             max-width: 90vw;
             background-color: rgb(255 255 255 / .9);
             box-shadow: 0 0 10px rgb(0 0 0 / .3);
