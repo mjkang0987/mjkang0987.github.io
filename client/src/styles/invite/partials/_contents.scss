@@ -575,7 +575,6 @@
 
     .address {
         display: flex;
-        white-space: nowrap;
         font-size: m.$fontSub;
 
         + .address {
@@ -594,6 +593,7 @@
             left: 50%;
             bottom: 100%;
             margin-bottom: 10px;
+            width: 280px;
             max-width: 90vw;
             background-color: rgb(255 255 255 / .9);
             box-shadow: 0 0 10px rgb(0 0 0 / .3);
