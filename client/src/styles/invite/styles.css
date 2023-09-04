@@ -214,7 +214,7 @@ li {
   backdrop-filter: blur(2px);
   padding: 0 20px;
   box-sizing: border-box;
-  z-index: 2;
+  z-index: 11;
 }
 .header .title {
   font-weight: 900;
@@ -254,6 +254,11 @@ li {
   min-height: calc(100vh - 60px);
   background-color: #fff;
   isolation: isolate;
+}
+.content > .title {
+  font-size: 24px;
+  display: flex;
+  padding: 20px;
 }
 .content .visual-text {
   position: fixed;
@@ -411,6 +416,7 @@ li {
 }
 .content-pictures {
   display: flex;
+  flex-direction: column;
   z-index: 10;
 }
 .content-pictures.active ~ .fix-address {
@@ -457,7 +463,7 @@ li {
 }
 .content .grids {
   display: grid;
-  gap: 0.6666666667vw;
+  gap: 10px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -521,6 +527,11 @@ li {
 }
 .content-account {
   flex-direction: column;
+}
+.content-map {
+  flex-direction: column;
+  justify-content: center;
+  z-index: 11;
 }
 .content .account {
   display: flex;
@@ -797,14 +808,13 @@ li {
 }
 
 .map {
-  margin: 30px auto;
   width: 100%;
   aspect-ratio: 16/9;
+  max-height: 60vh;
 }
 
 .address {
   display: flex;
-  white-space: nowrap;
   font-size: 14px;
 }
 .address + .address {
@@ -821,6 +831,7 @@ li {
   left: 50%;
   bottom: 100%;
   margin-bottom: 10px;
+  width: 280px;
   max-width: 90vw;
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
