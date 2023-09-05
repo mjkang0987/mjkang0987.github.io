@@ -2,6 +2,30 @@
 @use "./mixin" as m;
 
 @mixin contents {
+    @property --seconds {
+        syntax: "<integer>";
+        initial-value: 0;
+        inherits: false;
+    }
+
+    @property --minutes {
+        syntax: "<integer>";
+        initial-value: 0;
+        inherits: false;
+    }
+
+    @property --hours {
+        syntax: "<integer>";
+        initial-value: 0;
+        inherits: false;
+    }
+
+    @property --days {
+        syntax: "<integer>";
+        initial-value: 0;
+        inherits: false;
+    }
+
     .content {
         min-height: calc(100vh - #{m.$headerHeight});
         background-color: #fff;
@@ -86,8 +110,41 @@
                 }
 
                 &-count {
-                    font-size: m.$fontTitle;
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: nowrap;
                     padding-top: 5px;
+                    gap: 4px;
+                    font-size: m.$fontTitle;
+                    transform: translateZ(0);
+
+                    li {
+                        display: flex;
+                    }
+
+                    $timers: days, hours, minutes, seconds;
+                    $sixteen: 60;
+                    @each $timer in $timers {
+                        .#{$timer} {
+                            .number {
+                                @if ($timer == minutes) {
+                                    animation: #{$timer} #{$sixteen * $sixteen}s steps($sixteen, jump-none) infinite;
+                                } @else if ($timer == hours) {
+                                    animation: #{$timer} #{$sixteen * $sixteen * 24}s steps(24, jump-none) infinite;
+                                } @else if ($timer == days) {
+                                    animation: #{$timer} #{$sixteen * $sixteen * 24 * 365}s steps(365, jump-none) infinite;
+                                } @else {
+                                    animation: #{$timer} #{$sixteen}s steps($sixteen, jump-none) infinite;
+                                }
+                                animation-delay: var(--delay-#{$timer}, 0s);
+                                counter-reset: #{$timer} var(--#{$timer});
+
+                                &::before {
+                                    content: counter(#{$timer}, decimal-leading-zero) " ";
+                                }
+                            }
+                        }
+                    }
                 }
             }
 

@@ -105,18 +105,46 @@ const JS = (() => {
 
     const setDays = () => {
         const timer = document.querySelector('.timer-count');
-        const current = new Date();
-        const weddingDay = new Date(2024, 1, 3, 13, 20, 0);
+        const children = timer.children;
+        const childrenLength = children.length;
 
+        const current = new Date();
+        const weddingDay = new Date(2024, 1, 3, 13, 20);
         const diff = weddingDay - current;
 
-        const diffDay = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const diffHour = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const diffMin = Math.floor((diff / (1000 * 60)) % 60);
-        const diffSec = Math.floor(diff / 1000 % 60);
+        const minuteToSeconds = 60;
+        const dayToSeconds = minuteToSeconds * minuteToSeconds * 24;
+        const yearsToSeconds = dayToSeconds * 365;
+        const hourToSeconds = minuteToSeconds * minuteToSeconds;
 
-        if (timer) {
-            timer.textContent = `${diffDay}일 ${diffHour}시간 ${diffMin}분 ${diffSec}초`;
+        const objDiff = {
+            days   : Math.floor(diff / (dayToSeconds * 1000)),
+            hours  : Math.floor((diff / (hourToSeconds * 1000)) % 24),
+            minutes: Math.floor((diff / (minuteToSeconds * 1000)) % 60),
+            seconds: Math.floor((diff / 1000) % 60)
+        };
+
+        const {
+            days,
+            hours,
+            minutes,
+            seconds
+        } = objDiff;
+
+        const objDiffToSecond = {};
+
+        objDiffToSecond.seconds = -Math.abs(minuteToSeconds - seconds);
+        objDiffToSecond.minutes = -Math.abs(hourToSeconds - (minutes * 60) - 59 - (objDiffToSecond.seconds));
+        objDiffToSecond.hours = -Math.abs(dayToSeconds - (hours * hourToSeconds) + objDiffToSecond.minutes);
+        objDiffToSecond.days = -Math.abs(yearsToSeconds - (days * dayToSeconds) + objDiffToSecond.hours);
+
+        if (!timer) {
+            return;
+        }
+
+        for (let i = 0; i < childrenLength; i++) {
+            const className = children[i].classList.value;
+            timer.style.setProperty(`--delay-${className}`, `${Number(objDiffToSecond[className])}s`);
         }
     };
 
@@ -935,7 +963,7 @@ const JS = (() => {
         print();
         setMap();
 
-        setInterval(setDays, 1000);
+        setDays();
 
         scrollEvent();
 
