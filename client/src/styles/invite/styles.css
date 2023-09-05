@@ -37,6 +37,38 @@
     transform: rotateY(0);
   }
 }
+@keyframes days {
+  from {
+    --days: 364;
+  }
+  to {
+    --days: 0;
+  }
+}
+@keyframes hours {
+  from {
+    --hours: 23;
+  }
+  to {
+    --hours: 0;
+  }
+}
+@keyframes minutes {
+  from {
+    --minutes: 59;
+  }
+  to {
+    --minutes: 0;
+  }
+}
+@keyframes seconds {
+  from {
+    --seconds: 59;
+  }
+  to {
+    --seconds: 0;
+  }
+}
 @font-face {
   font-family: "Pretendard";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff") format("woff");
@@ -69,6 +101,7 @@ h1,
 div,
 p,
 ul,
+ol,
 li,
 button,
 figure,
@@ -215,6 +248,7 @@ li {
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 11;
+  display: none;
 }
 .header .title {
   font-weight: 900;
@@ -250,6 +284,26 @@ li {
   content: ":D";
 }
 
+@property --seconds {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --minutes {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --hours {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --days {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
 .content {
   min-height: calc(100vh - 60px);
   background-color: #fff;
@@ -322,8 +376,48 @@ li {
   font-size: 18px;
 }
 .content-visual .timer-count {
-  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
   padding-top: 5px;
+  gap: 4px;
+  font-size: 24px;
+  transform: translateZ(0);
+}
+.content-visual .timer-count li {
+  display: flex;
+}
+.content-visual .timer-count .days .number {
+  animation: days 31536000s steps(365, jump-none) infinite;
+  animation-delay: var(--delay-days, 0s);
+  counter-reset: days var(--days);
+}
+.content-visual .timer-count .days .number::before {
+  content: counter(days, decimal-leading-zero) " ";
+}
+.content-visual .timer-count .hours .number {
+  animation: hours 86400s steps(24, jump-none) infinite;
+  animation-delay: var(--delay-hours, 0s);
+  counter-reset: hours var(--hours);
+}
+.content-visual .timer-count .hours .number::before {
+  content: counter(hours, decimal-leading-zero) " ";
+}
+.content-visual .timer-count .minutes .number {
+  animation: minutes 3600s steps(60, jump-none) infinite;
+  animation-delay: var(--delay-minutes, 0s);
+  counter-reset: minutes var(--minutes);
+}
+.content-visual .timer-count .minutes .number::before {
+  content: counter(minutes, decimal-leading-zero) " ";
+}
+.content-visual .timer-count .seconds .number {
+  animation: seconds 60s steps(60, jump-none) infinite;
+  animation-delay: var(--delay-seconds, 0s);
+  counter-reset: seconds var(--seconds);
+}
+.content-visual .timer-count .seconds .number::before {
+  content: counter(seconds, decimal-leading-zero) " ";
 }
 .content-visual .title {
   flex: 1;
