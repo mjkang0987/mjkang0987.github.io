@@ -1,11 +1,10 @@
 <%
 var index = index;
 
-const contents = ['visual', 'pictures', 'map', 'account'];
+const contents = ['visual', 'pictures', 'map', 'account', 'eun'];
 %>
 
-<article class="content content-<%= contents[index] %>" style="display: <%= index === 3 ? 'flex' : 'flex'
- %>">
+<article class="content content-<%= contents[index] %>">
     <% if (index === 0) { %>
         <span class="visual-text" aria-hidden="true">EUN &amp; JIWOO WEDDING</span>
 
@@ -51,7 +50,7 @@ const contents = ['visual', 'pictures', 'map', 'account'];
                 [150, 100]
             ]
         %>
-        <strong class="title downUp">제주도에서</strong>
+        <strong class="title">은, 그리고 지우</strong>
         <ul class="grids">
             <% for(let i = 0; i < 7; i++) { %>
                 <li class="grid grid-<%= i + 1 %>">
@@ -102,11 +101,11 @@ const contents = ['visual', 'pictures', 'map', 'account'];
         </div>
     <% } %>
     <% if (index === 2) { %>
-        <strong class="title downUp">오시는 길</strong>
+        <strong class="title">오시는 길</strong>
         <div id="map" class="map"></div>
     <% } %>
     <% if (index === 3) { %>
-        <strong class="title downUp">마음 전하실 곳</strong>
+        <strong class="title">마음 전하실 곳</strong>
         <div class="account-wrap">
             <ul class="accounts">
             <%

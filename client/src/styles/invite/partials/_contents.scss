@@ -27,14 +27,20 @@
     }
 
     .content {
-        min-height: calc(100vh - #{m.$headerHeight});
+        display: flex;
+        justify-content: center;
+        min-height: calc(90vh - #{m.$headerHeight});
         background-color: #fff;
         isolation: isolate;
 
         > .title {
-            font-size: m.$fontTitle;
             display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
+            box-sizing: border-box;
+            font-size: m.$fontTitle;
         }
 
         .visual {
@@ -162,7 +168,7 @@
                 .text {
                     display: flex;
                     width: 100%;
-                    font-size: m.vw(24);
+                    font-size: m.vw(20);
                     isolation: isolate;
 
                     &:nth-of-type(2) {
@@ -252,9 +258,9 @@
         }
 
         &-pictures {
-            display: flex;
             flex-direction: column;
-            z-index: 10;
+            justify-content: center;
+            z-index: 12;
 
             &.active {
                 ~ .fix-address {
@@ -375,6 +381,7 @@
         &-map {
             flex-direction: column;
             justify-content: center;
+            background-color: #fafafa;
             z-index: 11;
         }
 
@@ -626,8 +633,10 @@
 
     .map {
         width: 100%;
-        aspect-ratio: 16 / 9;
-        max-height: 60vh;
+        aspect-ratio: 3 / 2;
+        max-height: 70vh;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .address {
@@ -714,12 +723,13 @@
         align-items: center;
         gap: 10px;
         width: 100%;
-        padding: 20px;
+        padding: 10px;
         box-sizing: border-box;
         position: sticky;
-        bottom: 0;
+        bottom: calc(constant(safe-area-inset-bottom) + 12px);
+        bottom: calc(env(safe-area-inset-bottom) + 12px);
         left: 0;
-        font-size: m.$fontBody;
+        font-size: m.$fontSub;
         background-color: rgb(255 255 255 / .8);
         opacity: 0;
         pointer-events: none;
