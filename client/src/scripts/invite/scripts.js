@@ -913,7 +913,7 @@ const JS = (() => {
     };
 
     const setShare = () => {
-        const buttons = document.querySelectorAll('.btn-copy, .btn-share');
+        const buttons = document.querySelectorAll('.button-copy, .button-share');
 
         if (buttons.length === 0) {
             return;
