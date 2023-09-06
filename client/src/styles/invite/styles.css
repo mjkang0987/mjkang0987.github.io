@@ -140,6 +140,13 @@ a:active {
   opacity: 0.9;
 }
 
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+
 img {
   display: block;
 }
@@ -248,7 +255,6 @@ li {
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 11;
-  display: none;
 }
 .header .title {
   font-weight: 900;
@@ -305,14 +311,20 @@ li {
   inherits: false;
 }
 .content {
-  min-height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  min-height: calc(90vh - 60px);
   background-color: #fff;
   isolation: isolate;
 }
 .content > .title {
-  font-size: 24px;
   display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
+  box-sizing: border-box;
+  font-size: 24px;
 }
 .content .visual-text {
   position: fixed;
@@ -433,7 +445,7 @@ li {
 .content-visual .title .text {
   display: flex;
   width: 100%;
-  font-size: 8vw;
+  font-size: 6.6666666667vw;
   isolation: isolate;
 }
 .content-visual .title .text:nth-of-type(2) {
@@ -509,9 +521,9 @@ li {
   margin-top: 6.6666666667vw;
 }
 .content-pictures {
-  display: flex;
   flex-direction: column;
-  z-index: 10;
+  justify-content: center;
+  z-index: 12;
 }
 .content-pictures.active ~ .fix-address {
   opacity: 1;
@@ -625,6 +637,7 @@ li {
 .content-map {
   flex-direction: column;
   justify-content: center;
+  background-color: #fafafa;
   z-index: 11;
 }
 .content .account {
@@ -903,8 +916,10 @@ li {
 
 .map {
   width: 100%;
-  aspect-ratio: 16/9;
-  max-height: 60vh;
+  aspect-ratio: 3/2;
+  max-height: 70vh;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .address {
@@ -983,12 +998,13 @@ li {
   align-items: center;
   gap: 10px;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
   position: sticky;
-  bottom: 0;
+  bottom: calc(constant(safe-area-inset-bottom) + 12px);
+  bottom: calc(env(safe-area-inset-bottom) + 12px);
   left: 0;
-  font-size: 18px;
+  font-size: 14px;
   background-color: rgba(255, 255, 255, 0.8);
   opacity: 0;
   pointer-events: none;
