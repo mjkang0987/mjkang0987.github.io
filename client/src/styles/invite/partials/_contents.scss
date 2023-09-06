@@ -256,9 +256,9 @@
         }
 
         &-pictures {
-            display: flex;
             flex-direction: column;
-            z-index: 10;
+            justify-content: center;
+            z-index: 12;
 
             &.active {
                 ~ .fix-address {
