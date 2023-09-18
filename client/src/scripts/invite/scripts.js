@@ -940,7 +940,9 @@ const JS = (() => {
 
             if (isNavigatorShare) {
                 window.navigator.share({
-                    title: document.title
+                    title: document.title,
+                    text: document.head.querySelector('meta[name="description"]').content,
+                    url: window.location.origin + window.location.pathname
                 }).then(() => {
                     console.log('Share URL');
                 }).catch(console.error);
