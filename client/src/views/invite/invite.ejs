@@ -1,13 +1,15 @@
 ---
 group: invite
+meta:
+    title: 김은과 강지우 결혼식 모바일 청첩장
+    desc: ✨김은과 강지우의 결혼식 모바일 청첩장입니다.
 state:
     default: 기본
 ---
 <!DOCTYPE html>
 <head>
     <%- include(`${process.env.INCLUDE_PATH}/components/_head`, {
-        title: '은&지우 결혼식 모바일 청첩장',
-        desc: '✨EUN & JIWOO wedding ceremony invite'
+        title: '김은과 강지우 결혼식 모바일 청첩장'
     }); %>
     <link rel="stylesheet" href="<%= process.env.BASE_PATH %>/styles/invite/styles<%= process.env.MINIFY %>.css<%= `?${setTimestamp()}`; %>">
 </head>
