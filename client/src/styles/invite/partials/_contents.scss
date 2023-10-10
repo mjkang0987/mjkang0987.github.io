@@ -30,7 +30,6 @@
         display: flex;
         justify-content: center;
         min-height: calc(90vh - #{m.$headerHeight});
-        background-color: #fff;
         isolation: isolate;
 
         > .title {
@@ -41,71 +40,18 @@
             padding: 20px;
             box-sizing: border-box;
             font-size: m.$fontTitle;
-        }
-
-        .visual {
-            &-text {
-                position: fixed;
-                top: 60px;
-                left: 100%;
-                font-size: m.vw(100);
-                font-weight: 900;
-                color: m.$white;
-                white-space: nowrap;
-                isolation: isolate;
-                animation: rightLeft 40s linear infinite;
-                opacity: .2;
-                @include m.fonts("a");
-            }
+            color: #fff;
         }
 
         &-visual {
-            &:before {
-                content: "";
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-image: url("#{m.$imgPath}/images/invite/bg.jpg");
-                background-size: cover;
-                filter: contrast(-10%);
-                pointer-events: none;
-            }
-
-            $top: m.vw(150);
-
-            &:after {
-                content: "";
-                position: fixed;
-                top: calc($top + 60px);
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #fff;
-                pointer-events: none;
-            }
-
             .detail {
                 position: relative;
                 width: 100%;
-                padding: m.vw(10) m.vw(14) 0;
                 isolation: isolate;
                 z-index: 1;
-
-                &:before {
-                    content: "";
-                    position: absolute;
-                    top: m.vw(150);
-                    left: 0;
-                    width: 100vw;
-                    height: 100%;
-                    background-color: #fff;
-                }
             }
 
             .timer {
-                padding: m.vw(10) 0;
                 font-size: m.$fontTitle;
                 font-weight: 900;
                 color: m.$white;
@@ -261,14 +207,6 @@
             flex-direction: column;
             justify-content: center;
             z-index: 12;
-
-            &.active {
-                ~ .fix-address {
-                    opacity: 1;
-                    pointer-events: auto;
-                    z-index: 10;
-                }
-            }
         }
 
         .grid {
@@ -276,10 +214,9 @@
             flex-direction: column;
             position: relative;
             width: 100%;
-            opacity: 0;
             cursor: pointer;
-            transform: scale(.95);
-            transition: opacity .3s ease-in-out, transform .4s ease-in-out;
+            opacity: .3;
+            transform: scale(1);
 
             &:after {
                 content: "";
@@ -294,8 +231,9 @@
             }
 
             &:hover {
-                transition-delay: 0s;
                 opacity: 1;
+                transition: opacity .3s ease-in-out, transform .4s ease-in-out;
+                transition-delay: 0s;
 
                 .badge {
                     transform: translateY(0);
@@ -381,8 +319,6 @@
         &-map {
             flex-direction: column;
             justify-content: center;
-            background-color: #fafafa;
-            z-index: 11;
         }
 
         .account {
@@ -560,43 +496,30 @@
 
     .downUp {
         opacity: 0;
+        animation-name: downUp, fadeIn;
+        animation-duration: .5s, .7s;
+        animation-timing-function: cubic-bezier(.2, .81, .6, 1);
+        animation-fill-mode: forwards;
+
+        @for $i from 0 to 11 {
+            &:nth-child(#{$i + 1}) {
+                animation-delay: #{($i) * .3}s;
+            }
+        }
     }
 
     .spin {
         opacity: 0;
         transform: rotateY(-90deg);
-    }
+        animation-name: spin, fadeIn;
+        animation-duration: 1.5s, 1.8s;
+        animation-timing-function: cubic-bezier(.2, .81, .6, 1);
+        animation-fill-mode: forwards;
 
-    .active {
-        .downUp {
-            animation-name: downUp, fadeIn;
-            animation-duration: .5s, .7s;
-            animation-timing-function: cubic-bezier(.2,.81,.6,1);
-            animation-fill-mode: forwards;
-
-            @for $i from 0 to 11 {
-                &:nth-child(#{$i + 1}) {
-                    animation-delay: #{($i) * .3}s;
-                }
+        @for $i from 0 to 11 {
+            &:nth-child(#{$i + 1}) {
+                animation-delay: #{($i) * .3}s;
             }
-        }
-
-        .spin {
-            animation-name: spin, fadeIn;
-            animation-duration: 1.5s, 1.8s;
-            animation-timing-function: cubic-bezier(.2,.81,.6,1);
-            animation-fill-mode: forwards;
-
-            @for $i from 0 to 11 {
-                &:nth-child(#{$i + 1}) {
-                    animation-delay: #{($i) * .3}s;
-                }
-            }
-        }
-
-        .grid {
-            opacity: .3;
-            transform: scale(1);
         }
     }
 
@@ -736,6 +659,100 @@
 
         address {
             font-style: normal;
+        }
+    }
+
+    .background {
+        &s {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        $particleNum: 200;
+        $particleColor: hsl(180, 100%, 80%);
+
+        position: absolute;
+        transform: translateY(-10vh);
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+
+        .circle {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            mix-blend-mode: screen;
+            background-image: radial-gradient(
+                    hsl(0, 0%, 100%),
+                    hsl(0, 0%, 100%) 10%,
+                    hsla(180, 100%, 80%, 0) 56%
+            );
+
+            animation: fadein-frames 200ms infinite, scale-frames 2s infinite;
+
+            @keyframes fade-frames {
+                0% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0.7;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes scale-frames {
+                0% {
+                    transform: scale3d(0.4, 0.4, 1);
+                }
+
+                50% {
+                    transform: scale3d(2.2, 2.2, 1);
+                }
+
+                100% {
+                    transform: scale3d(0.4, 0.4, 1);
+                }
+            }
+        }
+
+        $particleBaseSize: 4;
+
+        @for $i from 1 through $particleNum {
+            &:nth-child(#{$i}) {
+                $circleSize: math.random($particleBaseSize);
+                width: $circleSize + px;
+                height: $circleSize + px;
+
+                $startPositionY: math.random(10) + 100;
+                $framesName: "move-frames-" + $i;
+                $moveDuration: 48000 + math.random(9000) + ms;
+
+                animation-name: #{$framesName};
+                animation-duration: $moveDuration;
+                animation-delay: math.random(37000) + ms;
+
+                @keyframes #{$framesName} {
+                    from {
+                        transform: translate3d(math.random(100) + vw, $startPositionY + vh, 0);
+                    }
+
+                    to {
+                        transform: translate3d(math.random(100) + vw, -$startPositionY - math.random(30) + vh, 0);
+                    }
+                }
+
+                .circle {
+                    animation-delay: math.random(8000) + ms;
+                }
+            }
         }
     }
 }

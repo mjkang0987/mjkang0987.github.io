@@ -1,13 +1,15 @@
 ---
 group: invite
+meta:
+    title: 김은과 강지우 결혼식 모바일 청첩장
+    desc: ✨김은과 강지우의 결혼식 모바일 청첩장입니다.
 state:
     default: 기본
 ---
 <!DOCTYPE html>
 <head>
     <%- include(`${process.env.INCLUDE_PATH}/components/_head`, {
-        title: '은&지우 결혼식 모바일 청첩장',
-        desc: '✨EUN & JIWOO wedding ceremony invite'
+        title: '김은과 강지우 결혼식 모바일 청첩장'
     }); %>
     <link rel="stylesheet" href="<%= process.env.BASE_PATH %>/styles/invite/styles<%= process.env.MINIFY %>.css<%= `?${setTimestamp()}`; %>">
 </head>
@@ -17,9 +19,12 @@ state:
         <% for(let i = 0; i < 5; i++) { %>
             <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_contents`, {index: i}); %>
         <% } %>
-        <div class="fix-address">
-            <address>신도림 테크노마트 7층 웨스턴 베니비스 다이너스티홀</address>
-            <a href="https://naver.me/xUStXdcX" target="_blank">네이버 지도 바로가기</a>
+        <div class="backgrounds">
+            <% for (let i = 100; i--;) { %>
+                <span class="background">
+                    <span class="circle"></span>
+                </span>
+            <% } %>
         </div>
     </main>
     <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_footer`); %>

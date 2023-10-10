@@ -59,24 +59,6 @@ const JS = (() => {
         };
     };
 
-    const IO = (callback = () => {}, opts) => {
-        const observer = new IntersectionObserver((entries, observer) => {
-            callback(entries);
-        }, opts);
-
-        return {
-            observe(target) {
-                observer.observe(target);
-            },
-            unobserve(target) {
-                observer.unobserve(target);
-            },
-            disconnect() {
-                observer.disconnect();
-            }
-        };
-    };
-
     const now = new Date();
 
     const currentDate = {
@@ -841,29 +823,6 @@ const JS = (() => {
                 anchorSkew: true
             });
         });
-    };
-
-    const contentsObserver = () => {
-        const safetyAreaActive = (window.innerHeight / 100) * 20;
-        const safetyAreaOff = (window.innerHeight / 100) * 40;
-        const headerHeight = document.querySelector('.header')?.clientHeight;
-        const contents = document.querySelectorAll('.content');
-
-        for (let i = 0; i < contents.length; i++) {
-            if (scrollTop > contents[i].offsetTop - headerHeight - safetyAreaActive) {
-                contents[i].classList.add('active');
-            }
-
-            if (scrollTop < contents[i].offsetTop - headerHeight - safetyAreaOff) {
-                contents[i].classList.remove('active');
-            }
-        }
-    };
-
-    const scrollEvent = () => {
-        scrollTop = window.scrollY;
-
-        contentsObserver();
     };
 
     const scrollMove = (target, value) => {

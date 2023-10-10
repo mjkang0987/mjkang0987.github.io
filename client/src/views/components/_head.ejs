@@ -1,6 +1,9 @@
 <%
-var title = title;
-var desc = desc;
+var pageFm = pageFm || {};
+var meta = pageFm.meta || {};
+var title = title || '';
+var metaTitle = meta.title || title || '';
+var metaDesc = meta.desc || '';
 var img = img;
 %>
 <meta charset="utf-8">
@@ -8,14 +11,14 @@ var img = img;
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="format-detection" content="telephone=no, address=no, email=no"/>
-<meta name="title" content="<%= title %>" />
-<meta name="description" content="<%= desc %>" />
+<meta name="title" content="<%= metaTitle %>" />
+<meta name="description" content="<%= metaDesc %>" />
 <meta property="og:url" content="https://mjkang0987.github.io" />
-<meta property="og:title" content="<%= title %>" />
+<meta property="og:title" content="<%= metaTitle %>" />
 <meta property="og:type" content="website" />
-<meta property="og:description" content="<%= desc %>" />
+<meta property="og:description" content="<%= metaDesc %>" />
 <meta property="og:image" content=<%= img %>"" />
-<meta property="og:site_name" content="<%= title %>" />
+<meta property="og:site_name" content="<%= metaTitle %>" />
 <meta property="og:locale" content="ko_KR" />
 <link href="<%= process.env.BASE_PATH %>/images/invite/favicon.ico" rel="shortcut icon">
 <title><%= title %></title>
