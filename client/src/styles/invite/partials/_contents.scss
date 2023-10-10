@@ -207,14 +207,6 @@
             flex-direction: column;
             justify-content: center;
             z-index: 12;
-
-            &.active {
-                ~ .fix-address {
-                    opacity: 1;
-                    pointer-events: auto;
-                    z-index: 10;
-                }
-            }
         }
 
         .grid {
@@ -222,10 +214,9 @@
             flex-direction: column;
             position: relative;
             width: 100%;
-            opacity: 0;
             cursor: pointer;
-            transform: scale(.95);
-            transition: opacity .3s ease-in-out, transform .4s ease-in-out;
+            opacity: .3;
+            transform: scale(1);
 
             &:after {
                 content: "";
@@ -242,6 +233,7 @@
             &:hover {
                 transition-delay: 0s;
                 opacity: 1;
+                transition: opacity .3s ease-in-out, transform .4s ease-in-out;
 
                 .badge {
                     transform: translateY(0);
@@ -511,36 +503,29 @@
         transform: rotateY(-90deg);
     }
 
-    .active {
-        .downUp {
-            animation-name: downUp, fadeIn;
-            animation-duration: .5s, .7s;
-            animation-timing-function: cubic-bezier(.2,.81,.6,1);
-            animation-fill-mode: forwards;
+    .downUp {
+        animation-name: downUp, fadeIn;
+        animation-duration: .5s, .7s;
+        animation-timing-function: cubic-bezier(.2, .81, .6, 1);
+        animation-fill-mode: forwards;
 
-            @for $i from 0 to 11 {
-                &:nth-child(#{$i + 1}) {
-                    animation-delay: #{($i) * .3}s;
-                }
+        @for $i from 0 to 11 {
+            &:nth-child(#{$i + 1}) {
+                animation-delay: #{($i) * .3}s;
             }
         }
+    }
 
-        .spin {
-            animation-name: spin, fadeIn;
-            animation-duration: 1.5s, 1.8s;
-            animation-timing-function: cubic-bezier(.2,.81,.6,1);
-            animation-fill-mode: forwards;
+    .spin {
+        animation-name: spin, fadeIn;
+        animation-duration: 1.5s, 1.8s;
+        animation-timing-function: cubic-bezier(.2, .81, .6, 1);
+        animation-fill-mode: forwards;
 
-            @for $i from 0 to 11 {
-                &:nth-child(#{$i + 1}) {
-                    animation-delay: #{($i) * .3}s;
-                }
+        @for $i from 0 to 11 {
+            &:nth-child(#{$i + 1}) {
+                animation-delay: #{($i) * .3}s;
             }
-        }
-
-        .grid {
-            opacity: .3;
-            transform: scale(1);
         }
     }
 
