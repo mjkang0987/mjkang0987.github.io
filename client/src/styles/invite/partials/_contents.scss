@@ -30,7 +30,6 @@
         display: flex;
         justify-content: center;
         min-height: calc(90vh - #{m.$headerHeight});
-        background-color: #fff;
         isolation: isolate;
 
         > .title {
@@ -381,8 +380,6 @@
         &-map {
             flex-direction: column;
             justify-content: center;
-            background-color: #fafafa;
-            z-index: 11;
         }
 
         .account {
