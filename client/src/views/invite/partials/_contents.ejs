@@ -5,6 +5,9 @@ const contents = ['visual', 'pictures', 'map', 'account', 'eun'];
 %>
 
 <article class="content content-<%= contents[index] %>">
+    <% if (index !== 0) { %>
+        <div class="hr"></div>
+    <% } %>
     <% if (index === 0) { %>
         <div class="detail">
             <div class="img-wrap downUp">
