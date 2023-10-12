@@ -295,14 +295,28 @@ li {
 }
 .header .title {
   font-weight: 900;
-  font-size: 24px;
   font-family: MapoFlowerIsland, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
+}
+@media (min-width: 1024px) {
+  .header .title {
+    font-size: 24px;
+  }
+}
+@media (max-width: 1023px) {
+  .header .title {
+    font-size: 18px;
+  }
 }
 .header .timer {
   font-size: 24px;
   font-weight: 900;
   color: #fff;
   text-align: center;
+}
+@media (max-width: 1023px) {
+  .header .timer {
+    display: none;
+  }
 }
 .header .timer-title {
   font-size: 18px;
@@ -365,6 +379,7 @@ li {
   font-size: 24px;
   font-family: Apple Color Emoji, "Segoe UI Emoji", "Noto Color Emoji", serif;
 }
+
 .content {
   display: flex;
   justify-content: center;
@@ -426,7 +441,6 @@ li {
   aspect-ratio: 1;
   background-color: #fff;
   border-radius: 10px;
-  overflow: hidden;
 }
 .content-visual .img-wrap {
   display: flex;
@@ -691,7 +705,7 @@ li {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: calc(100% - 60px - 50px);
+  height: calc(100% - 150px);
   padding: 80px 6.6666666667vw 6.6666666667vw;
   box-sizing: border-box;
   background-color: rgb(255, 255, 255);
