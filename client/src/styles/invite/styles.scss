@@ -127,20 +127,33 @@
     justify-content: space-between;
     align-items: center;
     position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
     background-color: rgb(255 255 255 / .05);
-    backdrop-filter: blur(5px);
-    padding: 0 20px;
+    backdrop-filter: blur(3px);
     box-sizing: border-box;
     color: #fff;
-    z-index: 11;
+    z-index: 13;
+    @include m.respond-to(map-get(m.$min, 1024)) {
+        top: 20px;
+        left: 0;
+        width: 90%;
+        height: 100px;
+        margin: 0 auto;
+        padding: 0 50px;
+        box-shadow: 0 0 0 1px rgb(255 255 255 / .3) inset;
+        border-radius: 50px;
+    }
+
+    @include m.respond-to(map-get(m.$max, 1023)) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        padding: 0 20px;
+    }
 
     .title {
         font-weight: 900;
-        font-size: m.$fontBody;
+        font-size: m.$fontTitle;
         @include m.fonts("m");
     }
 
@@ -199,30 +212,16 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        width: 34px;
-        height: 34px;
+        width: 40px;
+        height: 40px;
         border-radius: 20px;
-        border: 4px solid m.$black;
         box-sizing: border-box;
         cursor: pointer;
-        background-color: #fff;
-        transform: rotate(90deg);
-        @include m.fonts("a");
-
-        &:before {
-            content: ":P";
-            display: inline-flex;
-            font-weight: 900;
-            font-size: m.$fontBody;
-        }
+        font-weight: 900;
+        font-size: m.$fontTitle;
+        font-family: Apple Color Emoji, "Segoe UI Emoji", "Noto Color Emoji", serif;
 
         &:hover {
-            background-color: m.$black;
-            color: m.$white;
-
-            &:before {
-                content: ":D";
-            }
         }
     }
 }
