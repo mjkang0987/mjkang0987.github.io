@@ -2,30 +2,6 @@
 @use "./mixin" as m;
 
 @mixin contents {
-    @property --seconds {
-        syntax: "<integer>";
-        initial-value: 0;
-        inherits: false;
-    }
-
-    @property --minutes {
-        syntax: "<integer>";
-        initial-value: 0;
-        inherits: false;
-    }
-
-    @property --hours {
-        syntax: "<integer>";
-        initial-value: 0;
-        inherits: false;
-    }
-
-    @property --days {
-        syntax: "<integer>";
-        initial-value: 0;
-        inherits: false;
-    }
-
     .content {
         display: flex;
         justify-content: center;
