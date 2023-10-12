@@ -153,8 +153,15 @@
 
     .title {
         font-weight: 900;
-        font-size: m.$fontTitle;
         @include m.fonts("m");
+
+        @include m.respond-to(map-get(m.$min, 1024)) {
+            font-size: m.$fontTitle;
+        }
+
+        @include m.respond-to(map-get(m.$max, 1023)) {
+            font-size: m.$fontBody;
+        }
     }
 
     .timer {
@@ -162,6 +169,10 @@
         font-weight: 900;
         color: m.$white;
         text-align: center;
+
+        @include m.respond-to(map-get(m.$max, 1023)) {
+            display: none;
+        }
 
         &-title {
             font-size: m.$fontBody;
