@@ -365,7 +365,7 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        height: calc(100% - #{m.$headerHeight} - 50px);
+        height: calc(100% - 150px);
         padding: 80px m.vw(20) m.vw(20);
         box-sizing: border-box;
         background-color: rgb(255 255 255 / 1);
