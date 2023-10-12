@@ -20,10 +20,8 @@ state:
             <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_contents`, {index: i}); %>
         <% } %>
         <div class="backgrounds">
-            <% for (let i = 100; i--;) { %>
-                <span class="background">
-                    <span class="circle"></span>
-                </span>
+            <% for (let i = 3; i--;) { %>
+                <span class="star star<%= 3 - i %>"></span>
             <% } %>
         </div>
     </main>
