@@ -67,6 +67,8 @@
                 width: 100%;
                 aspect-ratio: 1;
                 background-color: m.$white;
+                border-radius: 10px;
+                overflow: hidden;
 
                 &-wrap {
                     display: flex;
@@ -75,19 +77,20 @@
                     align-items: center;
                     max-width: 500px;
                     position: relative;
-                    border: 10px solid m.$white;
-                    margin: 0 auto;
+                    margin: 60px auto 0;
                     box-shadow: 0 0 10px 0 rgb(0 0 0 / .2);
-                    background-color: m.$white;
 
                     strong {
                         display: flex;
                         justify-content: center;
                         padding: 25px 20px 10px;
                         text-align: center;
-                        font-size: m.$fontSubTitle;
+                        font-size: m.$fontTitle;
+                        color: m.$white;
                         line-height: 140%;
-                        background-color: m.$white;
+                        @include m.respond-to(map-get(m.$max, 1023)) {
+                            font-size: m.$fontSubTitle;
+                        }
                     }
                 }
 
