@@ -923,13 +923,7 @@ const JS = (() => {
         setCurrent();
         print();
         setMap();
-
         setDays();
-
-        scrollEvent();
-
-        window.addEventListener('scroll', THROTTLING(scrollEvent, 50));
-
         copyright();
 
         const slideObserver = RO(() => onResize(), 100);

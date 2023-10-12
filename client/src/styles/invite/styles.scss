@@ -2,6 +2,30 @@
 @use "./partials/mixin" as m;
 @use "./partials/contents" as c;
 
+@property --seconds {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
+@property --minutes {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
+@property --hours {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
+@property --days {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+}
+
 [role="main"] {
     display: flex;
     flex-direction: column;
@@ -103,21 +127,83 @@
     justify-content: space-between;
     align-items: center;
     position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
     background-color: rgb(255 255 255 / .05);
-    backdrop-filter: blur(5px);
-    padding: 0 20px;
+    backdrop-filter: blur(3px);
     box-sizing: border-box;
     color: #fff;
-    z-index: 11;
+    z-index: 13;
+    @include m.respond-to(map-get(m.$min, 1024)) {
+        top: 20px;
+        left: 0;
+        width: 90%;
+        height: 100px;
+        margin: 0 auto;
+        padding: 0 50px;
+        box-shadow: 0 0 0 1px rgb(255 255 255 / .3) inset;
+        border-radius: 50px;
+    }
+
+    @include m.respond-to(map-get(m.$max, 1023)) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        padding: 0 20px;
+    }
 
     .title {
         font-weight: 900;
-        font-size: m.$fontBody;
+        font-size: m.$fontTitle;
         @include m.fonts("m");
+    }
+
+    .timer {
+        font-size: m.$fontTitle;
+        font-weight: 900;
+        color: m.$white;
+        text-align: center;
+
+        &-title {
+            font-size: m.$fontBody;
+        }
+
+        &-count {
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap;
+            padding-top: 5px;
+            gap: 4px;
+            font-size: m.$fontTitle;
+            transform: translateZ(0);
+
+            li {
+                display: flex;
+            }
+
+            $timers: days, hours, minutes, seconds;
+            $sixteen: 60;
+            @each $timer in $timers {
+                .#{$timer} {
+                    .number {
+                        @if ($timer == minutes) {
+                            animation: #{$timer} #{$sixteen * $sixteen}s steps($sixteen, jump-none) infinite;
+                        } @else if ($timer == hours) {
+                            animation: #{$timer} #{$sixteen * $sixteen * 24}s steps(24, jump-none) infinite;
+                        } @else if ($timer == days) {
+                            animation: #{$timer} #{$sixteen * $sixteen * 24 * 365}s steps(365, jump-none) infinite;
+                        } @else {
+                            animation: #{$timer} #{$sixteen}s steps($sixteen, jump-none) infinite;
+                        }
+                        animation-delay: var(--delay-#{$timer}, 0s);
+                        counter-reset: #{$timer} var(--#{$timer});
+
+                        &::before {
+                            content: counter(#{$timer}, decimal-leading-zero) " ";
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -126,31 +212,14 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        width: 34px;
-        height: 34px;
+        width: 40px;
+        height: 40px;
         border-radius: 20px;
-        border: 4px solid m.$black;
         box-sizing: border-box;
         cursor: pointer;
-        background-color: #fff;
-        transform: rotate(90deg);
-        @include m.fonts("a");
-
-        &:before {
-            content: ":P";
-            display: inline-flex;
-            font-weight: 900;
-            font-size: m.$fontBody;
-        }
-
-        &:hover {
-            background-color: m.$black;
-            color: m.$white;
-
-            &:before {
-                content: ":D";
-            }
-        }
+        font-weight: 900;
+        font-size: m.$fontTitle;
+        font-family: Apple Color Emoji, "Segoe UI Emoji", "Noto Color Emoji", serif;
     }
 }
 
