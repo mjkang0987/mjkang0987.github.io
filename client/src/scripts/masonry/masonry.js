@@ -309,8 +309,6 @@ const prototype = (() => {
     });
 
     const setUI = (items = []) => {
-        toggleLoader(true);
-
         if (!masonry) {
             return;
         }
@@ -333,14 +331,13 @@ const prototype = (() => {
         }, []);
 
         masonryElement.insertAdjacentHTML('beforeend', itemsElement.join(''));
-
-        toggleLoader();
     };
 
     const setMasonry = async (items) => {
         setUI(items);
         masonry();
         toggleInfiniteArea(true);
+        toggleLoader();
     };
 
     const infiniteScroll = () => {
@@ -349,6 +346,8 @@ const prototype = (() => {
         }
 
         (async () => {
+            toggleLoader(true);
+
             const items = await data();
 
             if (items) {
