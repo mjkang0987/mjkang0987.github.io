@@ -290,7 +290,7 @@ const prototype = (() => {
         const arr = masonryElement.dataset.arr.split(' ') ?? [];
         const max = Math.max(...arr);
 
-        infiniteElement.style.transform = `translateY(${max < 0 ? window.innerHeight + gap : max - gap}px)`;
+        infiniteElement.style.transform = `translateY(${max < 0 ? window.innerHeight + gap : max - (gap * 2)}px)`;
     };
 
     const toggleInfiniteArea = (isDisconnect = false) => {
