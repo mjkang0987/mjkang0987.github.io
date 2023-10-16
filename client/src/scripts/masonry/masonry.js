@@ -152,7 +152,7 @@ const {
 const masonryJS = ({
     element = document.querySelector('.masonry'),
     options = {}
-}) => {
+} = {}) => {
     const masonry = element;
 
     if (!masonry) {
