@@ -279,8 +279,8 @@ const prototype = (() => {
     'use strict';
 
     let initPage = 0;
+    let infiniteElement = null;
     const masonryElement = document.querySelector('.masonry');
-    const infiniteElement = document.querySelector('.infiniteScroll');
     const gap = 10;
 
     const data = async () => {
@@ -350,6 +350,14 @@ const prototype = (() => {
         toggleLoader();
     };
 
+    const renderInfiniteArea = () => {
+        const infiniteArea = document.createElement('div');
+        infiniteArea.classList.add('infiniteScroll');
+
+        infiniteElement = infiniteArea;
+        BODY.insertAdjacentElement('beforeend', infiniteArea);
+    };
+
     const infiniteScroll = () => {
         if (infiniteElement.classList.contains('disconnect')) {
             return toggleInfiniteArea();
@@ -367,6 +375,8 @@ const prototype = (() => {
     };
 
     const init = () => {
+        renderInfiniteArea();
+
         const infiniteIO = METHODS.IO(infiniteScroll);
         infiniteIO.observe(infiniteElement);
     };
