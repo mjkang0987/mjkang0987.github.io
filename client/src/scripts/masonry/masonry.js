@@ -334,6 +334,11 @@ const prototype = (() => {
         const max = Math.max(...arr);
 
         infiniteElement.style.transform = `translateY(${max < 0 ? window.innerHeight + gap : max - (gap * 2)}px)`;
+
+        if (window.innerHeight > max) {
+            infiniteElement.classList.remove('disconnect');
+            infiniteScroll();
+        }
     };
 
     const toggleInfiniteArea = (isDisconnect = false) => {
