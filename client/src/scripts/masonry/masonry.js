@@ -136,18 +136,27 @@ export const constants = (() => {
         CUBIC: [.57, .21, .69, .95]
     };
 
+    const ELEMENT = {
+        BODY: document.querySelector('body')
+    }
+
 
     return {
         METHODS,
         FETCH,
-        TRANSITION
+        ELEMENT
     };
 })();
 
 const {
     METHODS,
-    FETCH
+    FETCH,
+    ELEMENT
 } = constants;
+
+const {
+    BODY
+} = ELEMENT;
 
 const masonryJS = ({
     element = document.querySelector('.masonry'),
