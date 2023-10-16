@@ -156,7 +156,7 @@ const masonryJS = ({
     const masonry = element;
 
     if (!masonry) {
-        return;
+        return () => {};
     }
 
     const defaultOptions = {
