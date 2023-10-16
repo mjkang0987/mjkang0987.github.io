@@ -258,7 +258,7 @@ const masonryJS = ({
     resetHeights();
 
     const masonryResize = METHODS.RO(onResize, 10);
-    masonryResize.observe(document.querySelector('body'));
+    masonryResize.observe(masonry);
 
     return () => {
         init();
