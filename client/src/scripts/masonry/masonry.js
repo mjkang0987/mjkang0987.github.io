@@ -237,17 +237,17 @@ const masonryJS = ({
 
     const onResize = () => {
         requestAnimationFrame(() => {
-        const width = masonry.clientWidth;
-        const isResize = width !== temp.widthMasonry;
+            const width = masonry.clientWidth;
+            const isResize = width !== temp.widthMasonry;
 
-        if (isResize) {
-            resetHeights();
-            setWidth();
-        }
+            if (isResize) {
+                resetHeights();
+                setWidth();
+            }
 
-        setPosition(isResize ? temp.totalElement : temp.newElement);
+            setPosition(isResize ? temp.totalElement : temp.newElement);
 
-        temp.widthMasonry = width;
+            temp.widthMasonry = width;
         });
     };
 
