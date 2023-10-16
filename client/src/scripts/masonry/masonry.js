@@ -138,7 +138,7 @@ export const constants = (() => {
 
     const ELEMENT = {
         BODY: document.querySelector('body')
-    }
+    };
 
     return {
         METHODS,
