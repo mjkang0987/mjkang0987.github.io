@@ -181,7 +181,7 @@ const masonryJS = ({
     const temp = {
         widthMasonry: masonry.clientWidth,
         rowsHeight  : new Array(opts.rows).fill(0),
-        width       : Math.floor((masonry.offsetWidth - opts.gap) / opts.rows),
+        width       : Math.floor((masonry.clientWidth - opts.gap) / opts.rows),
         totalElement: new Map(),
         newElement  : new Map(),
         breakpoints : new Set(Object.keys(opts.breakpoints).sort((a, b) => Number(b) - Number(a)))
@@ -192,7 +192,7 @@ const masonryJS = ({
     };
 
     const setWidth = () => {
-        temp.width = Math.floor((masonry.offsetWidth - opts.gap) / opts.rows);
+        temp.width = Math.floor((temp.widthMasonry - opts.gap) / opts.rows);
     };
 
     const setElement = () => {
