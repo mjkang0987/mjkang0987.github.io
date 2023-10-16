@@ -136,33 +136,42 @@ export const constants = (() => {
         CUBIC: [.57, .21, .69, .95]
     };
 
+    const ELEMENT = {
+        BODY: document.querySelector('body')
+    };
 
     return {
         METHODS,
         FETCH,
-        TRANSITION
+        ELEMENT
     };
 })();
 
 const {
     METHODS,
-    FETCH
+    FETCH,
+    ELEMENT
 } = constants;
 
+const {
+    BODY
+} = ELEMENT;
+
 const masonryJS = ({
-    element = '.masonry',
+    element = document.querySelector('.masonry'),
     options = {}
-}) => {
-    const masonry = document.querySelector(element);
+} = {}) => {
+    const masonry = element;
 
     if (!masonry) {
-        return;
+        return () => {};
     }
 
     const defaultOptions = {
-        rows  : 3,
-        gap   : 10,
-        timing: 300
+        rows       : 3,
+        gap        : 10,
+        timing     : 300,
+        breakpoints: {}
     };
 
     const opts = {...defaultOptions, ...options};
@@ -171,18 +180,19 @@ const masonryJS = ({
 
     const temp = {
         widthMasonry: masonry.clientWidth,
-        rowsHeight  : Array.from({length: opts.rows}, () => 0),
-        width       : Math.floor((masonry.offsetWidth - opts.gap) / opts.rows),
+        rowsHeight  : new Array(opts.rows).fill(0),
+        width       : Math.floor((masonry.clientWidth - opts.gap) / opts.rows),
         totalElement: new Map(),
-        newElement  : new Map()
+        newElement  : new Map(),
+        breakpoints : new Set(Object.keys(opts.breakpoints).sort((a, b) => Number(b) - Number(a)))
     };
 
     const resetHeights = () => {
-        temp.rowsHeight = Array.from({length: opts.rows}, () => 0);
+        temp.rowsHeight = new Array(opts.rows).fill(0);
     };
 
     const setWidth = () => {
-        temp.width = Math.floor((masonry.offsetWidth - opts.gap) / opts.rows);
+        temp.width = Math.floor((temp.widthMasonry - opts.gap) / opts.rows);
     };
 
     const setElement = () => {
@@ -235,18 +245,36 @@ const masonryJS = ({
         }
     };
 
-    const onResize = () => {
-        const width = masonry.clientWidth;
-        const isResize = width !== temp.widthMasonry;
-
-        if (isResize) {
-            resetHeights();
-            setWidth();
+    const setRows = () => {
+        if (temp.breakpoints.size === 0) {
+            return;
         }
 
-        setPosition(isResize ? temp.totalElement : temp.newElement);
+        for (let breakpoint of temp.breakpoints) {
+            if (temp.widthMasonry > Number(breakpoint)) {
+                opts.rows = opts.breakpoints[breakpoint].rows;
+                break;
+            }
 
-        temp.widthMasonry = width;
+            opts.rows = options.rows;
+        }
+    };
+
+    const onResize = () => {
+        requestAnimationFrame(() => {
+            const width = masonry.clientWidth;
+            const isResize = width !== temp.widthMasonry;
+
+            if (isResize) {
+                setRows();
+                resetHeights();
+                setWidth();
+            }
+
+            setPosition(isResize ? temp.totalElement : temp.newElement);
+
+            temp.widthMasonry = width;
+        });
     };
 
     const init = () => {
@@ -255,10 +283,11 @@ const masonryJS = ({
         setPosition(temp.newElement);
     };
 
+    setRows();
     resetHeights();
 
     const masonryResize = METHODS.RO(onResize, 10);
-    masonryResize.observe(document.querySelector('body'));
+    masonryResize.observe(masonry);
 
     return () => {
         init();
@@ -269,8 +298,9 @@ const prototype = (() => {
     'use strict';
 
     let initPage = 0;
+    let infiniteElement = null;
+    let loader = null;
     const masonryElement = document.querySelector('.masonry');
-    const infiniteElement = document.querySelector('.infiniteScroll');
     const gap = 10;
 
     const data = async () => {
@@ -281,8 +311,21 @@ const prototype = (() => {
         );
     };
 
+    const renderLoader = () => {
+        loader = document.createElement('div');
+
+        Object.assign(loader, {
+            id       : 'loader',
+            className: 'loader-wrap',
+            style    : 'display: flex'
+        });
+
+        loader.innerHTML = '<span class="loader"></span>';
+
+        BODY.insertAdjacentElement('beforeend', loader);
+    };
+
     const toggleLoader = (isShow = false) => {
-        const loader = document.getElementById('loader');
         loader.style.display = isShow ? 'flex' : 'none';
     };
 
@@ -290,7 +333,12 @@ const prototype = (() => {
         const arr = masonryElement.dataset.arr.split(' ') ?? [];
         const max = Math.max(...arr);
 
-        infiniteElement.style.transform = `translateY(${max < 0 ? window.innerHeight + gap : max - gap}px)`;
+        infiniteElement.style.transform = `translateY(${max < 0 ? window.innerHeight + gap : max - (gap * 2)}px)`;
+
+        if (window.innerHeight > max) {
+            infiniteElement.classList.remove('disconnect');
+            infiniteScroll();
+        }
     };
 
     const toggleInfiniteArea = (isDisconnect = false) => {
@@ -302,15 +350,21 @@ const prototype = (() => {
     };
 
     const masonry = masonryJS({
-        element: '.masonry',
+        element: document.querySelector('.masonry'),
         options: {
-            rows: 3
+            rows       : 2,
+            breakpoints: {
+                767 : {
+                    rows: 3
+                },
+                1023: {
+                    rows: 5
+                }
+            }
         }
     });
 
-    const setUI = (items = []) => {
-        toggleLoader(true);
-
+    const renderMasonry = (items = []) => {
         if (!masonry) {
             return;
         }
@@ -333,14 +387,21 @@ const prototype = (() => {
         }, []);
 
         masonryElement.insertAdjacentHTML('beforeend', itemsElement.join(''));
-
-        toggleLoader();
     };
 
     const setMasonry = async (items) => {
-        setUI(items);
+        renderMasonry(items);
         masonry();
         toggleInfiniteArea(true);
+        toggleLoader();
+    };
+
+    const renderInfiniteArea = () => {
+        const infiniteArea = document.createElement('div');
+        infiniteArea.classList.add('infiniteScroll');
+
+        infiniteElement = infiniteArea;
+        BODY.insertAdjacentElement('beforeend', infiniteArea);
     };
 
     const infiniteScroll = () => {
@@ -349,6 +410,8 @@ const prototype = (() => {
         }
 
         (async () => {
+            toggleLoader(true);
+
             const items = await data();
 
             if (items) {
@@ -358,6 +421,9 @@ const prototype = (() => {
     };
 
     const init = () => {
+        renderLoader();
+        renderInfiniteArea();
+
         const infiniteIO = METHODS.IO(infiniteScroll);
         infiniteIO.observe(infiniteElement);
     };
