@@ -236,6 +236,7 @@ const masonryJS = ({
     };
 
     const onResize = () => {
+        requestAnimationFrame(() => {
         const width = masonry.clientWidth;
         const isResize = width !== temp.widthMasonry;
 
@@ -247,6 +248,7 @@ const masonryJS = ({
         setPosition(isResize ? temp.totalElement : temp.newElement);
 
         temp.widthMasonry = width;
+        });
     };
 
     const init = () => {
