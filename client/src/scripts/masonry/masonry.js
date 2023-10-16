@@ -171,14 +171,14 @@ const masonryJS = ({
 
     const temp = {
         widthMasonry: masonry.clientWidth,
-        rowsHeight  : Array.from({length: opts.rows}, () => 0),
+        rowsHeight  : new Array(opts.rows).fill(0),
         width       : Math.floor((masonry.offsetWidth - opts.gap) / opts.rows),
         totalElement: new Map(),
         newElement  : new Map()
     };
 
     const resetHeights = () => {
-        temp.rowsHeight = Array.from({length: opts.rows}, () => 0);
+        temp.rowsHeight = new Array(opts.rows).fill(0);
     };
 
     const setWidth = () => {
