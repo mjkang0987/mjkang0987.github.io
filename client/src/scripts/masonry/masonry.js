@@ -140,7 +140,6 @@ export const constants = (() => {
         BODY: document.querySelector('body')
     }
 
-
     return {
         METHODS,
         FETCH,
