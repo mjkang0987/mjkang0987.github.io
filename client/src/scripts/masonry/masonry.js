@@ -310,7 +310,7 @@ const prototype = (() => {
         }
     });
 
-    const setUI = (items = []) => {
+    const renderMasonry = (items = []) => {
         if (!masonry) {
             return;
         }
@@ -336,7 +336,7 @@ const prototype = (() => {
     };
 
     const setMasonry = async (items) => {
-        setUI(items);
+        renderMasonry(items);
         masonry();
         toggleInfiniteArea(true);
         toggleLoader();
