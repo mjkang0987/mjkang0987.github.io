@@ -280,6 +280,7 @@ const prototype = (() => {
 
     let initPage = 0;
     let infiniteElement = null;
+    let loader = null;
     const masonryElement = document.querySelector('.masonry');
     const gap = 10;
 
@@ -291,8 +292,21 @@ const prototype = (() => {
         );
     };
 
+    const renderLoader = () => {
+        loader = document.createElement('div');
+
+        Object.assign(loader, {
+            id       : 'loader',
+            className: 'loader-wrap',
+            style    : 'display: flex'
+        });
+
+        loader.innerHTML = '<span class="loader"></span>';
+
+        BODY.insertAdjacentElement('beforeend', loader);
+    };
+
     const toggleLoader = (isShow = false) => {
-        const loader = document.getElementById('loader');
         loader.style.display = isShow ? 'flex' : 'none';
     };
 
@@ -375,6 +389,7 @@ const prototype = (() => {
     };
 
     const init = () => {
+        renderLoader();
         renderInfiniteArea();
 
         const infiniteIO = METHODS.IO(infiniteScroll);

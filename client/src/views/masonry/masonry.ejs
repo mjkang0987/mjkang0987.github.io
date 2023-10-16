@@ -17,11 +17,6 @@ state:
 </head>
 <body>
     <div class="masonry"></div>
-
-    <div id="loader" class="loader-wrap">
-        <span class="loader"></span>
-    </div>
-
     <script type="module" src="<%= process.env.BASE_PATH; %>/scripts/masonry/masonry<%= process.env.MINIFY %>.js<%= `?${setTimestamp()}`; %>" defer></script>
 </body>
 </html>
