@@ -150,10 +150,10 @@ const {
 } = constants;
 
 const masonryJS = ({
-    element = '.masonry',
+    element = document.querySelector('.masonry'),
     options = {}
 }) => {
-    const masonry = document.querySelector(element);
+    const masonry = element;
 
     if (!masonry) {
         return;
@@ -302,7 +302,7 @@ const prototype = (() => {
     };
 
     const masonry = masonryJS({
-        element: '.masonry',
+        element: document.querySelector('.masonry'),
         options: {
             rows: 3
         }
