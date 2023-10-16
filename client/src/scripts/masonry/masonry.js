@@ -170,7 +170,8 @@ const masonryJS = ({
     const defaultOptions = {
         rows  : 3,
         gap   : 10,
-        timing: 300
+        timing     : 300,
+        breakpoints: {}
     };
 
     const opts = {...defaultOptions, ...options};
@@ -182,7 +183,8 @@ const masonryJS = ({
         rowsHeight  : new Array(opts.rows).fill(0),
         width       : Math.floor((masonry.offsetWidth - opts.gap) / opts.rows),
         totalElement: new Map(),
-        newElement  : new Map()
+        newElement  : new Map(),
+        breakpoints : new Set(Object.keys(opts.breakpoints).sort((a, b) => Number(b) - Number(a)))
     };
 
     const resetHeights = () => {
@@ -243,12 +245,28 @@ const masonryJS = ({
         }
     };
 
+    const setRows = () => {
+        if (temp.breakpoints.size === 0) {
+            return;
+        }
+
+        for (let breakpoint of temp.breakpoints) {
+            if (temp.widthMasonry > Number(breakpoint)) {
+                opts.rows = opts.breakpoints[breakpoint].rows;
+                break;
+            }
+
+            opts.rows = options.rows;
+        }
+    };
+
     const onResize = () => {
         requestAnimationFrame(() => {
             const width = masonry.clientWidth;
             const isResize = width !== temp.widthMasonry;
 
             if (isResize) {
+                setRows();
                 resetHeights();
                 setWidth();
             }
@@ -265,6 +283,7 @@ const masonryJS = ({
         setPosition(temp.newElement);
     };
 
+    setRows();
     resetHeights();
 
     const masonryResize = METHODS.RO(onResize, 10);
@@ -328,7 +347,15 @@ const prototype = (() => {
     const masonry = masonryJS({
         element: document.querySelector('.masonry'),
         options: {
+            rows       : 2,
+            breakpoints: {
+                767 : {
             rows: 3
+                },
+                1023: {
+                    rows: 5
+                }
+            }
         }
     });
 
