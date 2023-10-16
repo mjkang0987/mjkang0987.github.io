@@ -168,8 +168,8 @@ const masonryJS = ({
     }
 
     const defaultOptions = {
-        rows  : 3,
-        gap   : 10,
+        rows       : 3,
+        gap        : 10,
         timing     : 300,
         breakpoints: {}
     };
@@ -350,7 +350,7 @@ const prototype = (() => {
             rows       : 2,
             breakpoints: {
                 767 : {
-            rows: 3
+                    rows: 3
                 },
                 1023: {
                     rows: 5
