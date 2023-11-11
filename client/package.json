@@ -1,0 +1,126 @@
+{
+    "name": "client",
+    "version": "0.0.0",
+    "description": "client User Interfaces",
+    "main": "index.js",
+    "scripts": {
+        "start": "export NODE_ENV=production&& nodemon --ignore 'dist' index.js",
+        "clean": "rimraf dist",
+        "build:lint": "stylelint \"src/styles/*[^plugins]*/**/*.scss\"",
+        "build": "npm run clean&&npm run build:lint&&node --experimental-modules build.mjs",
+        "build:img": "export NODE_ENV=image&&node --experimental-modules build.mjs",
+        "dev": "export NODE_ENV=development&& nodemon --ignore 'dist' index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": " https://github.com/mjkang0987/mjkang0987.github.io"
+    },
+    "keywords": [
+        "UI"
+    ],
+    "author": "mjkang0987",
+    "license": "ISC",
+    "port": {
+        "development": 8000,
+        "production": 8001
+    },
+    "browserslist": [
+        "last 4 versions"
+    ],
+    "base": {
+        "SRC": "src",
+        "DIST": "dist",
+        "VIEWS": "views",
+        "STYLES": "styles",
+        "SCRIPTS": "scripts",
+        "IMAGES": "images"
+    },
+    "beautify": {
+        "indent_size": 4,
+        "max_preserve_newlines": 0,
+        "brace_style": "collapse,preserve-inline",
+        "operator_position": "after-newline",
+        "break_chained_methods": false,
+        "end_with_newline": true,
+        "space_after_anon_function": true,
+        "space_after_named_function": false,
+        "wrap_line_length": 0,
+        "indent_char": " ",
+        "indent_with_tabs": false,
+        "editorconfig": false,
+        "eol": "\n",
+        "indent_level": 0,
+        "preserve_newlines": true,
+        "space_in_paren": false,
+        "space_in_empty_paren": false,
+        "jslint_happy": false,
+        "unindent_chained_methods": false,
+        "keep_array_indentation": false,
+        "keep_function_indentation": false,
+        "unescape_strings": false,
+        "comma_first": false,
+        "indent_empty_lines": false,
+        "e4x": false,
+        "templating": [
+            "auto"
+        ]
+    },
+    "htmlValidate": {
+        "extends": [
+            "html-validate:recommended"
+        ],
+        "rules": {
+            "doctype-html": "error",
+            "no-dup-attr": "error",
+            "no-dup-id": "error",
+            "no-redundant-role": "off",
+            "void-style": "off",
+            "prefer-button": "error",
+            "tel-non-breaking": "off",
+            "element-permitted-content": "off",
+            "element-permitted-order": "error",
+            "element-permitted-parent": "error",
+            "element-required-ancestor": "error",
+            "element-required-attributes": "off",
+            "element-required-content": "error",
+            "script-element": "error",
+            "aria-label-misuse": "error",
+            "input-missing-label": "error",
+            "wcag/h30": "off",
+            "wcag/h32": "error",
+            "wcag/h36": "error",
+            "wcag/h37": "error",
+            "wcag/h63": "error",
+            "wcag/h67": "error",
+            "wcag/h71": "error",
+            "no-implicit-close": "off",
+            "no-inline-style": "off",
+            "prefer-native-element": "off"
+        }
+    },
+    "dependencies": {
+        "autoprefixer": "^10.4.16",
+        "chalk": "^5.3.0",
+        "cssnano": "^5.1.15",
+        "dotenv": "^16.3.1",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "express-dart-sass": "^1.0.4",
+        "glob": "^8.1.0",
+        "gray-matter": "^4.0.3",
+        "html-validate": "^7.18.1",
+        "js-beautify": "^1.14.9",
+        "nodemon": "^2.0.22",
+        "postcss": "^8.4.31",
+        "postcss-cli": "^10.1.0",
+        "postcss-nested": "^6.0.1",
+        "postcss-sort-media-queries": "^5.2.0",
+        "rimraf": "^3.0.2",
+        "sharp": "^0.32.6",
+        "stylelint": "^15.10.3",
+        "stylelint-config-recommended-scss": "^10.0.0",
+        "stylelint-scss": "^4.7.0",
+        "terser": "^5.21.0"
+    }
+}

@@ -1,0 +1,155 @@
+@use "sass:math";
+
+$fontVisual: 100vw;
+$fontTitle: 24px;
+$fontSubTitle: 20px;
+$fontBody: 18px;
+$fontSub: 14px;
+$fontMini: 10px;
+
+$black: #111;
+$gray: #898989;
+$white: #fff;
+
+$mobile: 300;
+
+$headerHeight: 60px;
+
+//$imgPath: '';
+$imgPath: 'https://mjkang0987.github.io/client/dist';
+
+$w300: 300px;
+$w360: 360px;
+$w767: 767px;
+$w768: 768px;
+$w1023: 1023px;
+$w1024: 1024px;
+$w1200: 1200px;
+$w1279: 1279px;
+$w1280: 1280px;
+
+$max: (
+    360: 'max-width: #{$w360}',
+    767: 'max-width: #{$w767}',
+    1023: 'max-width: #{$w1023}',
+    1279: 'max-width: #{$w1279}'
+);
+
+$min: (
+    768: 'min-width: #{$w768}',
+    1024: 'min-width: #{$w1024}',
+    1200: 'min-width: #{$w1200}',
+    1280: 'min-width: #{$w1280}'
+);
+
+@function vw($val) {
+    @return math.div($val, $mobile) * 100vw;
+}
+
+@mixin fonts($val) {
+    @if ($val == "m") {
+        font-family: MapoFlowerIsland, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
+    } @else {
+        font-family: Pretendard, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
+    }
+}
+
+@mixin respond-to($valMin, $valMax: false) {
+    @if ($valMax) {
+        @media (#{$valMin}) and (#{$valMax}) {
+            @content;
+        }
+    } @else {
+        @media (#{$valMin}) {
+            @content;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes downUp {
+    0% {
+        transform: translateY(20px);
+    }
+
+    80% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes rightLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200%);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateY(-90deg);
+    }
+
+    100% {
+        transform: rotateY(0);
+    }
+}
+
+@keyframes days {
+    from {
+        --days: 364;
+    }
+
+    to {
+        --days: 0;
+    }
+}
+
+@keyframes hours {
+    from {
+        --hours: 23;
+    }
+
+    to {
+        --hours: 0;
+    }
+}
+
+@keyframes minutes {
+    from {
+        --minutes: 59;
+    }
+
+    to {
+        --minutes: 0;
+    }
+}
+
+@keyframes seconds {
+    from {
+        --seconds: 59;
+    }
+
+    to {
+        --seconds: 0;
+    }
+}

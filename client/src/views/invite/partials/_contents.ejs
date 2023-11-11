@@ -1,0 +1,143 @@
+<%
+var index = index;
+
+const contents = ['visual', 'pictures', 'map', 'account', 'eun'];
+%>
+
+<article class="content content-<%= contents[index] %>">
+    <% if (index !== 0) { %>
+        <div class="hr"></div>
+    <% } %>
+    <% if (index === 0) { %>
+        <div class="detail">
+            <div class="img-wrap downUp">
+                <picture class="img">
+                    <%- include(`${process.env.INCLUDE_PATH}/components/_image`, {
+                        width: 400,
+                        height: 500,
+                        alt: '사진'
+                    });%>
+                </picture>
+                <strong>2024년 2월 3일 토요일<br>오후 13:20 신도림 테크노마트 7층<br>웨스턴 베니비스 다이너스티홀</strong>
+            </div>
+            <p class="desc downUp">
+                두 사람의 사랑은 한마음으로 시작되었고,
+                <br>이제는 그 사랑으로 하나의 삶을 만들어가기로 결심했습니다.
+                <br><br>김은과 강지우의 행복한 여정에 함께 참여해 주시기를 간청드립니다.
+                <br>.<br>.<br>.
+                <br><br>은, 그리고 지우 드림.
+            </p>
+        </div>
+    <% } %>
+    <% if (index === 1) { %>
+        <%
+            const width = [
+                [150, 300],
+                [350, 300],
+                [400, 300],
+                [300, 300],
+                [200, 500],
+                [160, 90],
+                [90, 160],
+                [150, 100]
+            ]
+        %>
+        <strong class="title">은, 그리고 지우</strong>
+        <ul class="grids">
+            <% for(let i = 0; i < 7; i++) { %>
+                <li class="grid grid-<%= i + 1 %>">
+                    <button type="button"
+                            class="button-slide"
+                            aria-haspopup="dialog"
+                            aria-controls="layer-slide">
+                        <%- include(`${process.env.INCLUDE_PATH}/components/_image`, {
+                            width: width[i][0],
+                            height: width[i][1],
+                            loading: 'lazy'
+                        }); %>
+                        <span class="badges">
+                            <% ['orange', 'violet', 'blue'].map((b) => { %>
+                            <span class="badge badge-<%= b %>">#<%= b %></span>
+                            <% }); %>
+                        </span>
+                    </button>
+                </li>
+            <% } %>
+        </ul>
+
+        <div id="layer-slide"
+             class="layer"
+             role="dialog"
+             aria-modal="true"
+             aria-label="Photos layer"
+             tabindex="-1">
+            <div class="slide-wrap">
+                <div class="slides">
+                    <ul>
+                        <% for(let i = 0; i < 7; i++) { %>
+                            <li class="slide">
+                                <picture class="img">
+                                    <%- include(`${process.env.INCLUDE_PATH}/components/_image`, {
+                                        width: width[i][0],
+                                        height: width[i][1],
+                                        loading: 'lazy'
+                                    }); %>
+                                </picture>
+                                <%= i + 1 %>
+                            </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+            <button type="button" aria-label="close">닫기</button>
+        </div>
+    <% } %>
+    <% if (index === 2) { %>
+        <strong class="title">오시는 길</strong>
+        <div id="map" class="map"></div>
+    <% } %>
+    <% if (index === 3) { %>
+        <strong class="title">마음 전하실 곳</strong>
+        <div class="account-wrap">
+            <ul class="accounts">
+            <%
+                const namesKR = ['가', '나', '다', '라'];
+                const namesEN = ['a', 'b', 'c', 'd'];
+                for (let i = 0; i < 4; i++) {  %>
+                    <li class="account">
+                        <strong class="title"><%= namesKR[i] %></strong>
+                        <span class="text">
+                            <%= i %>-<%= namesEN[i] %>
+                            <input type="text" id="<%= namesEN[i] %>" class="a11y" aria-label="<%= namesKR[i] %>" value="<%= i %>-<%= namesEN[i] %>" aria-hidden="true" readonly>
+                        </span>
+
+                        <button type="button"
+                                class="button-copy"
+                                aria-controls="<%= namesEN[i] %>">
+                            COPY
+                        </button>
+                    </li>
+                <% } %>
+                <li class="account">
+                    <strong class="title">공유하기</strong>
+                    <span class="text">
+                            공유하기
+                            <input type="text" id="share-url" class="a11y" aria-label="URL 공유하기" value="" aria-hidden="true" readonly>
+                        </span>
+
+                    <button type="button"
+                            class="button-share"
+                            aria-controls="share-url">
+                        SHARE
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="eun">냥냥냥냥녕냥</div>
+    <% } %>
+    <% if (index === 4) { %>
+        <figure class="img-wrap">
+            <%- include(`${process.env.INCLUDE_PATH}/components/_image`) %>
+        </figure>
+    <% } %>
+</article>

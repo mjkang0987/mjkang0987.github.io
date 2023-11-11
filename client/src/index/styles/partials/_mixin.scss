@@ -1,0 +1,29 @@
+$white: #fff;
+$gray: #565656;
+$lightGray: #8d8d8d;
+$lighterGray: #d2d2d2;
+$whiteGray: #f1f1f1;
+$skyBlue: #dcf3ff;
+$green: #00ff2a;
+$black: #222;
+$yellow: #fd0;
+$yellowGreen: #daff33;
+$yellowAlpha50: rgb(255 221 0 / .5);
+$yellowGreenAlpha50: rgb(218 255 51 / .5);
+$red: #f0320a;
+
+$fontTitle: 30px;
+$fontDesc: 18px;
+$fontBody: 16px;
+$fontSub: 14px;
+$fontSuper: 12px;
+$bold: 700;
+
+$desktop: "(min-width: 600px)";
+$mobile: "(max-width: 599px)";
+
+@mixin respond-to($media) {
+    @media all and #{$media} {
+        @content;
+    }
+}

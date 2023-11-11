@@ -1,0 +1,22 @@
+---
+group: masonry
+state:
+    default: masonry
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Masonry</title>
+    <link rel="stylesheet"
+          href="<%= process.env.BASE_PATH %>/styles/masonry/masonry<%= process.env.MINIFY %>.css<%= `?${setTimestamp()}`; %>">
+</head>
+<body>
+    <div class="masonry"></div>
+    <script type="module" src="<%= process.env.BASE_PATH; %>/scripts/masonry/masonry<%= process.env.MINIFY %>.js<%= `?${setTimestamp()}`; %>" defer></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+---
+group: invite
+meta:
+    title: 김은과 강지우 결혼식 모바일 청첩장
+    desc: ✨김은과 강지우의 결혼식 모바일 청첩장입니다.
+state:
+    default: 기본
+---
+<!DOCTYPE html>
+<head>
+    <%- include(`${process.env.INCLUDE_PATH}/components/_head`, {
+        title: '김은과 강지우 결혼식 모바일 청첩장'
+    }); %>
+    <link rel="stylesheet" href="<%= process.env.BASE_PATH %>/styles/invite/styles<%= process.env.MINIFY %>.css<%= `?${setTimestamp()}`; %>">
+</head>
+<body>
+    <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_header`); %>
+    <main role="main">
+        <% for(let i = 0; i < 5; i++) { %>
+            <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_contents`, {index: i}); %>
+        <% } %>
+        <div class="backgrounds">
+            <% for (let i = 3; i--;) { %>
+                <span class="star star<%= 3 - i %>"></span>
+            <% } %>
+        </div>
+    </main>
+    <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_footer`); %>
+    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=hd2fu3fh50&submodules=geocoder"></script>
+    <script src="<%= process.env.BASE_PATH; %>/scripts/invite/scripts<%= process.env.MINIFY %>.js<%= `?${setTimestamp()}`; %>" defer></script>
+</body>
