@@ -18,9 +18,21 @@ $buttonWidth: 80;
     max-width: 360px;
     margin: 0 auto;
 
+    &-result {
+        grid-column: 1 / 5;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: #{$buttonWidth}px;
+        font-size: m.$fontBiggerTitle;
+        font-weight: 500;
+        order: -1;
+    }
+
     &-numbers {
         grid-column: 1 / 4;
-        grid-row: 2 / 6;
+        grid-row: 3 / 7;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
