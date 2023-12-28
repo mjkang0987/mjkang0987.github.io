@@ -97,9 +97,20 @@ li {
   max-width: 360px;
   margin: 0 auto;
 }
+.calculator-result {
+  grid-column: 1/5;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  font-size: 40px;
+  font-weight: 500;
+  order: -1;
+}
 .calculator-numbers {
   grid-column: 1/4;
-  grid-row: 2/6;
+  grid-row: 3/7;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
