@@ -70,7 +70,7 @@ const styles = glob.sync(`${STYLES}/*[^plugins|^fonts]*/*.css`, {
     nosort: true
 });
 
-const images = await glob.sync(`${IMAGES}/**/**/*[^.min].{jpg,jpeg,png,webp,avif}`, {
+const images = await glob.sync(`${IMAGES}/**/**/*[^.min].{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}`, {
     cwd   : SRC,
     nosort: true
 });
