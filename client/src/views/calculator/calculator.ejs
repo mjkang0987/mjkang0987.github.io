@@ -1,0 +1,89 @@
+---
+group: calculator
+state:
+    default: calculator
+---
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <%- include(`${process.env.INCLUDE_PATH}/components/_head`, {
+        title: 'Calculator'
+    }); %>
+    <link rel="stylesheet" href="<%= process.env.BASE_PATH %>/styles/calculator/calculator<%= process.env.MINIFY %>.css<%= `?${setTimestamp()}`; %>">
+</head>
+<body>
+    <%
+        const buttons = [
+            {
+                className: 'negative',
+                text: '+, -'
+            },
+            {
+                className: 'percent',
+                text: '%'
+            },
+            {
+                className: 'subtraction',
+                text: '-'
+            },
+            {
+                className: 'plus',
+                text: '+'
+            },
+            {
+                className: 'multiply',
+                text: '*'
+            },
+            {
+                className: 'divide',
+                text: '÷'
+            },
+            {
+                className: 'calculation',
+                text: '='
+            },
+            {
+                className: 'all-clear',
+                text: 'AC'
+            }
+        ];
+        const lengthButtons = buttons.length;
+    %>
+    <%- include(`${process.env.INCLUDE_PATH}/calculator/partials/_header`); %>
+    <main role="main">
+        <div id="calculator"
+             class="calculator">
+            <div class="calculator-numbers">
+                <% for (let i = 0; i < 10; i++) { %>
+                    <div class="button-wrap" data-value="<%= i %>">
+                        <%- include(`${process.env.INCLUDE_PATH}/calculator/partials/_button`, {
+                            value: i,
+                            text: i,
+                            type: 'number'
+                        }); %>
+                    </div>
+                <% } %>
+                <div class="button-wrap" data-value="dot">
+                    <%- include(`${process.env.INCLUDE_PATH}/calculator/partials/_button`, {
+                        value: 'dot',
+                        text: '.',
+                        type: 'formular',
+                        className: 'button-dot'
+                    }); %>
+                </div>
+            </div>
+                <% for (let i = 0; i < lengthButtons; i++) { %>
+                    <div class="button-wrap" data-value="<%= buttons[i].className %>">
+                        <%- include(`${process.env.INCLUDE_PATH}/calculator/partials/_button`, {
+                            value: buttons[i].className,
+                            text: buttons[i].text,
+                            type: 'formula',
+                            className: `button-${[buttons[i].className]}`
+                        }); %>
+                    </div>
+                <% } %>
+        </div>
+    </main>
+    <script type="module" src="<%= process.env.BASE_PATH; %>/scripts/calculator/prototype<%= process.env.MINIFY %>.js<%= `?${setTimestamp()}`; %>" defer></script>
+</body>
+</html>
