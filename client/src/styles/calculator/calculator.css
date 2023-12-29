@@ -108,9 +108,18 @@ li {
   font-weight: 500;
   order: -1;
 }
+.calculator-expression {
+  grid-column: 1/5;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  font-size: 18px;
+  order: -1;
+}
 .calculator-numbers {
   grid-column: 1/4;
-  grid-row: 3/7;
+  grid-row: 4/8;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
