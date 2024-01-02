@@ -63,6 +63,10 @@ $buttonWidth: 80;
     width: 100%;
     border-radius: #{$buttonWidth / 2}px;
 
+    &.current {
+        filter: brightness(120%);
+    }
+
     &-wrap {
         display: flex;
         justify-content: center;
