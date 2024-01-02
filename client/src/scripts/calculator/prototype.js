@@ -137,12 +137,15 @@ const JS = (() => {
         };
 
         const generatorExpression = (data) => {
-            currentIndex++;
-            arrayExpression[currentIndex] = [data, initValue];
+            if (arrayExpression[currentIndex][VALUE_ONE] !== VALUE_NULL) {
+                currentIndex++;
+            }
 
-            // if (currentExpression !== data) {
-            //     currentIndex++;
-            // }
+            arrayExpression[currentIndex] = [data, VALUE_NULL];
+
+            if (currentExpression !== data) {
+                currentIndex++;
+            }
 
             console.log(arrayExpression);
         };
