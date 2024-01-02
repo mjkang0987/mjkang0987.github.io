@@ -138,6 +138,9 @@ li {
   width: 100%;
   border-radius: 40px;
 }
+.button.current {
+  filter: brightness(120%);
+}
 .button-wrap {
   display: flex;
   justify-content: center;
