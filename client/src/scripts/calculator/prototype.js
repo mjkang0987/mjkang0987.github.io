@@ -18,19 +18,22 @@ const JS = (() => {
             return;
         }
 
+        const CURRENT_CLASS = 'current';
+        const VALUE_NULL = null;
+        const VALUE_ZERO = 0;
+        const VALUE_ONE = 1;
+
         const calculatorResult = document.getElementById('calculator-result');
         const calculatorExpression = document.getElementById('calculator-expression');
-        const CURRENT_CLASS = 'current';
 
-        const initValue = 0;
-        const arrayExpression = [initValue];
+        const arrayExpression = [VALUE_ZERO];
 
-        let currentExpressionElement = null;
-        let prevExpressionElement = null;
+        let currentExpressionElement = VALUE_NULL;
+        let prevExpressionElement = VALUE_NULL;
 
-        let currentExpression = null;
-        let currentValue = arrayExpression[0];
-        let currentIndex = 0;
+        let currentExpression = VALUE_NULL;
+        let currentValue = arrayExpression[VALUE_ZERO];
+        let currentIndex = VALUE_ZERO;
 
         let isNegative = false;
         let isCalculation = false;
@@ -46,31 +49,31 @@ const JS = (() => {
 
         const initArray = (num) => {
             printResult(num);
-            arrayExpression.splice(0);
-            arrayExpression[0] = num;
-            currentIndex = 0;
+            arrayExpression.splice(VALUE_ZERO);
+            arrayExpression[VALUE_ZERO] = num;
+            currentIndex = VALUE_ZERO;
         };
 
         const calculation = () => {
-            let total = arrayExpression[0];
-            let i = 0;
+            let total = arrayExpression[VALUE_ZERO];
+            let i = VALUE_ZERO;
 
             while (i < arrayExpression.length) {
                 const tempExpression = arrayExpression[i];
 
-                if (tempExpression[0] === 'plus') {
+                if (tempExpression[VALUE_ZERO] === 'plus') {
                     total += tempExpression[1];
                 }
 
-                if (tempExpression[0] === 'subtraction') {
+                if (tempExpression[VALUE_ZERO] === 'subtraction') {
                     total -= tempExpression[1];
                 }
 
-                if (tempExpression[0] === 'multiply') {
+                if (tempExpression[VALUE_ZERO] === 'multiply') {
                     total *= tempExpression[1];
                 }
 
-                if (tempExpression[0] === 'divide') {
+                if (tempExpression[VALUE_ZERO] === 'divide') {
                     total = total / tempExpression[1];
                 }
 
@@ -83,8 +86,8 @@ const JS = (() => {
         const events = {
             number(num) {
                 const isArray = Array.isArray(arrayExpression[currentIndex]);
-                const tempValue = isArray ? arrayExpression[currentIndex][1] : (arrayExpression[currentIndex] ?? 0);
-                currentValue = +('' + (isCalculation ? 0 : tempValue) + num);
+                const tempValue = isArray ? (arrayExpression[currentIndex][VALUE_ONE] ?? VALUE_ZERO) : (arrayExpression[currentIndex] ?? VALUE_ZERO);
+                currentValue = +('' + (isCalculation ? VALUE_ZERO : tempValue) + num);
 
                 if (isArray) {
                     arrayExpression[currentIndex][1] = currentValue;
@@ -151,7 +154,8 @@ const JS = (() => {
 
             if (data.indexOf('-') > -1) {
                 const dataArray = data.split('-');
-                return `${dataArray[0]}${dataArray[1].slice(0, 1).toUpperCase()}${dataArray[1].slice(1)}`;
+                return `${dataArray[VALUE_ZERO]}${dataArray[1].slice(VALUE_ZERO, 1)
+                                                              .toUpperCase()}${dataArray[1].slice(1)}`;
             }
 
             return data;
