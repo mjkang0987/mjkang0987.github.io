@@ -126,10 +126,6 @@ const JS = (() => {
                     arrayExpression[currentIndex] = currentValue;
                 }
 
-                if (arrayExpression.length > 2) {
-                    calculation();
-                }
-
                 printResult(currentValue);
                 currentExpression = null;
                 isCalculation = false;
