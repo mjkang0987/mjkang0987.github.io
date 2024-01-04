@@ -163,14 +163,22 @@ const JS = (() => {
             console.log(arrayExpression);
         };
 
-        const generatorData = (data) => {
-            if (!isNaN(+data)) {
-                return +data;
+        const generatorCamelCase = (array = []) => {
+            if (array.length === 0) {
+                return '';
             }
 
+            return `${array[VALUE_ZERO]}${array[VALUE_ONE].slice(VALUE_ZERO, VALUE_ONE).toUpperCase()}${array[VALUE_ONE].slice(VALUE_ONE)}`
+        };
+
+        const generatorData = (data) => {
             if (data.indexOf('-') > -1) {
                 const dataArray = data.split('-');
-                return `${dataArray[VALUE_ZERO]}${dataArray[VALUE_ONE].slice(VALUE_ZERO, VALUE_ONE).toUpperCase()}${dataArray[VALUE_ONE].slice(VALUE_ONE)}`;
+                return generatorCamelCase(dataArray);
+            }
+
+            if (!isNaN(+data)) {
+                return +data;
             }
 
             return data;
