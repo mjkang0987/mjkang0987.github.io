@@ -148,8 +148,8 @@ const JS = (() => {
             dot() {
                 console.log('dot');
             },
-            allClear() {
-                initArray(initValue);
+            percent() {
+                console.log('percent');
             }
         };
 
