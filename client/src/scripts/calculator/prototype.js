@@ -212,6 +212,7 @@ const JS = (() => {
                 return;
             }
 
+            const target = e.target;
             currentExpression = generatorData(target.dataset.value);
             const isNumber = typeof currentExpression === 'number';
 
