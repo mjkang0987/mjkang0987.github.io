@@ -191,12 +191,6 @@ const JS = (() => {
             },
             allClear() {
                 initArray(VALUE_ZERO);
-            },
-            dot() {
-                console.log('dot');
-            },
-            percent() {
-                console.log('percent');
             }
         };
 
