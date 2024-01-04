@@ -201,7 +201,7 @@ const JS = (() => {
                 events.number(currentExpression);
             }
 
-            if (currentExpressionElement) {
+            if (!isNumber && currentExpressionElement) {
                 prevExpressionElement = currentExpressionElement;
                 toggleClass(prevExpressionElement, CURRENT_CLASS, 'remove');
             }
@@ -214,6 +214,7 @@ const JS = (() => {
             events[currentExpression]();
             }
 
+            printExpression();
         };
 
         return () => {
