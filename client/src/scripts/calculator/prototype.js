@@ -134,21 +134,6 @@ const JS = (() => {
                 currentExpression = null;
                 isCalculation = false;
             },
-            subtraction() {
-                return true;
-            },
-            plus() {
-                return true;
-            },
-            multiply() {
-                return true;
-            },
-            divide() {
-                return true;
-            },
-            percent() {
-                return true;
-            },
             negative() {
                 isNegative = !isNegative;
                 console.log(isNegative);
