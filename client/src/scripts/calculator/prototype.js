@@ -228,7 +228,10 @@ const JS = (() => {
                 setExpression(target);
             }
 
+            if (events[currentExpression]) {
             events[currentExpression]();
+            }
+
         };
 
         return () => {
