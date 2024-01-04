@@ -22,6 +22,21 @@ const JS = (() => {
         const VALUE_NULL = null;
         const VALUE_ZERO = 0;
         const VALUE_ONE = 1;
+        const VALUE_TWO = 2;
+        const BRACKETS = ['(', ')'];
+        const OBJ_EXPRESSION = {
+            plus       : '+',
+            subtraction: '-',
+            multiply   : '*',
+            divide     : '÷'
+        };
+
+        const OBJ_INDEX = {
+            plus       : 1,
+            subtraction: 1,
+            multiply   : 0,
+            divide     : 0
+        };
 
         const calculatorResult = document.getElementById('calculator-result');
         const calculatorExpression = document.getElementById('calculator-expression');
@@ -62,19 +77,19 @@ const JS = (() => {
                 const tempExpression = arrayExpression[i];
 
                 if (tempExpression[VALUE_ZERO] === 'plus') {
-                    total += tempExpression[1];
+                    total += tempExpression[VALUE_ONE];
                 }
 
                 if (tempExpression[VALUE_ZERO] === 'subtraction') {
-                    total -= tempExpression[1];
+                    total -= tempExpression[VALUE_ONE];
                 }
 
                 if (tempExpression[VALUE_ZERO] === 'multiply') {
-                    total *= tempExpression[1];
+                    total *= tempExpression[VALUE_ONE];
                 }
 
                 if (tempExpression[VALUE_ZERO] === 'divide') {
-                    total = total / tempExpression[1];
+                    total = total / tempExpression[VALUE_ONE];
                 }
 
                 i++;
@@ -90,7 +105,7 @@ const JS = (() => {
                 currentValue = +('' + (isCalculation ? VALUE_ZERO : tempValue) + num);
 
                 if (isArray) {
-                    arrayExpression[currentIndex][1] = currentValue;
+                    arrayExpression[currentIndex][VALUE_ONE] = currentValue;
                 }
 
                 if (!isArray) {
@@ -128,6 +143,9 @@ const JS = (() => {
                 isCalculation = true;
                 calculation();
             },
+            allClear() {
+                initArray(VALUE_ZERO);
+            },
             dot() {
                 console.log('dot');
             },
@@ -141,7 +159,7 @@ const JS = (() => {
                 currentIndex++;
             }
 
-            arrayExpression[currentIndex] = [data, VALUE_NULL];
+            arrayExpression[currentIndex] = [data, VALUE_NULL, OBJ_INDEX[data]];
 
             if (currentExpression !== data) {
                 currentIndex++;
@@ -157,8 +175,7 @@ const JS = (() => {
 
             if (data.indexOf('-') > -1) {
                 const dataArray = data.split('-');
-                return `${dataArray[VALUE_ZERO]}${dataArray[1].slice(VALUE_ZERO, 1)
-                                                              .toUpperCase()}${dataArray[1].slice(1)}`;
+                return `${dataArray[VALUE_ZERO]}${dataArray[VALUE_ONE].slice(VALUE_ZERO, VALUE_ONE).toUpperCase()}${dataArray[VALUE_ONE].slice(VALUE_ONE)}`;
             }
 
             return data;
