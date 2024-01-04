@@ -238,6 +238,7 @@ const JS = (() => {
 
     const init = () => {
         const calculator = bindCalculator('calculator');
+
         if (calculator) {
             calculator();
         }
