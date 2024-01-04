@@ -195,10 +195,18 @@ const JS = (() => {
             return data;
         };
 
+        const setExpression = (target) => {
+            if (!target) {
+                return;
+            }
+
+            currentExpressionElement = target;
+            toggleClass(currentExpressionElement, CURRENT_CLASS, 'add');
+            generatorExpression(currentExpression);
+        };
+
         const bindEvent = (e) => {
             e.preventDefault();
-
-            const target = e.target;
 
             if (e.target.tagName !== 'BUTTON') {
                 return;
@@ -216,10 +224,8 @@ const JS = (() => {
                 toggleClass(prevExpressionElement, CURRENT_CLASS, 'remove');
             }
 
-            if (currentExpression !== 'calculation') {
-                currentExpressionElement = target;
-                toggleClass(currentExpressionElement, CURRENT_CLASS, 'add');
-                generatorExpression(currentExpression);
+            if (!isNumber && currentExpression !== 'calculation' && currentExpression !== 'allClear') {
+                setExpression(target);
             }
 
             events[currentExpression]();
