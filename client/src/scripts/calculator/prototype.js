@@ -50,6 +50,7 @@ const JS = (() => {
         let currentValue = arrayExpression[VALUE_ZERO];
         let currentIndex = VALUE_ZERO;
 
+        let isDot = false;
         let isNegative = false;
         let isCalculation = false;
 
@@ -112,10 +113,25 @@ const JS = (() => {
             initArray(total);
         };
 
-        const generatorNumber = (acc, num) => {
+        const generatorNumber = (tempValue, num) => {
             let curr = num;
+            let acc = isCalculation ? VALUE_ZERO : tempValue;
 
-            return +('' + (isCalculation ? VALUE_ZERO : acc) + curr);
+            if (curr === 'dot') {
+                isDot = true;
+                curr = acc;
+            }
+
+            if (curr === 'percent') {
+                curr = acc / 100;
+            }
+
+            if (typeof num === 'number') {
+                curr = +(('' + acc) + curr) / (isDot ? 10 : 1);
+                isDot = false;
+            }
+
+            return curr;
         };
 
         const generatorExpression = (data) => {
@@ -151,16 +167,6 @@ const JS = (() => {
             }
 
             return data;
-        };
-
-        const setExpression = (target) => {
-            if (!target) {
-                return;
-            }
-
-            currentExpressionElement = target;
-            toggleClass(currentExpressionElement, CURRENT_CLASS, 'add');
-            generatorExpression(currentExpression);
         };
 
         const events = {
@@ -203,19 +209,29 @@ const JS = (() => {
 
             const target = e.target;
             currentExpression = generatorData(target.dataset.value);
-            const isNumber = typeof currentExpression === 'number';
 
-            if (isNumber) {
+            const isDot_ = currentExpression === 'dot';
+            const isPercent = currentExpression === 'percent';
+            const isNumber = typeof currentExpression === 'number' || isPercent;
+
+            if (isNumber || isDot_) {
                 events.number(currentExpression);
             }
 
-            if (!isNumber && currentExpressionElement) {
+            if (currentExpressionElement) {
                 prevExpressionElement = currentExpressionElement;
                 toggleClass(prevExpressionElement, CURRENT_CLASS, 'remove');
             }
 
-            if (!isNumber && currentExpression !== 'calculation' && currentExpression !== 'allClear') {
-                setExpression(target);
+            if ((!isNumber || isDot_) && currentExpression !== 'calculation') {
+                currentExpressionElement = target;
+                toggleClass(currentExpressionElement, CURRENT_CLASS, 'add');
+            }
+
+            if (!isNumber && !isDot_) {
+                if (currentExpression !== 'calculation' && currentExpression !== 'allClear') {
+                    generatorExpression(currentExpression);
+                }
             }
 
             if (events[currentExpression]) {
