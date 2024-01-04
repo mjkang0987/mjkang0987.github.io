@@ -198,7 +198,7 @@ const JS = (() => {
             const isNumber = typeof currentExpression === 'number';
 
             if (isNumber) {
-                return events.number(currentExpression);
+                events.number(currentExpression);
             }
 
             if (currentExpressionElement) {
