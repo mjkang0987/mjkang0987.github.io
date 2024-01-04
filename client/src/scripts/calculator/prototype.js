@@ -112,11 +112,17 @@ const JS = (() => {
             initArray(total);
         };
 
+        const generatorNumber = (acc, num) => {
+            let curr = num;
+
+            return +('' + (isCalculation ? VALUE_ZERO : acc) + curr);
+        };
+
         const events = {
             number(num) {
                 const isArray = Array.isArray(arrayExpression[currentIndex]);
                 const tempValue = isArray ? (arrayExpression[currentIndex][VALUE_ONE] ?? VALUE_ZERO) : (arrayExpression[currentIndex] ?? VALUE_ZERO);
-                currentValue = +('' + (isCalculation ? VALUE_ZERO : tempValue) + num);
+                currentValue = generatorNumber(tempValue, num);
 
                 if (isArray) {
                     arrayExpression[currentIndex][VALUE_ONE] = currentValue;
