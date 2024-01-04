@@ -153,7 +153,7 @@ const JS = (() => {
                 return '';
             }
 
-            return `${array[VALUE_ZERO]}${array[VALUE_ONE].slice(VALUE_ZERO, VALUE_ONE).toUpperCase()}${array[VALUE_ONE].slice(VALUE_ONE)}`
+            return `${array[VALUE_ZERO]}${array[VALUE_ONE].slice(VALUE_ZERO, VALUE_ONE).toUpperCase()}${array[VALUE_ONE].slice(VALUE_ONE)}`;
         };
 
         const generatorData = (data) => {
