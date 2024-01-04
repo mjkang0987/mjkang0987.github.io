@@ -54,7 +54,21 @@ const JS = (() => {
         let isCalculation = false;
 
         const printExpression = () => {
-            console.log();
+            const lengthExpression = arrayExpression.length;
+
+            let result = '';
+
+            for (let i = 0; i < lengthExpression; i++) {
+                if (typeof arrayExpression[i] === 'object') {
+                    result += ` ${OBJ_EXPRESSION[arrayExpression[i][VALUE_ZERO]]} ${arrayExpression[i][VALUE_ONE] ? arrayExpression[i][VALUE_ONE].toLocaleString('KO-kr') : ''}`;
+                }
+
+                if (typeof arrayExpression[i] !== 'object') {
+                    result += arrayExpression[i].toLocaleString('KO-kr');
+                }
+            }
+
+            calculatorExpression.textContent = result;
         };
 
         const printResult = (result) => {
