@@ -118,43 +118,6 @@ const JS = (() => {
             return +('' + (isCalculation ? VALUE_ZERO : acc) + curr);
         };
 
-        const events = {
-            number(num) {
-                const isArray = Array.isArray(arrayExpression[currentIndex]);
-                const tempValue = isArray ? (arrayExpression[currentIndex][VALUE_ONE] ?? VALUE_ZERO) : (arrayExpression[currentIndex] ?? VALUE_ZERO);
-                currentValue = generatorNumber(tempValue, num);
-
-                if (isArray) {
-                    arrayExpression[currentIndex][VALUE_ONE] = currentValue;
-                }
-
-                if (!isArray) {
-                    arrayExpression[currentIndex] = currentValue;
-                }
-
-                printResult(currentValue);
-                currentExpression = null;
-                isCalculation = false;
-            },
-            negative() {
-                isNegative = !isNegative;
-                console.log(isNegative);
-            },
-            calculation() {
-                isCalculation = true;
-                calculation();
-            },
-            allClear() {
-                initArray(VALUE_ZERO);
-            },
-            dot() {
-                console.log('dot');
-            },
-            percent() {
-                console.log('percent');
-            }
-        };
-
         const generatorExpression = (data) => {
             if (arrayExpression[currentIndex][VALUE_ONE] !== VALUE_NULL) {
                 currentIndex++;
@@ -198,6 +161,43 @@ const JS = (() => {
             currentExpressionElement = target;
             toggleClass(currentExpressionElement, CURRENT_CLASS, 'add');
             generatorExpression(currentExpression);
+        };
+
+        const events = {
+            number(num) {
+                const isArray = Array.isArray(arrayExpression[currentIndex]);
+                const tempValue = isArray ? (arrayExpression[currentIndex][VALUE_ONE] ?? VALUE_ZERO) : (arrayExpression[currentIndex] ?? VALUE_ZERO);
+                currentValue = generatorNumber(tempValue, num);
+
+                if (isArray) {
+                    arrayExpression[currentIndex][VALUE_ONE] = currentValue;
+                }
+
+                if (!isArray) {
+                    arrayExpression[currentIndex] = currentValue;
+                }
+
+                printResult(currentValue);
+                currentExpression = null;
+                isCalculation = false;
+            },
+            negative() {
+                isNegative = !isNegative;
+                console.log(isNegative);
+            },
+            calculation() {
+                isCalculation = true;
+                calculation();
+            },
+            allClear() {
+                initArray(VALUE_ZERO);
+            },
+            dot() {
+                console.log('dot');
+            },
+            percent() {
+                console.log('percent');
+            }
         };
 
         const bindEvent = (e) => {
