@@ -215,7 +215,7 @@ const JS = (() => {
             }
 
             if (events[currentExpression]) {
-            events[currentExpression]();
+                events[currentExpression]();
             }
 
             printExpression();
