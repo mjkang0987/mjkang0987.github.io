@@ -41,7 +41,9 @@ const JS = (() => {
         const calculatorResult = document.getElementById('calculator-result');
         const calculatorExpression = document.getElementById('calculator-expression');
 
-        const arrayExpression = [VALUE_ZERO];
+        // const arrayExpression = [VALUE_ZERO];
+        const arrayNumber = [VALUE_ZERO];
+        const arrayExpression = [];
 
         let currentExpressionElement = VALUE_NULL;
         let prevExpressionElement = VALUE_NULL;
@@ -55,26 +57,15 @@ const JS = (() => {
         let isCalculation = false;
 
         const printExpression = () => {
-            const lengthExpression = arrayExpression.length;
-
-            let result = '';
-
-            for (let i = 0; i < lengthExpression; i++) {
-                if (typeof arrayExpression[i] === 'object') {
-                    result += ` ${OBJ_EXPRESSION[arrayExpression[i][VALUE_ZERO]]} ${arrayExpression[i][VALUE_ONE] ? arrayExpression[i][VALUE_ONE].toLocaleString('KO-kr') : ''}`;
-                }
-
-                if (typeof arrayExpression[i] !== 'object') {
-                    result += arrayExpression[i].toLocaleString('KO-kr');
-                }
-            }
-
-            calculatorExpression.textContent = result;
+            calculatorExpression.textContent = arrayNumber.reduce((acc, curr, index) => {
+                const expression = `${curr} ${arrayExpression[index] ?? ''}`;
+                return acc + expression;
+            }, '');
         };
 
         const printResult = (result) => {
             calculatorResult.textContent = (+result).toLocaleString('KO-kr');
-            console.log('print result', arrayExpression);
+            // console.log('print result', arrayExpression);
         };
 
         const initArray = (num) => {
@@ -135,17 +126,13 @@ const JS = (() => {
         };
 
         const generatorExpression = (data) => {
-            if (arrayExpression[currentIndex][VALUE_ONE] !== VALUE_NULL) {
+            if (data !== VALUE_NULL) {
                 currentIndex++;
             }
+            arrayExpression[currentIndex] = data;
 
-            arrayExpression[currentIndex] = [data, VALUE_NULL, OBJ_INDEX[data]];
 
-            if (currentExpression !== data) {
-                currentIndex++;
-            }
-
-            console.log(arrayExpression);
+            console.log(arrayExpression)
         };
 
         const generatorCamelCase = (array = []) => {
@@ -171,17 +158,10 @@ const JS = (() => {
 
         const events = {
             number(num) {
-                const isArray = Array.isArray(arrayExpression[currentIndex]);
-                const tempValue = isArray ? (arrayExpression[currentIndex][VALUE_ONE] ?? VALUE_ZERO) : (arrayExpression[currentIndex] ?? VALUE_ZERO);
+                const tempValue = arrayNumber[currentIndex] ?? VALUE_ZERO;
                 currentValue = generatorNumber(tempValue, num);
 
-                if (isArray) {
-                    arrayExpression[currentIndex][VALUE_ONE] = currentValue;
-                }
-
-                if (!isArray) {
-                    arrayExpression[currentIndex] = currentValue;
-                }
+                arrayNumber[currentIndex] = currentValue;
 
                 printResult(currentValue);
                 currentExpression = null;
@@ -239,6 +219,7 @@ const JS = (() => {
             }
 
             printExpression();
+            // console.log(arrayNumber, arrayExpression);
         };
 
         return () => {
