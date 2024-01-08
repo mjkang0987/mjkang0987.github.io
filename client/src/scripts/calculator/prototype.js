@@ -52,12 +52,13 @@ const JS = (() => {
         let currentIndex = VALUE_ZERO;
 
         let isDot = false;
+        let isExpression = false;
         let isNegative = false;
         let isCalculation = false;
 
         const printExpression = () => {
             calculatorExpression.textContent = arrayNumber.reduce((acc, curr, index) => {
-                const expression = `${curr} ${arrayExpression[index] ?? ''}`;
+                const expression = `${curr} ${OBJ_EXPRESSION[arrayExpression[index]] ?? ''}`;
                 return acc + expression;
             }, '');
         };
@@ -69,31 +70,33 @@ const JS = (() => {
         const initArray = (num) => {
             printResult(num);
             arrayExpression.splice(VALUE_ZERO);
-            arrayExpression[VALUE_ZERO] = num;
+            arrayNumber.splice(VALUE_ZERO);
+            arrayNumber[VALUE_ZERO] = num;
             currentIndex = VALUE_ZERO;
         };
 
         const calculation = () => {
-            let total = arrayExpression[VALUE_ZERO];
-            let i = VALUE_ZERO;
+            let total = arrayNumber[VALUE_ZERO];
+            let i = VALUE_ONE;
 
-            while (i < arrayExpression.length) {
-                const tempExpression = arrayExpression[i];
+            while (i < arrayNumber.length) {
+                const tempExpression = arrayExpression[i - VALUE_ONE];
+                const tempNumber = arrayNumber[i];
 
-                if (tempExpression[VALUE_ZERO] === 'plus') {
-                    total += tempExpression[VALUE_ONE];
+                if (tempExpression === 'plus') {
+                    total += tempNumber;
                 }
 
-                if (tempExpression[VALUE_ZERO] === 'subtraction') {
-                    total -= tempExpression[VALUE_ONE];
+                if (tempExpression === 'subtraction') {
+                    total -= tempNumber;
                 }
 
-                if (tempExpression[VALUE_ZERO] === 'multiply') {
-                    total *= tempExpression[VALUE_ONE];
+                if (tempExpression === 'multiply') {
+                    total *= tempNumber;
                 }
 
-                if (tempExpression[VALUE_ZERO] === 'divide') {
-                    total = total / tempExpression[VALUE_ONE];
+                if (tempExpression === 'divide') {
+                    total = total / tempNumber;
                 }
 
                 i++;
@@ -123,22 +126,13 @@ const JS = (() => {
             return curr;
         };
 
-        const generatorExpression = (data) => {
-            if (data !== VALUE_NULL) {
-                currentIndex++;
-            }
-            arrayExpression[currentIndex] = data;
-
-
-            console.log(arrayExpression)
-        };
-
         const generatorCamelCase = (array = []) => {
             if (array.length === 0) {
                 return '';
             }
 
-            return `${array[VALUE_ZERO]}${array[VALUE_ONE].slice(VALUE_ZERO, VALUE_ONE).toUpperCase()}${array[VALUE_ONE].slice(VALUE_ONE)}`;
+            return `${array[VALUE_ZERO]}${array[VALUE_ONE].slice(VALUE_ZERO, VALUE_ONE)
+                                                          .toUpperCase()}${array[VALUE_ONE].slice(VALUE_ONE)}`;
         };
 
         const generatorData = (data) => {
@@ -156,14 +150,20 @@ const JS = (() => {
 
         const events = {
             number(num) {
+                if (isExpression) {
+                    currentIndex++;
+                }
+
                 const tempValue = arrayNumber[currentIndex] ?? VALUE_ZERO;
                 currentValue = generatorNumber(tempValue, num);
 
                 arrayNumber[currentIndex] = currentValue;
 
                 printResult(currentValue);
+
                 currentExpression = null;
                 isCalculation = false;
+                isExpression = false;
             },
             negative() {
                 isNegative = !isNegative;
@@ -208,7 +208,8 @@ const JS = (() => {
 
             if (!isNumber && !isDot_) {
                 if (currentExpression !== 'calculation' && currentExpression !== 'allClear') {
-                    generatorExpression(currentExpression);
+                    arrayExpression[currentIndex] = currentExpression;
+                    isExpression = true;
                 }
             }
 
@@ -217,7 +218,7 @@ const JS = (() => {
             }
 
             printExpression();
-            // console.log(arrayNumber, arrayExpression);
+            console.log(arrayExpression, arrayNumber);
         };
 
         return () => {
