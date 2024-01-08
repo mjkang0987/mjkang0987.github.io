@@ -41,7 +41,6 @@ const JS = (() => {
         const calculatorResult = document.getElementById('calculator-result');
         const calculatorExpression = document.getElementById('calculator-expression');
 
-        // const arrayExpression = [VALUE_ZERO];
         const arrayNumber = [VALUE_ZERO];
         const arrayExpression = [];
 
@@ -65,7 +64,6 @@ const JS = (() => {
 
         const printResult = (result) => {
             calculatorResult.textContent = (+result).toLocaleString('KO-kr');
-            // console.log('print result', arrayExpression);
         };
 
         const initArray = (num) => {
