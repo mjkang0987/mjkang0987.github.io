@@ -114,6 +114,7 @@ li {
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  min-height: 22px;
   font-size: 18px;
   order: -1;
 }
