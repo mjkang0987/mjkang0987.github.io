@@ -22,8 +22,6 @@ const JS = (() => {
         const VALUE_NULL = null;
         const VALUE_ZERO = 0;
         const VALUE_ONE = 1;
-        const VALUE_TWO = 2;
-        const BRACKETS = ['(', ')'];
         const OBJ_EXPRESSION = {
             plus       : '+',
             subtraction: '-',
