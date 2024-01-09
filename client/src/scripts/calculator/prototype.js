@@ -164,8 +164,8 @@ const JS = (() => {
                 isExpression = false;
             },
             negative() {
+                arrayNumber[currentIndex] *= -1;
                 isNegative = !isNegative;
-                console.log(isNegative);
             },
             calculation() {
                 isCalculation = true;
