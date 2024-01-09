@@ -112,7 +112,7 @@
         "html-validate": "^7.18.1",
         "js-beautify": "^1.14.11",
         "nodemon": "^2.0.22",
-        "postcss": "^8.4.32",
+        "postcss": "^8.4.33",
         "postcss-cli": "^10.1.0",
         "postcss-nested": "^6.0.1",
         "postcss-sort-media-queries": "^5.2.0",
