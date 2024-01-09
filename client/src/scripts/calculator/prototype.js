@@ -216,7 +216,6 @@ const JS = (() => {
             }
 
             printExpression();
-            console.log(arrayExpression, arrayNumber);
         };
 
         return () => {
