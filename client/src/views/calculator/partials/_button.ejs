@@ -1,0 +1,11 @@
+<%
+var value = value ?? null;
+var text = text ?? null;
+var type = type ?? null;
+var className = className ?? null;
+%>
+<% if (value !== null) { %>
+<button type="button" id="" class="<%= ['button', `${type ? `button-${type}` : ''}`, `${className ? className : ''}`].join(' ').trim(); %>" data-value="<%= value %>">
+    <span class="button-text"><%= text %></span>
+</button>
+<% } %>

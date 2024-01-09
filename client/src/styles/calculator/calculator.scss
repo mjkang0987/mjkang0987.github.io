@@ -1,0 +1,145 @@
+@use "sass:math";
+@use "./partials/mixin" as m;
+@use "./partials/reset";
+
+$buttonWidth: 80;
+
+.header {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: flex-start;
+    grid-auto-flow: dense;
+    gap: 10px;
+    max-width: 360px;
+    margin: 0 auto;
+
+    &-result {
+        grid-column: 1 / 5;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: #{$buttonWidth}px;
+        font-size: m.$fontBiggerTitle;
+        font-weight: 500;
+        order: -1;
+    }
+
+    &-expression {
+        grid-column: 1 / 5;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        min-height: 22px;
+        font-size: m.$fontBody;
+        order: -1;
+    }
+
+    &-numbers {
+        grid-column: 1 / 4;
+        grid-row: 4 / 8;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    &-formulas {
+        display: grid;
+        grid-auto-flow: dense;
+        gap: 10px;
+    }
+}
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    width: 100%;
+    border-radius: #{math.div($buttonWidth, 2)}px;
+
+    &.current {
+        filter: brightness(120%);
+    }
+
+    &-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &[data-value="0"] {
+            grid-column: 1 / 3;
+
+            .button {
+                aspect-ratio: auto;
+                height: #{$buttonWidth}px;
+            }
+        }
+
+        &[data-value="0"],
+        &[data-value="dot"], {
+            order: 3;
+        }
+
+        @for $i from 3 through 1 {
+            &[data-value="#{$i}"] {
+                order: 2;
+            }
+        }
+
+        @for $i from 4 through 6 {
+            &[data-value="#{$i}"] {
+                order: 1;
+            }
+        }
+
+        &[data-value="all-clear"] {
+            order: -1;
+        }
+    }
+
+    &-text {
+        font-family: m.$font;
+        font-size: m.$fontBigTitle;
+        font-weight: 100;
+    }
+
+    &-number,
+    &-dot {
+        background-color: lighten(m.$gray, 20%);
+        color: m.$white;
+    }
+
+    &-dot {
+        .button-text {
+            font-weight: 500;
+        }
+    }
+
+    &-subtraction,
+    &-plus,
+    &-multiply,
+    &-divide,
+    &-calculation {
+        background-color: m.$cyan;
+        color: m.$white;
+    }
+
+    &-negative,
+    &-percent,
+    &-all-clear {
+        background-color: darken(m.$gray, 10%);
+
+        .button-text {
+            font-size: m.$fontTitle;
+            color: m.$white;
+        }
+    }
+}
