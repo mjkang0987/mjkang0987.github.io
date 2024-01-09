@@ -29,13 +29,6 @@ const JS = (() => {
             divide     : '÷'
         };
 
-        const OBJ_INDEX = {
-            plus       : 1,
-            subtraction: 1,
-            multiply   : 0,
-            divide     : 0
-        };
-
         const calculatorResult = document.getElementById('calculator-result');
         const calculatorExpression = document.getElementById('calculator-expression');
 
