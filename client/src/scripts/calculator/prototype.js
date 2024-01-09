@@ -73,34 +73,64 @@ const JS = (() => {
             currentIndex = VALUE_ZERO;
         };
 
-        const calculation = () => {
-            let total = arrayNumber[VALUE_ZERO];
-            let i = VALUE_ONE;
+        const firstExpression = () => {
+            const lengthExpression = arrayExpression.length;
+            const lengthNumber = arrayNumber.length;
 
-            while (i < arrayNumber.length) {
-                const tempExpression = arrayExpression[i - VALUE_ONE];
-                const tempNumber = arrayNumber[i];
+            if (lengthExpression === lengthNumber) {
+                arrayExpression.splice(lengthNumber - 1);
+            }
 
-                if (tempExpression === 'plus') {
-                    total += tempNumber;
-                }
+            let num = VALUE_ZERO;
+            for (let index = VALUE_ZERO; index < lengthNumber; index++) {
+                const tempExpression = arrayExpression[num];
 
-                if (tempExpression === 'subtraction') {
-                    total -= tempNumber;
+                if (tempExpression === 'plus' || tempExpression === 'subtraction') {
+                    num++;
+                    continue;
                 }
 
                 if (tempExpression === 'multiply') {
-                    total *= tempNumber;
+                    arrayNumber[num] *= arrayNumber[num + VALUE_ONE];
                 }
 
                 if (tempExpression === 'divide') {
-                    total = total / tempNumber;
+                    arrayNumber[num] = arrayNumber[num] / arrayNumber[num + VALUE_ONE];
                 }
 
-                i++;
+                arrayNumber.splice(num + VALUE_ONE, VALUE_ONE);
+                arrayExpression.splice(num, VALUE_ONE);
+            }
+        };
+
+        const secondExpression = () => {
+            const lengthNumber = arrayNumber.length;
+
+            let num = VALUE_ZERO;
+            for (let index = VALUE_ZERO; index < lengthNumber; index++) {
+                const tempExpression = arrayExpression[num];
+
+                if (tempExpression === 'plus') {
+                    arrayNumber[num] += arrayNumber[num + VALUE_ONE];
+                }
+
+                if (tempExpression === 'subtraction') {
+                    arrayNumber[num] -= arrayNumber[num + VALUE_ONE];
+                }
+
+                arrayNumber.splice(num + VALUE_ONE, VALUE_ONE);
+                arrayExpression.splice(num, VALUE_ONE);
+            }
+        };
+
+        const calculation = () => {
+            firstExpression();
+
+            if (arrayNumber.length > 1) {
+                secondExpression();
             }
 
-            initArray(total);
+            initArray(arrayNumber[0]);
         };
 
         const generatorNumber = (tempValue, num) => {
