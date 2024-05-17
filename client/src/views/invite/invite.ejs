@@ -26,6 +26,6 @@ state:
         </div>
     </main>
     <%- include(`${process.env.INCLUDE_PATH}/invite/partials/_footer`); %>
-    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=hd2fu3fh50&submodules=geocoder"></script>
+<!--    <script src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=hd2fu3fh50&submodules=geocoder"></script>-->
     <script src="<%= process.env.BASE_PATH; %>/scripts/invite/scripts<%= process.env.MINIFY %>.js<%= `?${setTimestamp()}`; %>" defer></script>
 </body>
