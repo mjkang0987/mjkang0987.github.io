@@ -29,6 +29,26 @@ const JS = (() => {
             divide     : '÷'
         };
 
+        const OBJ_KEY = {
+            0  : 0,
+            1  : 1,
+            2  : 2,
+            3  : 3,
+            4  : 4,
+            5  : 5,
+            6  : 6,
+            7  : 7,
+            8  : 8,
+            9  : 9,
+            '=': 'calculator',
+            '+': 'plus',
+            '-': 'subtraction',
+            '*': 'multiply',
+            '/': 'divide',
+            '%': 'percent',
+            '.': 'dot'
+        };
+
         const calculatorResult = document.getElementById('calculator-result');
         const calculatorExpression = document.getElementById('calculator-expression');
 
