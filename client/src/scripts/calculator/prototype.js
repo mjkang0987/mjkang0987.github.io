@@ -1,4 +1,17 @@
 const JS = (() => {
+    const throttling = (callback = () => {}, timing = 100) => {
+        let timer;
+
+        return (...args) => {
+            if (!timer) {
+                timer = setTimeout(() => {
+                    callback(...args);
+                    timer = null;
+                }, timing);
+            }
+        };
+    };
+
     const toggleClass = (selector, className, type = 'add') => {
         if (!selector) {
             return;
