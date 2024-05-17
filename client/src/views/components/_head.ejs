@@ -20,6 +20,10 @@ var img = img;
 <meta property="og:image" content=<%= img %>"" />
 <meta property="og:site_name" content="<%= metaTitle %>" />
 <meta property="og:locale" content="ko_KR" />
+<% if (!isDev) { %>
+    <meta http-equiv="Content-Security-Policy"
+          content="script-src 'self';">
+<% } %>
 <link rel="apple-touch-icon"
       sizes="180x180"
       href="<%= process.env.BASE_PATH %>/images/favicon/apple-touch-icon.png">
