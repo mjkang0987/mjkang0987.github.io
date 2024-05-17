@@ -232,15 +232,19 @@ const JS = (() => {
             }
         };
 
-        const bindEvent = (e) => {
-            e.preventDefault();
+        const bindEventClick = (e) => {
+            const isString = typeof e === 'string';
 
-            if (e.target.tagName !== 'BUTTON') {
-                return;
+            if (!isString) {
+                e.preventDefault();
+
+                if (e.target?.tagName !== 'BUTTON') {
+                    return;
+                }
             }
 
             const target = e.target;
-            currentExpression = generatorData(target.dataset.value);
+            currentExpression = isString ? OBJ_KEY[e] : generatorData(target?.dataset.value);
 
             const isDot_ = currentExpression === 'dot';
             const isPercent = currentExpression === 'percent';
@@ -261,6 +265,7 @@ const JS = (() => {
             }
 
             if (!isNumber && !isDot_) {
+                isDot = false;
                 if (currentExpression !== 'calculation' && currentExpression !== 'allClear') {
                     arrayExpression[currentIndex] = currentExpression;
                     isExpression = true;
@@ -274,8 +279,23 @@ const JS = (() => {
             printExpression();
         };
 
+        const bindEventKeydown = (e) => {
+            e.preventDefault();
+
+            if (!e.key) {
+                return;
+            }
+
+            const key = e.key;
+
+            console.log(key);
+            bindEventClick(key);
+        };
+
         return () => {
-            calculator.addEventListener('click', bindEvent, {capture: true});
+            calculator.addEventListener('click', bindEventClick, {capture: true});
+
+            document.addEventListener('keydown', throttling(bindEventKeydown, 10), {capture: true});
         };
     };
 
