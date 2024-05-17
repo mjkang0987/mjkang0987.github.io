@@ -1,0 +1,50 @@
+@use "sass:math";
+
+$mobile: 360;
+
+$font: Pretendard, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
+
+$w300: 300px;
+$w360: 360px;
+$w767: 767px;
+$w768: 768px;
+$w1023: 1023px;
+$w1024: 1024px;
+$w1200: 1200px;
+$w1279: 1279px;
+$w1280: 1280px;
+
+$max: (
+    360: "max-width: #{$w360}",
+    767: "max-width: #{$w767}",
+    1023: "max-width: #{$w1023}",
+    1279: "max-width: #{$w1279}"
+);
+
+$min: (
+    768: "min-width: #{$w768}",
+    1024: "min-width: #{$w1024}",
+    1200: "min-width: #{$w1200}",
+    1280: "min-width: #{$w1280}"
+);
+
+@function vw($val, $width) {
+    @if ($width) {
+        @return math.div($val, $width) * 100vw;
+    } @else {
+        @return math.div($val, $mobile) * 100vw;
+    }
+}
+
+
+@mixin respond-to($valMin, $valMax: false) {
+    @if ($valMax) {
+        @media (#{$valMin}) and (#{$valMax}) {
+            @content;
+        }
+    } @else {
+        @media (#{$valMin}) {
+            @content;
+        }
+    }
+}
