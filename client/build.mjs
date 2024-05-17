@@ -347,8 +347,8 @@ const generatorImages = async () => {
         print(i + 1);
 
         const types = {
-            jpeg: ['jpeg', 'jpg', 'webp'],
-            jpg : ['jpeg', 'jpg', 'webp'],
+            jpeg: ['jpeg', 'jpg', 'avif', 'webp'],
+            jpg : ['jpeg', 'jpg', 'avif', 'webp'],
             png : ['png', 'avif', 'webp'],
             webp: ['webp'],
             avif: ['avif']
