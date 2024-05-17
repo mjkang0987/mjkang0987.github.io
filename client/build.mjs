@@ -301,6 +301,9 @@ const generatorScripts = async () => {
         compress: {
             drop_console: true,
             toplevel    : true
+        },
+        format  : {
+            quote_style: 1
         }
     };
 
