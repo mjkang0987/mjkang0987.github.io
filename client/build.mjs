@@ -309,6 +309,7 @@ const generatorScripts = async () => {
 
     const startTiming = new Date();
     const print = printProgress(scriptsLength);
+    const regex = /(import\{[$\w.,]+}from'[\w.\/;]+)+/g;
 
     console.log(`${chalk.magenta('javascript compile start...')}`);
 
@@ -326,7 +327,22 @@ const generatorScripts = async () => {
         minify({
             js: data
         }, options).then(data => {
-            fs.writeFileSync(`${DIST}/${pathObj.dir}/${pathObj.name}.min.js`, data.code, (err) => {
+            const importPath = data.code.match(regex);
+            let generatorCode = data.code;
+
+            if (importPath) {
+                const lengthPath = importPath.length;
+
+                for (let j = lengthPath; j--;) {
+                    const arrPath = importPath[j].split('/');
+                    const lastIndex = arrPath.length - 1;
+
+                    arrPath[lastIndex] = arrPath[lastIndex].replace('.js', '.min.js');
+                    generatorCode = generatorCode.replace(importPath[j], arrPath.join('/'));
+                }
+            }
+
+            fs.writeFileSync(`${DIST}/${pathObj.dir}/${pathObj.name}.min.js`, generatorCode, (err) => {
                 if (err) {
                     return console.error(err, 'script can not created!');
                 }
