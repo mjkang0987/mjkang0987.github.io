@@ -275,10 +275,16 @@ const generatorStyles = () => {
             });
     }
 
-    fs.mkdirSync(`${DIST}/${STYLES}/plugins`, {recursive: true});
+    if (!fs.existsSync(`${DIST}/${STYLES}/plugins`)) {
+        fs.mkdirSync(`${DIST}/${STYLES}/plugins`, {recursive: true});
+    }
+
     fs.cpSync(`${SRC}/${STYLES}/plugins`, `${DIST}/${STYLES}/plugins`, {recursive: true});
 
-    fs.mkdirSync(`${DIST}/${STYLES}/fonts`, {recursive: true});
+    if (!fs.existsSync(`${DIST}/${STYLES}/fonts`)) {
+        fs.mkdirSync(`${DIST}/${STYLES}/fonts`, {recursive: true});
+    }
+
     fs.cpSync(`${SRC}/${STYLES}/fonts`, `${DIST}/${STYLES}/fonts`, {recursive: true});
 
     console.log(`${chalk.greenBright('\nstyles compile finish.')} ${chalk.green(`(${new Date() - startTiming}ms)`)}`);
