@@ -1,4 +1,17 @@
 const JS = (() => {
+    const throttling = (callback = () => {}, timing = 100) => {
+        let timer;
+
+        return (...args) => {
+            if (!timer) {
+                timer = setTimeout(() => {
+                    callback(...args);
+                    timer = null;
+                }, timing);
+            }
+        };
+    };
+
     const toggleClass = (selector, className, type = 'add') => {
         if (!selector) {
             return;
@@ -29,11 +42,24 @@ const JS = (() => {
             divide     : '÷'
         };
 
-        const OBJ_INDEX = {
-            plus       : 1,
-            subtraction: 1,
-            multiply   : 0,
-            divide     : 0
+        const OBJ_KEY = {
+            0  : 0,
+            1  : 1,
+            2  : 2,
+            3  : 3,
+            4  : 4,
+            5  : 5,
+            6  : 6,
+            7  : 7,
+            8  : 8,
+            9  : 9,
+            '=': 'calculator',
+            '+': 'plus',
+            '-': 'subtraction',
+            '*': 'multiply',
+            '/': 'divide',
+            '%': 'percent',
+            '.': 'dot'
         };
 
         const calculatorResult = document.getElementById('calculator-result');
@@ -206,15 +232,19 @@ const JS = (() => {
             }
         };
 
-        const bindEvent = (e) => {
-            e.preventDefault();
+        const bindEventClick = (e) => {
+            const isString = typeof e === 'string';
 
-            if (e.target.tagName !== 'BUTTON') {
-                return;
+            if (!isString) {
+                e.preventDefault();
+
+                if (e.target?.tagName !== 'BUTTON') {
+                    return;
+                }
             }
 
             const target = e.target;
-            currentExpression = generatorData(target.dataset.value);
+            currentExpression = isString ? OBJ_KEY[e] : generatorData(target?.dataset.value);
 
             const isDot_ = currentExpression === 'dot';
             const isPercent = currentExpression === 'percent';
@@ -235,6 +265,7 @@ const JS = (() => {
             }
 
             if (!isNumber && !isDot_) {
+                isDot = false;
                 if (currentExpression !== 'calculation' && currentExpression !== 'allClear') {
                     arrayExpression[currentIndex] = currentExpression;
                     isExpression = true;
@@ -248,8 +279,23 @@ const JS = (() => {
             printExpression();
         };
 
+        const bindEventKeydown = (e) => {
+            e.preventDefault();
+
+            if (!e.key) {
+                return;
+            }
+
+            const key = e.key;
+
+            console.log(key);
+            bindEventClick(key);
+        };
+
         return () => {
-            calculator.addEventListener('click', bindEvent, {capture: true});
+            calculator.addEventListener('click', bindEventClick, {capture: true});
+
+            document.addEventListener('keydown', throttling(bindEventKeydown, 10), {capture: true});
         };
     };
 

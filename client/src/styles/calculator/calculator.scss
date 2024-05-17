@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:color";
 @use "./partials/mixin" as m;
 @use "./partials/reset";
 
@@ -113,7 +114,7 @@ $buttonWidth: 80;
 
     &-number,
     &-dot {
-        background-color: lighten(m.$gray, 20%);
+        background-color: color.adjust(m.$gray, $lightness: 20%);
         color: m.$white;
     }
 
@@ -135,7 +136,7 @@ $buttonWidth: 80;
     &-negative,
     &-percent,
     &-all-clear {
-        background-color: darken(m.$gray, 10%);
+        background-color: color.adjust(m.$gray, $lightness: -10%);
 
         .button-text {
             font-size: m.$fontTitle;
