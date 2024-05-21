@@ -1,16 +1,20 @@
+import {
+    COLORS
+} from './constants.js';
 
-const prototype = (() => {
-    const init = () => {
-        console.log('init');
-    };
+/*
+ * Creates pixel art grid
+ * @param el DOM Element
+ * @param rows Number of rows
+ * @param rows Number of cols
+ */
 
-    return {
-        init
-    }
-})();
-
-if (document.readyState === 'complete') {
-    prototype.init();
-} else if (document.addEventListener) {
-    document.addEventListener('DOMContentLoaded', prototype.init);
+function PixelArt(el, rows, cols) {
+    this.init();
 }
+
+PixelArt.prototype = {
+    init: function () {
+        const input = document.createElement;
+    }
+};
