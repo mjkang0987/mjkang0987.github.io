@@ -105,6 +105,18 @@ const UTILS = (() => {
         };
     };
 
+    const CREATE_EL = (el, attr) => {
+        const element = document.createElement(el);
+
+        console.log(element)
+        if (attr) {
+            Object.assign(element, attr);
+        }
+
+        return element;
+
+    }
+
     const IS_DESKTOP = () => {
         const userAgent = window.navigator.userAgent;
         const desktopRegex = /windows nt|macintosh|linux/i;
