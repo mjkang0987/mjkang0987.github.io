@@ -18,3 +18,7 @@ const CONSTANTS = (() => {
         COLORS
     };
 })();
+
+export const {
+    COLORS
+} = CONSTANTS;
