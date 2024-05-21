@@ -154,9 +154,14 @@ const UTILS = (() => {
         GO,
         RO,
         IO,
+        CREATE_EL,
         IS_DESKTOP,
         IS_BIG,
         IS_SMALL,
         IS_VISIBLE
     };
 })();
+
+export {
+    UTILS
+};
