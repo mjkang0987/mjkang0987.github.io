@@ -1,6 +1,5 @@
-const prototype = (() => {
-    'use strict';
 
+const prototype = (() => {
     const init = () => {
         console.log('init');
     };
