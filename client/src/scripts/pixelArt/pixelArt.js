@@ -14,7 +14,7 @@ const {
     CREATE_EL,
 } = UTILS;
 
-function PixelArt(el, rows, cols) {
+function PixelArt() {
     this.init();
 }
 
