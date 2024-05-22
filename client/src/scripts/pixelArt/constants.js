@@ -14,6 +14,7 @@ const CONSTANTS = (() => {
             el            : 'div',
             attr          : {
                 className: 'pixel-input',
+                style    : 'margin: 50px auto;display: grid;grid-template-columns: repeat(3, auto);justify-content:center;align-items:center;',
             },
             selector      : 'PIXEL_INPUT',
             parentSelector: 'PIXEL',
