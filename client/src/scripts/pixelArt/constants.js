@@ -33,8 +33,13 @@ const CONSTANTS = (() => {
         {
             el            : 'input',
             attr          : {
-                type : 'text',
-                style: 'padding: 3 10px;',
+                type     : 'number',
+                style    : 'height: 30px;padding: 4px 10px;border-width:1px;',
+                value    : 10,
+                max      : 10,
+                inputMode: 'numeric',
+                pattern  : '[0-9]*',
+                required : true,
             },
             selector      : 'INPUT',
             parentSelector: 'PIXEL_INPUT',
