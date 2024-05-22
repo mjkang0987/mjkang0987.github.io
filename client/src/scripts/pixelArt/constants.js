@@ -55,10 +55,16 @@ const CONSTANTS = (() => {
         'hsl(189, 89%, 42%)',
     ];
 
+    const LENGTH = {
+        ELEMENTS: ELEMENTS.length,
+        COLORS  : COLORS.length,
+    };
+
     return {
         SELECTOR,
         ELEMENTS,
         COLORS,
+        LENGTH,
     };
 })();
 
@@ -66,4 +72,5 @@ export const {
     SELECTOR,
     ELEMENTS,
     COLORS,
+    LENGTH,
 } = CONSTANTS;
