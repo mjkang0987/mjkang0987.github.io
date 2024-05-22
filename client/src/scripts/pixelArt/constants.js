@@ -4,6 +4,44 @@ const CONSTANTS = (() => {
     const SELECTOR = {
         BODY: document.querySelector('body'),
     };
+
+    const ELEMENTS = [
+        {
+            el      : 'div',
+            selector: 'PIXEL',
+        },
+        {
+            el            : 'div',
+            attr          : {
+                className: 'pixel-input',
+            },
+            selector      : 'PIXEL_INPUT',
+            parentSelector: 'PIXEL',
+            insertPosition: 'afterbegin',
+        },
+        {
+            el            : 'input',
+            attr          : {
+                type : 'text',
+                style: 'padding: 3 10px;',
+            },
+            selector      : 'INPUT',
+            parentSelector: 'PIXEL_INPUT',
+            insertPosition: 'beforeend',
+        },
+        {
+            el            : 'button',
+            attr          : {
+                type       : 'button',
+                style      : 'padding: 2px 5px;',
+                textContent: 'CREATE',
+            },
+            selector      : 'BUTTON_CRATE',
+            parentSelector: 'PIXEL_INPUT',
+            insertPosition: 'beforeend',
+        },
+    ];
+
     const COLORS = [
         'hsl(192, 100%, 39%)',
         'hsl(238, 53%, 58%)',
@@ -25,5 +63,6 @@ const CONSTANTS = (() => {
 
 export const {
     SELECTOR,
+    ELEMENTS,
     COLORS,
 } = CONSTANTS;
