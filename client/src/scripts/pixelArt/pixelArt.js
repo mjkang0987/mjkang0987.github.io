@@ -27,8 +27,7 @@ function PixelArt() {
 }
 
 PixelArt.prototype = {
-    init: function () {
-        const input = document.createElement;
+    init          : function () {
         this.setElement();
     },
     insertElement : function (el, parent, position) {
@@ -64,7 +63,7 @@ PixelArt.prototype = {
 
                 elements.push(cell);
             }
-    }
+        }
 
         this.selector['PIXEL_CELLS'].innerHTML = [...elements].join('');
     },
