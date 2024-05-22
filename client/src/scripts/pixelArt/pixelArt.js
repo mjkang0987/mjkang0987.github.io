@@ -19,9 +19,8 @@ function PixelArt() {
 
     this.init();
 
-    if (Object.hasOwnProperty.call(this.selector, 'INPUT')) {
-        this.createPixelArt();
-        this.selector.BUTTON_CREATE.addEventListener('click', this.createPixelArt.bind(this));
+    if (!Object.hasOwnProperty.call(this.selector, 'INPUT')) {
+        return;
     }
 
 }
