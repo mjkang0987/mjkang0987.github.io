@@ -23,6 +23,8 @@ function PixelArt() {
         return;
     }
 
+    this.createPixelArt();
+    this.selector['BUTTON_CREATE'].addEventListener('click', this.createPixelArt.bind(this));
 }
 
 PixelArt.prototype = {
