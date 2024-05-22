@@ -56,6 +56,17 @@ const CONSTANTS = (() => {
             parentSelector: 'PIXEL_INPUT',
             insertPosition: 'beforeend',
         },
+        {
+            el            : 'strong',
+            attr          : {
+                className  : 'caution',
+                style      : 'grid-column: 2 / 4;padding: 8px 0;font-weight: 400;color: #ff0000;',
+                textContent: 'only number. max 10.',
+            },
+            selector      : 'INPUT_CAUTION',
+            parentSelector: 'PIXEL_INPUT',
+            insertPosition: 'beforeend',
+        },
     ];
 
     const COLORS = [
