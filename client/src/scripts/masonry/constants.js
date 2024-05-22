@@ -77,7 +77,7 @@ export const constants = (() => {
                 },
                 disconnect() {
                     observer.disconnect();
-                }
+                },
             };
         },
         /**
@@ -99,14 +99,14 @@ export const constants = (() => {
                 },
                 disconnect() {
                     observer.disconnect();
-                }
+                },
             };
         },
         IS_DESKTOP() {
             const userAgent = window.navigator.userAgent;
             const desktopRegex = /windows nt|macintosh|linux/i;
             return desktopRegex.test(userAgent);
-        }
+        },
     };
 
     const FETCH = {
@@ -114,9 +114,8 @@ export const constants = (() => {
             const options = {
                 method : 'GET',
                 headers: {
-                    'Content-Type': 'application/json',
-                    ...headers
-                }
+                    'Content-Type': 'application/json', ...headers,
+                },
             };
 
             const res = await fetch(host, options);
@@ -129,17 +128,17 @@ export const constants = (() => {
             if (!res.ok) {
                 throw Error(data);
             }
-        }
+        },
     };
 
     const TRANSITION = {
-        CUBIC: [.57, .21, .69, .95]
+        CUBIC: [.57, .21, .69, .95],
     };
 
 
     return {
         METHODS,
         FETCH,
-        TRANSITION
+        TRANSITION,
     };
 })();

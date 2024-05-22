@@ -10,7 +10,7 @@ let timer;
 UTILS.METHODS = {
     DEBOUNCE(
         callback = () => {},
-        timing = 100
+        timing = 100,
     ) {
         let timer;
 
@@ -23,11 +23,11 @@ UTILS.METHODS = {
                 callback.apply(this, args);
                 timer = null;
             }, timing);
-        }
+        };
     },
     THROTTLING(
         callback = () => {},
-        timing = 100
+        timing = 100,
     ) {
         let timer;
 
@@ -38,22 +38,22 @@ UTILS.METHODS = {
                     timer = null;
                 }, timing);
             }
-        }
+        };
     },
-    RO (
-        callback = () => {}
+    RO(
+        callback = () => {},
     ) {
         return new ResizeObserver(this.DEBOUNCE((entrise, observer) => {
             callback(entrise);
         }, 100));
-    }
+    },
 };
 
 export const {
     EL,
     LOCATION,
     METHODS,
-    TEMP
+    TEMP,
 } = UTILS;
 
 EL.group = document.querySelector('.group');

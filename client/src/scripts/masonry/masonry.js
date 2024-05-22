@@ -77,7 +77,7 @@ export const constants = (() => {
                 },
                 disconnect() {
                     observer.disconnect();
-                }
+                },
             };
         },
         /**
@@ -99,14 +99,14 @@ export const constants = (() => {
                 },
                 disconnect() {
                     observer.disconnect();
-                }
+                },
             };
         },
         IS_DESKTOP() {
             const userAgent = window.navigator.userAgent;
             const desktopRegex = /windows nt|macintosh|linux/i;
             return desktopRegex.test(userAgent);
-        }
+        },
     };
 
     const FETCH = {
@@ -115,8 +115,8 @@ export const constants = (() => {
                 method : 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    ...headers
-                }
+                    ...headers,
+                },
             };
 
             const res = await fetch(host, options);
@@ -129,37 +129,37 @@ export const constants = (() => {
             if (!res.ok) {
                 throw Error(data);
             }
-        }
+        },
     };
 
     const TRANSITION = {
-        CUBIC: [.57, .21, .69, .95]
+        CUBIC: [.57, .21, .69, .95],
     };
 
     const ELEMENT = {
-        BODY: document.querySelector('body')
+        BODY: document.querySelector('body'),
     };
 
     return {
         METHODS,
         FETCH,
-        ELEMENT
+        ELEMENT,
     };
 })();
 
 const {
     METHODS,
     FETCH,
-    ELEMENT
+    ELEMENT,
 } = constants;
 
 const {
-    BODY
+    BODY,
 } = ELEMENT;
 
 const masonryJS = ({
     element = document.querySelector('.masonry'),
-    options = {}
+    options = {},
 } = {}) => {
     const masonry = element;
 
@@ -171,7 +171,7 @@ const masonryJS = ({
         rows       : 3,
         gap        : 10,
         timing     : 300,
-        breakpoints: {}
+        breakpoints: {},
     };
 
     const opts = {...defaultOptions, ...options};
@@ -184,7 +184,7 @@ const masonryJS = ({
         width       : Math.floor((masonry.clientWidth - opts.gap) / opts.rows),
         totalElement: new Map(),
         newElement  : new Map(),
-        breakpoints : new Set(Object.keys(opts.breakpoints).sort((a, b) => Number(b) - Number(a)))
+        breakpoints : new Set(Object.keys(opts.breakpoints).sort((a, b) => Number(b) - Number(a))),
     };
 
     const resetHeights = () => {
@@ -226,7 +226,7 @@ const masonryJS = ({
                 left: ${opts.gap / 2}px; 
                 width: ${temp.width}px; 
                 padding: 0 ${opts.gap / 2}px; 
-                box-sizing: border-box;`
+                box-sizing: border-box;`,
             );
 
             const height = element.offsetHeight;
@@ -307,7 +307,7 @@ const prototype = (() => {
         initPage++;
 
         return await FETCH.GET(
-            `https://picsum.photos/v2/list?page=${initPage}&limit=20`
+            `https://picsum.photos/v2/list?page=${initPage}&limit=20`,
         );
     };
 
@@ -317,7 +317,7 @@ const prototype = (() => {
         Object.assign(loader, {
             id       : 'loader',
             className: 'loader-wrap',
-            style    : 'display: flex'
+            style    : 'display: flex',
         });
 
         loader.innerHTML = '<span class="loader"></span>';
@@ -355,13 +355,13 @@ const prototype = (() => {
             rows       : 2,
             breakpoints: {
                 767 : {
-                    rows: 3
+                    rows: 3,
                 },
                 1023: {
-                    rows: 5
-                }
-            }
-        }
+                    rows: 5,
+                },
+            },
+        },
     });
 
     const renderMasonry = (items = []) => {
@@ -382,7 +382,7 @@ const prototype = (() => {
                 ...acc,
                 `<div class="img-wrap isNew">
                     <img src="${curr.download_url}" width="${curr.width}" height="${curr.height}" alt="${curr.author}">
-                </div>`
+                </div>`,
             ];
         }, []);
 
@@ -429,7 +429,7 @@ const prototype = (() => {
     };
 
     return {
-        init
+        init,
     };
 })();
 

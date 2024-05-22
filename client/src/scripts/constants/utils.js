@@ -78,7 +78,7 @@ const UTILS = (() => {
             },
             disconnect() {
                 observer.disconnect();
-            }
+            },
         };
     };
 
@@ -101,7 +101,7 @@ const UTILS = (() => {
             },
             disconnect() {
                 observer.disconnect();
-            }
+            },
         };
     };
 
@@ -156,10 +156,10 @@ const UTILS = (() => {
         IS_DESKTOP,
         IS_BIG,
         IS_SMALL,
-        IS_VISIBLE
+        IS_VISIBLE,
     };
 })();
 
 export {
-    UTILS
+    UTILS,
 };

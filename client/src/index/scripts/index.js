@@ -2,7 +2,7 @@ import {
     EL,
     LOCATION,
     METHODS,
-    TEMP
+    TEMP,
 } from './constants.js';
 
 const indexJS = (() => {
@@ -39,7 +39,7 @@ const indexJS = (() => {
     };
 
     const setPreviewUI = ({
-        target
+        target,
     }) => {
         const pageData = target.dataset;
 
@@ -71,7 +71,7 @@ const indexJS = (() => {
 
     const resetSearch = ({
         set,
-        type
+        type,
     }) => {
         if (!set) {
             return;
@@ -95,17 +95,17 @@ const indexJS = (() => {
     const resetSearchCombine = () => {
         resetSearch({
             set : TEMP.searchDetails,
-            type: null
+            type: null,
         });
 
         resetSearch({
             set : TEMP.searchElements,
-            type: 'tag'
+            type: 'tag',
         });
     };
 
     const searchData = ({
-        value
+        value,
     }) => {
         TEMP.searchElement = [];
 
@@ -149,7 +149,7 @@ const indexJS = (() => {
 
         searchEl.addEventListener('input', (e) => {
             const debounceInput = METHODS.DEBOUNCE(searchData, 200);
-            debounceInput({value: e.target.value})
+            debounceInput({value: e.target.value});
         });
     };
 
@@ -239,7 +239,7 @@ const indexJS = (() => {
 
             const key = {
                 down: 40,
-                up  : 38
+                up  : 38,
             };
 
             if (!Object.keys(key).find(k => e.keyCode === key[k])) {
@@ -279,7 +279,7 @@ const indexJS = (() => {
     };
 
     return {
-        init
+        init,
     };
 })();
 
@@ -288,6 +288,6 @@ if (document.readyState === 'complete') {
 } else if (document.addEventListener) {
     document.addEventListener(
         'DOMContentLoaded',
-        indexJS.init
+        indexJS.init,
     );
 }

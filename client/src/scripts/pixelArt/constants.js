@@ -11,14 +11,14 @@ const CONSTANTS = (() => {
         'hsl(242, 98%, 56%)',
         'hsl(12, 100%, 70%)',
         'hsl(132, 43%, 42%)',
-        'hsl(189, 89%, 42%)'
+        'hsl(189, 89%, 42%)',
     ];
 
     return {
-        COLORS
+        COLORS,
     };
 })();
 
 export const {
-    COLORS
+    COLORS,
 } = CONSTANTS;
