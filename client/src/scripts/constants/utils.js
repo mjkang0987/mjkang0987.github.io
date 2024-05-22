@@ -113,8 +113,7 @@ const UTILS = (() => {
         }
 
         return element;
-
-    }
+    };
 
     const IS_DESKTOP = () => {
         const userAgent = window.navigator.userAgent;
