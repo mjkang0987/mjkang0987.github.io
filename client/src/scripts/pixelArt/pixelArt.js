@@ -1,5 +1,8 @@
 import {
+    SELECTOR,
+    ELEMENTS,
     COLORS,
+    LENGTH,
 } from './constants.js';
 
 import {
