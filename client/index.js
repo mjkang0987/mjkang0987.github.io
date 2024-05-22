@@ -13,8 +13,8 @@ require('dotenv').config({
         process.cwd(),
         process.env.NODE_ENV === 'production'
         ? '.env.production'
-        : '.env.development'
-    )
+        : '.env.development',
+    ),
 });
 
 const os = require('os');
@@ -33,7 +33,7 @@ const {
     VIEWS,
     STYLES,
     SCRIPTS,
-    IMAGES
+    IMAGES,
 } = base;
 
 app.set('view engine', 'ejs');
@@ -50,24 +50,24 @@ app.get('/', (req, res) => {
     for (let i = 0; i < groupLength; i++) {
         fmGroups.set(keys[i], {
             group: fm.data.groups[keys[i]],
-            pages: new Set()
+            pages: new Set(),
         });
     }
 
     const ejsOptions = {
         root              : SRC,
-        outputFunctionName: 'echo'
+        outputFunctionName: 'echo',
     };
 
     const indexProps = {
         pkgInfo: pkg,
-        list   : fmGroups
+        list   : fmGroups,
     };
 
     const pages = glob.sync(`${VIEWS}/**/[^_]*.ejs`, {
         cwd   : SRC,
         nosort: true,
-        nodir : true
+        nodir : true,
     });
 
     const pagesLength = pages.length;
@@ -82,7 +82,7 @@ app.get('/', (req, res) => {
 
         const {
             group,
-            state
+            state,
         } = fmData;
 
         const keysState = Object.keys(state);
@@ -113,7 +113,7 @@ app.get('/', (req, res) => {
                 token    : `${token}${!isDefault ? `-${key}` : ''}`,
                 href     : `${srcPath}${!isDefault ? `.${key}` : ''}.html`,
                 path     : srcPath,
-                unexposed: isUnexposedPage
+                unexposed: isUnexposedPage,
             };
 
             indexProps.list.get(group).pages.add(stateObj);
@@ -133,7 +133,7 @@ app.get(`/views/**/?*.html`, (req, res, next) => {
     const targetPath = path.join(__dirname, SRC, pathObj.dir, targetFile + '.ejs');
     const ejsOption = {
         root              : SRC,
-        outputFunctionName: 'echo'
+        outputFunctionName: 'echo',
     };
 
     fs.readFile(targetPath, (err, data) => {
@@ -147,7 +147,7 @@ app.get(`/views/**/?*.html`, (req, res, next) => {
             const pageProps = {
                 pageFm: pageFm.data,
                 state : fileState[1] || 'default',
-                ...utils
+                ...utils,
             };
 
             ejsOption.filename = targetPath;
@@ -175,7 +175,7 @@ app.use(sassMiddleware({
     debug      : false,
     outputStyle: 'expanded',
     force      : true,
-    maxAge     : 0
+    maxAge     : 0,
 }));
 
 app.use(`/${STYLES}`, express.static(path.join(__dirname, SRC, STYLES)));

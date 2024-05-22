@@ -9,7 +9,7 @@ const utils = {
      * @returns {string | void}
      */
     setFirstUpper({
-        text
+        text,
     }) {
         if (!text) {
             return;
@@ -42,7 +42,7 @@ const utils = {
      * @returns {boolean}
      */
     isArray({
-        arr
+        arr,
     }) {
         return arr !== undefined && Array.isArray(arr);
     },
@@ -51,7 +51,7 @@ const utils = {
      * @returns {boolean}
      */
     isString({
-        str
+        str,
     }) {
         return str !== undefined && typeof str === 'string';
     },
@@ -60,10 +60,10 @@ const utils = {
      * @returns {boolean}
      */
     isNumber({
-        num
+        num,
     }) {
         return num !== undefined && typeof num === 'number';
-    }
+    },
 };
 
 exports.setFirstUpper = utils.setFirstUpper;

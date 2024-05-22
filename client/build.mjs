@@ -31,19 +31,19 @@ dotenv.config({
         process.cwd(),
         process.env.NODE_ENV === 'development'
         ? '.env.development'
-        : '.env.production'
-    )
+        : '.env.production',
+    ),
 });
 
 const pkg = JSON.parse(
     await readFile(
-        new URL('./package.json', import.meta.url)
-    )
+        new URL('./package.json', import.meta.url),
+    ),
 );
 
 const {
     base,
-    htmlValidate
+    htmlValidate,
 } = pkg;
 
 const {
@@ -52,27 +52,27 @@ const {
     STYLES,
     SCRIPTS,
     IMAGES,
-    DIST
+    DIST,
 } = base;
 
 const pages = glob.sync(`${VIEWS}/**/[^_]*.ejs`, {
     cwd   : SRC,
-    nosort: true
+    nosort: true,
 });
 
 const scripts = glob.sync(`${SCRIPTS}/*[^plugins]*/*.js`, {
     cwd   : SRC,
-    nosort: true
+    nosort: true,
 });
 
 const styles = glob.sync(`${STYLES}/*[^plugins|^fonts]*/*.css`, {
     cwd   : SRC,
-    nosort: true
+    nosort: true,
 });
 
 const images = await glob.sync(`${IMAGES}/**/**/*[^.min].{jpg,jpeg,png,webp,avif,JPG,JPEG,PNG,WEBP,AVIF}`, {
     cwd   : SRC,
-    nosort: true
+    nosort: true,
 });
 
 const reduce = (f, acc, iter) => {
@@ -95,7 +95,7 @@ let isStop = false;
 const htmlValidation = ({
     srcPath,
     state = 'default',
-    data
+    data,
 }) => {
     const htmlValidator = new HtmlValidate(htmlValidate);
 
@@ -125,7 +125,7 @@ const htmlValidation = ({
                     '\n',
                     chalk.green(lines[message.line - 1]),
                     '\n',
-                    chalk.yellowBright(`${' '.repeat(message.column - 1)}${marker}`)
+                    chalk.yellowBright(`${' '.repeat(message.column - 1)}${marker}`),
                 ];
                 console.log(messages.join(''));
             }
@@ -142,7 +142,7 @@ const htmlValidation = ({
 const renderHTML = ({
     data,
     filePath,
-    fileName
+    fileName,
 }) => {
     fs.writeFileSync(
         `${filePath}/${fileName}.html`,
@@ -151,7 +151,7 @@ const renderHTML = ({
             if (err) {
                 return console.error(err, 'html can not created!');
             }
-        }
+        },
     );
 };
 
@@ -172,7 +172,7 @@ const generatorViews = () => {
 
     const ejsOption = {
         root              : SRC,
-        outputFunctionName: 'echo'
+        outputFunctionName: 'echo',
     };
 
     const startTiming = new Date();
@@ -210,7 +210,7 @@ const generatorViews = () => {
             const pageProps = {
                 pageFm: pageFm.data,
                 state : state,
-                ...utils
+                ...utils,
             };
 
             ejsOption.filename = targetPath;
@@ -225,13 +225,13 @@ const generatorViews = () => {
             htmlValidation({
                 srcPath: `/${VIEWS}/${srcPath}`,
                 state,
-                data   : beautified
+                data   : beautified,
             });
 
             renderHTML({
                 data    : beautified,
                 filePath: `${DIST}/${pathObj.dir}`,
-                fileName: `${pathObj.name}${state !== 'default' ? `.${state}` : ''}`
+                fileName: `${pathObj.name}${state !== 'default' ? `.${state}` : ''}`,
             });
         }
     }
@@ -300,11 +300,11 @@ const generatorScripts = async () => {
     const options = {
         compress: {
             drop_console: true,
-            toplevel    : true
+            toplevel    : true,
         },
         format  : {
-            quote_style: 1
-        }
+            quote_style: 1,
+        },
     };
 
     const startTiming = new Date();
@@ -325,7 +325,7 @@ const generatorScripts = async () => {
         const data = fs.readFileSync(`${SRC}/${pathObj.dir}/${pathObj.name}.js`, 'utf-8');
 
         minify({
-            js: data
+            js: data,
         }, options).then(data => {
             const importPath = data.code.match(regex);
             let generatorCode = data.code;
@@ -379,7 +379,7 @@ const generatorImages = async () => {
             jpg : ['jpeg', 'jpg', 'avif', 'webp'],
             png : ['png', 'avif', 'webp'],
             webp: ['webp'],
-            avif: ['avif']
+            avif: ['avif'],
         };
 
         const pathObj = path.parse(images[i]);
@@ -418,6 +418,6 @@ if (process.env.NODE_ENV !== 'image') {
         generatorViews,
         generatorStyles,
         generatorScripts,
-        generatorImages
+        generatorImages,
     );
 }
