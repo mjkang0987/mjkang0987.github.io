@@ -108,7 +108,6 @@ const UTILS = (() => {
     const CREATE_EL = (el, attr) => {
         const element = document.createElement(el);
 
-        console.log(element)
         if (attr) {
             Object.assign(element, attr);
         }
