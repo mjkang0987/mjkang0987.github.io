@@ -37,6 +37,23 @@ button {
     border-radius: 0;
     box-sizing: border-box;
 }
+
+input {
+    ~ .caution {
+        opacity: 0;
+    }
+
+    &:invalid {
+        outline: 3px solid #f00;
+
+        ~ .caution {
+            opacity: 1;
+        }
+    }
+
+    &:valid {
+        outline: 1px;
+    }
 }
 
 button {
