@@ -21,6 +21,16 @@ const CONSTANTS = (() => {
             insertPosition: 'afterbegin',
         },
         {
+            el            : 'strong',
+            attr          : {
+                textContent: 'Pixel Art size:',
+                style      : 'display:block;margin-right:10px;',
+            },
+            selector      : 'PIXEL_INPUT_TITLE',
+            parentSelector: 'PIXEL_INPUT',
+            insertPosition: 'beforeend',
+        },
+        {
             el            : 'input',
             attr          : {
                 type : 'text',
