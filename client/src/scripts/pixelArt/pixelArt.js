@@ -1,6 +1,15 @@
 import {
-    COLORS
+    COLORS,
 } from './constants.js';
+
+import {
+    UTILS,
+} from '../constants/utils.js';
+
+
+const {
+    CREATE_EL,
+} = UTILS;
 
 /*
  * Creates pixel art grid
