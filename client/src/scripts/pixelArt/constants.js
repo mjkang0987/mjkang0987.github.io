@@ -52,7 +52,7 @@ const CONSTANTS = (() => {
                 style      : 'height:30px;padding: 4px 10px;border: 1px solid #111;border-left: 0;background-color:hsla(181, 81%, 46%, .4)',
                 textContent: 'CREATE',
             },
-            selector      : 'BUTTON_CRATE',
+            selector      : 'BUTTON_CREATE',
             parentSelector: 'PIXEL_INPUT',
             insertPosition: 'beforeend',
         },
