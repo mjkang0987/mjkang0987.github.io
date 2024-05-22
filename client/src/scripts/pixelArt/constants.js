@@ -1,6 +1,9 @@
 const CONSTANTS = (() => {
     'use strict';
 
+    const SELECTOR = {
+        BODY: document.querySelector('body'),
+    };
     const COLORS = [
         'hsl(192, 100%, 39%)',
         'hsl(238, 53%, 58%)',
@@ -15,10 +18,12 @@ const CONSTANTS = (() => {
     ];
 
     return {
+        SELECTOR,
         COLORS,
     };
 })();
 
 export const {
+    SELECTOR,
     COLORS,
 } = CONSTANTS;
