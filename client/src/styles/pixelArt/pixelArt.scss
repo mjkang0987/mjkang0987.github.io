@@ -1,4 +1,2 @@
-
-body {
-    margin: 0;
-}
+@use "./../components/reset";
+@use "./../components/mixin" as m;
