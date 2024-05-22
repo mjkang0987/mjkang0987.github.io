@@ -57,6 +57,7 @@ const CONSTANTS = (() => {
 
     return {
         SELECTOR,
+        ELEMENTS,
         COLORS,
     };
 })();
