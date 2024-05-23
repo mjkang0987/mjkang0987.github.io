@@ -1,0 +1,90 @@
+@use "./../components/mixin" as m;
+
+body,
+header,
+section,
+footer,
+h1,
+div,
+p,
+ul,
+ol,
+li,
+button,
+figure,
+figcaption,
+img {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+body,
+input,
+button {
+    font-family: m.$font;
+    font-weight: 100;
+    letter-spacing: -.4px;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+input {
+    ~ .caution {
+        opacity: 0;
+    }
+
+    &:invalid {
+        outline: 3px solid #f00;
+
+        ~ .caution {
+            opacity: 1;
+        }
+    }
+
+    &:valid {
+        outline: 1px;
+    }
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    > span {
+        pointer-events: none;
+    }
+}
+
+button,
+a {
+    &:active {
+        opacity: .8;
+    }
+}
+
+a {
+    text-decoration: none;
+
+    &:visited {
+        color: inherit;
+    }
+}
+
+img {
+    display: block;
+}
+
+li {
+    list-style: none;
+}

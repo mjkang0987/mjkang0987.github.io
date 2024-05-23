@@ -39,7 +39,7 @@ const JS = (() => {
             plus       : '+',
             subtraction: '-',
             multiply   : '*',
-            divide     : '÷'
+            divide     : '÷',
         };
 
         const OBJ_KEY = {
@@ -59,7 +59,7 @@ const JS = (() => {
             '*': 'multiply',
             '/': 'divide',
             '%': 'percent',
-            '.': 'dot'
+            '.': 'dot',
         };
 
         const calculatorResult = document.getElementById('calculator-result');
@@ -229,7 +229,7 @@ const JS = (() => {
             },
             allClear() {
                 initArray(VALUE_ZERO);
-            }
+            },
         };
 
         const bindEventClick = (e) => {
@@ -308,7 +308,7 @@ const JS = (() => {
     };
 
     return {
-        init
+        init,
     };
 })();
 

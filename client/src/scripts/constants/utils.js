@@ -78,7 +78,7 @@ const UTILS = (() => {
             },
             disconnect() {
                 observer.disconnect();
-            }
+            },
         };
     };
 
@@ -101,8 +101,18 @@ const UTILS = (() => {
             },
             disconnect() {
                 observer.disconnect();
-            }
+            },
         };
+    };
+
+    const CREATE_EL = (el, attr) => {
+        const element = document.createElement(el);
+
+        if (attr) {
+            Object.assign(element, attr);
+        }
+
+        return element;
     };
 
     const IS_DESKTOP = () => {
@@ -142,9 +152,14 @@ const UTILS = (() => {
         GO,
         RO,
         IO,
+        CREATE_EL,
         IS_DESKTOP,
         IS_BIG,
         IS_SMALL,
-        IS_VISIBLE
+        IS_VISIBLE,
     };
 })();
+
+export {
+    UTILS,
+};

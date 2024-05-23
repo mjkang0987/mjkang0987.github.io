@@ -3,12 +3,12 @@ const JS = (() => {
 
     const ELEMENT = {
         BODY : document.querySelector('body'),
-        SLIDE: document.querySelectorAll('.slide-wrap')
+        SLIDE: document.querySelectorAll('.slide-wrap'),
     };
 
     const {
         BODY,
-        SLIDE
+        SLIDE,
     } = ELEMENT;
 
 
@@ -55,7 +55,7 @@ const JS = (() => {
             },
             disconnect() {
                 observer.disconnect();
-            }
+            },
         };
     };
 
@@ -65,7 +65,7 @@ const JS = (() => {
         fullYear: null,
         month   : null,
         day     : null,
-        date    : null
+        date    : null,
     };
 
     const setCurrent = () => {
@@ -74,12 +74,12 @@ const JS = (() => {
 
     const print = () => {
         const text = [
-            '%cEUN%c & %cJIWOO'
+            '%cEUN%c & %cJIWOO',
         ];
         const style = [
             'background-color: rgb(106, 116, 249); color: #fff; padding: 2px 4px;',
             'background-color: rgb(0, 170, 255); color: #fff; padding: 2px 0;',
-            'background-color: rgb(255, 158, 158); color: #fff; padding: 2px 4px;'
+            'background-color: rgb(255, 158, 158); color: #fff; padding: 2px 4px;',
         ];
 
         console.log(text.join(''), ...style);
@@ -103,14 +103,14 @@ const JS = (() => {
             days   : Math.floor(diff / (dayToSeconds * 1000)),
             hours  : Math.floor((diff / (hourToSeconds * 1000)) % 24),
             minutes: Math.floor((diff / (minuteToSeconds * 1000)) % 60),
-            seconds: Math.floor((diff / 1000) % 60)
+            seconds: Math.floor((diff / 1000) % 60),
         };
 
         const {
             days,
             hours,
             minutes,
-            seconds
+            seconds,
         } = objDiff;
 
         const objDiffToSecond = {};
@@ -145,7 +145,7 @@ const JS = (() => {
 
     const carouselSlide = (target, opts) => {
         const TEMP = {
-            SLIDES: new Set()
+            SLIDES: new Set(),
         };
 
         const defaultOptions = {
@@ -156,13 +156,13 @@ const JS = (() => {
             indexing    : true,
             thumb       : {
                 wrap: null,
-                el  : null
+                el  : null,
             },
             controls    : true,
             speed       : 3000,
             loop        : false,
             startIndex  : 1,
-            isTransition: false
+            isTransition: false,
         };
 
         if (!target) {
@@ -217,7 +217,7 @@ const JS = (() => {
             const handlerClasses = [
                 'current',
                 'prev',
-                'next'
+                'next',
             ];
 
             handlerClasses.map(c => {
@@ -268,14 +268,14 @@ const JS = (() => {
 
             Object.assign(options.paginationEl.el, {
                 className: 'slide-pagination',
-                style    : 'display: flex; justify-content: center; align-items: center; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);'
+                style    : 'display: flex; justify-content: center; align-items: center; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);',
             });
 
             for (let i = 0; i < length; i++) {
                 options.paginationEl.children[i] = document.createElement('button');
                 Object.assign(options.paginationEl.children[i], {
                     type     : 'button',
-                    className: i === Number(target.dataset.index) - 1 ? 'current' : ''
+                    className: i === Number(target.dataset.index) - 1 ? 'current' : '',
                 });
 
                 options.paginationEl.children[i].dataset.index = i + 1;
@@ -306,13 +306,13 @@ const JS = (() => {
             Object.assign(options.indexingEl.el, {
                 className: 'slide-indexing',
                 style    : 'display: flex; justify-content: center; align-items: center; position: absolute; bottom: 20px; right: 20px;',
-                tabIndex : '0'
+                tabIndex : '0',
             });
 
             const objIndexingEl = {
                 current : target.dataset.index,
                 division: '/',
-                total   : length
+                total   : length,
             };
 
             Object.keys(objIndexingEl).map(index => {
@@ -320,7 +320,7 @@ const JS = (() => {
 
                 Object.assign(options.indexingEl[index], {
                     className  : index,
-                    textContent: objIndexingEl[index]
+                    textContent: objIndexingEl[index],
                 });
 
                 options.indexingEl.el.insertAdjacentElement('beforeend', options.indexingEl[index]);
@@ -420,19 +420,19 @@ const JS = (() => {
 
             Object.assign(options.controlsEl.el, {
                 className: 'slide-controls',
-                style    : 'display: flex; flex-direction: row; justify-content: space-between; width: 100%; position: absolute; top: 50%; transform: translateY(-50%); padding: 0 20px; box-sizing: border-box;'
+                style    : 'display: flex; flex-direction: row; justify-content: space-between; width: 100%; position: absolute; top: 50%; transform: translateY(-50%); padding: 0 20px; box-sizing: border-box;',
             });
 
             [
                 'next',
-                'prev'
+                'prev',
             ].map(curr => {
                 options.controlsEl[curr] = document.createElement('button');
                 Object.assign(options.controlsEl[curr], {
                     type       : 'button',
                     className  : `button-${curr}`,
                     textContent: curr === 'next' ? 'Next' : 'Prev',
-                    disabled   : (!options.loop && curr === 'prev' && options.startIndex === 1)
+                    disabled   : (!options.loop && curr === 'prev' && options.startIndex === 1),
                 });
 
                 options.controlsEl.el.insertAdjacentElement('afterbegin', options.controlsEl[curr]);
@@ -445,7 +445,7 @@ const JS = (() => {
         const setLoop = () => {
             options.clone = {
                 before: [],
-                after : []
+                after : [],
             };
 
             for (let i = 0; i < options.view; i++) {
@@ -569,18 +569,18 @@ const JS = (() => {
 
             for (let i = 0; i < length; i++) {
                 Object.assign(slides[i], {
-                    style
+                    style,
                 });
             }
 
             if (options.loop) {
                 for (let i = 0; i < options.clone.before.length; i++) {
                     Object.assign(options.clone.before[i], {
-                        style
+                        style,
                     });
 
                     Object.assign(options.clone.after[i], {
-                        style
+                        style,
                     });
                 }
             }
@@ -588,7 +588,7 @@ const JS = (() => {
             target.setAttribute('style', `overflow: hidden; display: flex; position: relative; width: 100%;`);
             slide.setAttribute(
                 'style',
-                `display: flex; transform: translate3d(${options.left}px, 0, 0);touch-action: none;`
+                `display: flex; transform: translate3d(${options.left}px, 0, 0);touch-action: none;`,
             );
             setTimeout(() => slide.style.transition = `transform .3s ease-in-out`, 100);
 
@@ -600,7 +600,7 @@ const JS = (() => {
                 touchstart: onTouchStart,
                 touchend  : onTouchEnd,
                 mousedown : onTouchStart,
-                mouseup   : onTouchEnd
+                mouseup   : onTouchEnd,
             };
 
             Object.keys(objBindEvents).map((e) => {
@@ -683,7 +683,7 @@ const JS = (() => {
         const onShow = () => {
             Object.assign(target, {
                 style   : 'display: flex;',
-                tabIndex: 0
+                tabIndex: 0,
             });
 
             setTimeout(() => target.classList.add(toggleClass), 0);
@@ -762,8 +762,8 @@ const JS = (() => {
     const carousel = carouselSlide(document.querySelector('.slide-wrap'), {
         thumb: {
             wrap: '.grids',
-            el  : '.grid'
-        }
+            el  : '.grid',
+        },
     });
 
     const onResize = () => {
@@ -774,7 +774,7 @@ const JS = (() => {
         const address = [
             '서울 구로구 새말로 97',
             '서울시 구로구 구로동 3-25',
-            '신도림 테크노마트 7층 '
+            '신도림 테크노마트 7층 ',
         ];
 
         const link = 'https://naver.me/xUStXdcX';
@@ -789,11 +789,11 @@ const JS = (() => {
             '    <span class="marker">',
             '        <span class="a11y">위치 마커</span>',
             '    </span>',
-            '</div>'
+            '</div>',
         ];
 
         naver.maps.Service.geocode({
-            query: `${address[0]} ${address[2]}`
+            query: `${address[0]} ${address[2]}`,
         }, function (status, response) {
             if (status !== naver.maps.Service.Status.OK) {
                 return alert('Something wrong!');
@@ -808,19 +808,19 @@ const JS = (() => {
             const Map = new naver.maps.Map('map', {
                 center     : new naver.maps.LatLng(lat, lng),
                 zoomControl: true,
-                zoom       : 16
+                zoom       : 16,
             });
 
             new naver.maps.Marker({
                 position: new naver.maps.LatLng(lat, lng),
                 map     : Map,
                 icon    : {
-                    content: arrayMarker.join('')
-                }
+                    content: arrayMarker.join(''),
+                },
             });
 
             new naver.maps.InfoWindow({
-                anchorSkew: true
+                anchorSkew: true,
             });
         });
     };
@@ -836,7 +836,7 @@ const JS = (() => {
 
         target.scrollTo({
             top     : value,
-            behavior: 'smooth'
+            behavior: 'smooth',
         });
     };
 
@@ -849,7 +849,7 @@ const JS = (() => {
             Object.assign(toast, {
                 className  : 'layer-toast',
                 ariaLive   : 'polite',
-                textContent: msg
+                textContent: msg,
             });
 
             BODY.insertAdjacentElement('beforeend', toast);
@@ -900,8 +900,8 @@ const JS = (() => {
             if (isNavigatorShare) {
                 window.navigator.share({
                     title: document.title,
-                    text: document.head.querySelector('meta[name="description"]').content,
-                    url: window.location.origin + window.location.pathname
+                    text : document.head.querySelector('meta[name="description"]').content,
+                    url  : window.location.origin + window.location.pathname,
                 }).then(() => {
                     console.log('Share URL');
                 }).catch(console.error);
@@ -933,14 +933,14 @@ const JS = (() => {
 
         setLayer({
             trigger: '.button-slide',
-            target : '#layer-slide'
+            target : '#layer-slide',
         });
 
         setShare();
     };
 
     return {
-        init
+        init,
     };
 })();
 

@@ -1,0 +1,80 @@
+@charset "UTF-8";
+body,
+header,
+section,
+footer,
+h1,
+div,
+p,
+ul,
+ol,
+li,
+button,
+figure,
+figcaption,
+img {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+body,
+input,
+button {
+  font-family: Pretendard, -apple-system, Apple SD Gothic Neo, 맑은 고딕, Malgun Gothic, sans-serif;
+  font-weight: 100;
+  letter-spacing: -0.4px;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+input ~ .caution {
+  opacity: 0;
+}
+input:invalid {
+  outline: 3px solid #f00;
+}
+input:invalid ~ .caution {
+  opacity: 1;
+}
+input:valid {
+  outline: 1px;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+button > span {
+  pointer-events: none;
+}
+
+button:active,
+a:active {
+  opacity: 0.8;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+
+img {
+  display: block;
+}
+
+li {
+  list-style: none;
+}
