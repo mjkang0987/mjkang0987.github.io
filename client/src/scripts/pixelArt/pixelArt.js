@@ -16,6 +16,9 @@ const {
 
 function PixelArt() {
     this.selector = {};
+    this.color = null;
+    this.target = null;
+    this.isDown = false;
 
     this.init();
 
