@@ -80,6 +80,43 @@ PixelArt.prototype = {
 
         this.selector['PIXEL_CELLS'].innerHTML = [...elements].join('');
     },
+    bindEvents    : function (e) {
+        this.target = e.target;
+        this.isDown = true;
+
+        const dataColor = this.target.dataset.color;
+
+        if (dataColor) {
+            this.color = dataColor;
+        }
+
+        if (!dataColor) {
+            this.fillColor();
+        }
+    },
+    fillColor     : function () {
+        this.target.style.backgroundColor = COLORS[this.color];
+        this.selector['PIXEL_CELLS'].addEventListener('mousemove', THROTTLING(this.fillDragColor.bind(this), 10));
+    },
+    fillDragColor : function (e) {
+        if (!this.isDown) {
+            return;
+        }
+
+        const target = e.target;
+
+        if (this.target === e.target) {
+            return;
+        }
+
+        if (target.tagName === 'BUTTON') {
+            return;
+        }
+
+        this.target = target;
+
+        e.target.style.backgroundColor = 'rgba(17,17,17,0.62)';
+    },
 };
 
 new PixelArt();
