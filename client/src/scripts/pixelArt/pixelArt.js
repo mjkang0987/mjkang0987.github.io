@@ -29,6 +29,12 @@ function PixelArt() {
 
     this.createPixelArt();
     this.selector['BUTTON_CREATE'].addEventListener('click', this.createPixelArt.bind(this));
+    this.selector['PIXEL_CELLS'].addEventListener('mousedown', this.bindEvents.bind(this), {capture: true});
+
+    this.selector['PIXEL_CELLS'].addEventListener('mouseup', () => {
+        this.isDown = false;
+    });
+
 }
 
 PixelArt.prototype = {
