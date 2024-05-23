@@ -71,7 +71,7 @@ const CONSTANTS = (() => {
             el            : 'div',
             attr          : {
                 className: 'pixel-cells',
-                style: 'display: flex;flex-wrap:wrap;margin:0 auto;width: 500px;max-width:80%;border: 1px solid #111'
+                style    : 'display: flex;flex-wrap:wrap;margin:0 auto;width: 500px;max-width:80%;border: 1px solid #111',
             },
             selector      : 'PIXEL_CELLS',
             parentSelector: 'PIXEL',
