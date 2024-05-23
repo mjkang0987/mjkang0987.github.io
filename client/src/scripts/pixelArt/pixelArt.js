@@ -70,7 +70,9 @@ PixelArt.prototype = {
 
         for (let i = 0; i < count + 1; i++) {
             for (let j = 0; j < count; j++) {
-                const cell = i !== count ? `<div style="width: ${100 / count}%;border: 1px solid #111;box-sizing: border-box;padding-top: ${100 / count}%;height: 0;"></div>` : `<button type="button" style="width: ${100 / count}%;border: 1px solid #111;box-sizing: border-box;padding-top: ${100 / count}%;height: 0;background-color: ${COLORS[j]}"></button>`;
+                const cell = i !== count
+                             ? `<div style="width: ${100 / count}%;border: 1px solid #111;box-sizing: border-box;padding-top: ${100 / count}%;height: 0;"></div>`
+                             : `<button type="button" style="width: ${100 / count}%;border: 1px solid #111;box-sizing: border-box;padding-top: ${100 / count}%;height: 0;background-color: ${COLORS[j]}" data-color="${j}"></button>`;
 
                 elements.push(cell);
             }
