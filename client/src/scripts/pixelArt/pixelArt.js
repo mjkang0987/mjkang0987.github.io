@@ -11,6 +11,7 @@ import {
 
 
 const {
+    THROTTLING,
     CREATE_EL,
 } = UTILS;
 
